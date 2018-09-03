@@ -1,0 +1,16 @@
+{
+  "name": "emotive",
+  "version": "0.1.0",
+  "description": "Dynamic \"css in js\" without interpolation or language injection",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zanomate/emotive.git"
+  },
+  "author": "zanomate",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zanomate/emotive/issues"
+  },
+  "homepage": "https://github.com/zanomate/emotive#readme"
+}
