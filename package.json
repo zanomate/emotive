@@ -1,6 +1,6 @@
 {
   "name": "emotive",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Dynamic \"css in js\" without interpolation or language injection",
   "main": "index.js",
   "repository": {
