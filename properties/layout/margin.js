@@ -1,5 +1,5 @@
-import { property } from 'utils';
-import { AUTO } from 'constants';
+import { property } from '../../utils';
+import { AUTO } from '../../constants';
 
 export const margin = property('margin');
 margin.AUTO = margin(AUTO);

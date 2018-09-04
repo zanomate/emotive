@@ -1,5 +1,5 @@
-import { property } from 'utils';
-import { BREAK_ALL, BREAK_WORD, KEEP_ALL, NORMAL } from 'constants';
+import { property } from '../../utils';
+import { BREAK_ALL, BREAK_WORD, KEEP_ALL, NORMAL } from '../../constants';
 
 export const wordBreak = property('wordBreak');
 wordBreak.NORMAL = wordBreak(NORMAL);

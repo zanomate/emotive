@@ -1,7 +1,7 @@
-import { property } from 'utils'
+import { property } from '../../utils'
 import {
     ALWAYS, AUTO, BLOCK, BOTH, CENTER, END, INLINE, MANDATORY, NONE, NORMAL, PROXIMITY, SMOOTH, START, X, Y
-} from 'constants';
+} from '../../constants';
 
 export const scrollBehavior = property('scrollBehavior');
 scrollBehavior.AUTO = scrollBehavior(AUTO);

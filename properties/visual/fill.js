@@ -1,8 +1,8 @@
-import { property } from 'utils';
+import { property } from '../../utils';
 import {
     AROUND, AUTO, BORDER_BOX, BOTTOM, BOUNDING_BOX, CLONE, CONTENT_BOX, EVENODD, FILL_BOX, LEFT, MATCH_PARENT,
     NO_REPEAT, NONE, NONZERO, PADDING_BOX, REPEAT, REPEAT_X, REPEAT_Y, RIGHT, SLICE, SPACE, STROKE_BOX, TOP, TRANSPARENT
-} from 'constants';
+} from '../../constants';
 
 export const fill = property('fill');
 

@@ -1,5 +1,5 @@
-import { property } from 'utils';
-import { COLLAPSE, HIDDEN, VISIBLE } from 'constants';
+import { property } from '../../utils';
+import { COLLAPSE, HIDDEN, VISIBLE } from '../../constants';
 
 export const visibility = property('visibility');
 visibility.VISIBLE = visibility(VISIBLE);

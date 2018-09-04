@@ -1,5 +1,5 @@
-import { property } from 'utils';
-import { CONTENT, LAYOUT, NONE, PAINT, SIZE, STRICT, STYLE } from 'constants';
+import { property } from '../../../utils';
+import { CONTENT, LAYOUT, NONE, PAINT, SIZE, STRICT, STYLE } from '../../../constants';
 
 export const contain = property('contain');
 contain.NONE = contain(NONE);

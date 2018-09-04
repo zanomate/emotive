@@ -1,8 +1,8 @@
-import { property } from 'utils';
+import { property } from '../../utils';
 import {
     ALL, AUTO, BALANCE, BALANCE_ALL, DASHED, DOTTED, DOUBLE, GROOVE, HIDDEN, INSET, MEDIUM, NONE, NORMAL, OUTSET, RIDGE,
     SOLID, THICK, THIN, TRANSPARENT
-} from 'constants';
+} from '../../constants';
 
 export const columns = property('columns');
 

@@ -1,8 +1,8 @@
-import { property } from 'utils';
-import { AUTO, LINEARRGB, NONE, SRGB, TRANSPARENT } from 'constants';
+import { property } from '../../utils';
+import { AUTO, LINEARRGB, NONE, SRGB, TRANSPARENT } from '../../constants';
 import {
     blur, brightness, contrast, dropShadow, grayscale, hueRotate, invert, opacity, saturate, sepia
-} from 'functions';
+} from '../../methods';
 
 export const filter = property('filter');
 filter.NONE = filter(NONE);

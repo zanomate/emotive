@@ -1,5 +1,5 @@
-import { property } from 'utils';
-import { FASTER, HIGH, LOW, MEDIUM, SLOW, SLOWER, X_FAST, X_HIGH, X_LOW, X_SLOW } from 'constants';
+import { property } from '../../../utils';
+import { FASTER, HIGH, LOW, MEDIUM, SLOW, SLOWER, X_FAST, X_HIGH, X_LOW, X_SLOW } from '../../../constants';
 
 export const speechRate = property('speechRate');
 speechRate.X_SLOW = speechRate(X_SLOW);

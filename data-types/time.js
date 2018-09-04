@@ -1,5 +1,5 @@
-import { measure } from 'utils';
-import { MS, S } from 'constants';
+import { measure } from '../utils';
+import { MS, S } from '../constants';
 
 // Units
 export const s = measure(S);

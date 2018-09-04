@@ -1,6 +1,6 @@
-import { property } from 'utils';
-import { AUTO, NONE, REVERSE } from 'constants';
-import { ray } from 'functions';
+import { property } from '../../utils';
+import { AUTO, NONE, REVERSE } from '../../constants';
+import { ray } from '../../methods';
 
 export const offset = property('offset');
 

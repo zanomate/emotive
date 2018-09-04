@@ -1,8 +1,8 @@
-import { property } from 'utils';
+import { property } from '../../utils';
 import {
     CLOSE, CLOSE_QUOTE, CONTENTS, DOCUMENT_URL, NO_CLOSE_QUOTE, NO_OPEN_QUOTE, NONE, NORMAL, OPEN, OPEN_QUOTE
-} from 'constants';
-import { leader, targetCounter, targetCounters, targetText, url } from 'functions';
+} from '../../constants';
+import { leader, targetCounter, targetCounters, targetText, url } from '../../methods';
 
 export const content = property('content');
 content.NONE = content(NONE);

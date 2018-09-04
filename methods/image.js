@@ -1,4 +1,4 @@
-import { method } from 'utils';
+import { method } from '../utils';
 
 export const crossFade = method('cross-faded');
 export const element = method('element');

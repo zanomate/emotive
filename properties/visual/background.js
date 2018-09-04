@@ -1,8 +1,8 @@
-import { property } from 'utils';
+import { property } from '../../utils';
 import {
     AROUND, AUTO, BORDER_BOX, BOTTOM, CONTAIN, CONTENT_BOX, COVER, FIXED, LEFT, LOCAL, NO_REPEAT, NONE, PADDING_BOX,
     REPEAT, REPEAT_X, REPEAT_Y, RIGHT, SCROLL, SPACE, TOP, TRANSPARENT
-} from 'constants';
+} from '../../constants';
 
 export const background = property('background');
 

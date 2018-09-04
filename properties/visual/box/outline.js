@@ -1,7 +1,7 @@
-import { property } from 'utils';
+import { property } from '../../../utils';
 import {
     AUTO, DASHED, DOTTED, DOUBLE, GROOVE, HIDDEN, INSET, INVERT, MEDIUM, NONE, OUTSET, RIDGE, SOLID, THICK, THIN
-} from 'constants';
+} from '../../../constants';
 
 export const outline = property('outline');
 

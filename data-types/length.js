@@ -1,7 +1,7 @@
-import { measure } from 'utils';
+import { measure } from '../utils';
 import {
     CAP, CH, CM, EM, EX, IC, IN, LH, MM, PC, PERCENTAGE, PT, PX, Q, REM, RLH, VB, VH, VI, VMAX, VMIN, VW
-} from 'constants';
+} from '../constants';
 
 // Units
 export const cap = measure(CAP);

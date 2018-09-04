@@ -1,5 +1,5 @@
-import { property } from 'utils';
-import { CONTAIN, COVER, FILL, FRONT_IMAGE, NONE, SCALE_DOWN } from 'constants';
+import { property } from '../../utils';
+import { CONTAIN, COVER, FILL, FRONT_IMAGE, NONE, SCALE_DOWN } from '../../constants';
 
 export const imageOrientation = property('imageOrientation');
 

@@ -1,5 +1,5 @@
-import { property } from 'utils';
-import { LOUD, MEDIUM, SILENT, SOFT, X_LOUD, X_SOFT } from 'constants';
+import { property } from '../../../utils';
+import { LOUD, MEDIUM, SILENT, SOFT, X_LOUD, X_SOFT } from '../../../constants';
 
 export const volume = property('volume');
 volume.SILENT = volume(SILENT);

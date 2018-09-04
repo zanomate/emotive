@@ -1,6 +1,5 @@
-import { property } from 'utils';
-import { AUTO, COLUMN, DENSE, MAX_CONTENT, MIN_CONTENT, ROW, SPAN } from 'constants';
-import { NONE } from 'constants';
+import { property } from '../../utils';
+import { AUTO, COLUMN, DENSE, MAX_CONTENT, MIN_CONTENT, NONE, ROW, SPAN } from '../../constants';
 
 export const grid = property('grid');
 

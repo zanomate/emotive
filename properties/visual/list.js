@@ -1,8 +1,8 @@
-import { property } from 'utils';
+import { property } from '../../utils';
 import {
     ARMENIAN, CIRCLE, DECIMAL, DECIMAL_LEADING_ZERO, DISC, GEORGIAN, INSIDE, LIST_CONTAINER, LIST_ITEM, LOWER_ALPHA,
     LOWER_GREEK, LOWER_LATIN, LOWER_ROMAN, NONE, OUTSIDE, SQUARE, UPPER_ALPHA, UPPER_GREEK, UPPER_LATIN, UPPER_ROMAN
-} from 'constants';
+} from '../../constants';
 
 export const listStyle = property('listStyle');
 

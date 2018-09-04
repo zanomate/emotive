@@ -1,5 +1,5 @@
-import { property } from 'utils';
-import { ABSOLUTE, AUTO, FIXED, RELATIVE, STATIC, STICKY } from 'constants';
+import { property } from '../../utils';
+import { ABSOLUTE, AUTO, FIXED, RELATIVE, STATIC, STICKY } from '../../constants';
 
 export const position = property('position');
 position.STATIC = position(STATIC);

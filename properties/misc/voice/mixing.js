@@ -1,5 +1,5 @@
-import { property } from 'utils';
-import { AUTO, MIX, NONE, REPEAT } from 'constants';
+import { property } from '../../../utils';
+import { AUTO, MIX, NONE, REPEAT } from '../../../constants';
 
 export const playDuring = property('playDuring');
 playDuring.AUTO = playDuring(AUTO);

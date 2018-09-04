@@ -1,5 +1,5 @@
-import { measure } from 'utils';
-import { DPCM, DPI, DPPX, X } from 'constants';
+import { measure } from '../utils';
+import { DPCM, DPI, DPPX, X } from '../constants';
 
 // Units
 export const dpi = measure(DPI);

@@ -1,5 +1,5 @@
-import { property } from 'utils';
-import { AUTO, BOTTOM, COLLAPSE, FIXED, HIDE, SEPARATE, SHOW, TOP } from 'constants';
+import { property } from '../../utils';
+import { AUTO, BOTTOM, COLLAPSE, FIXED, HIDE, SEPARATE, SHOW, TOP } from '../../constants';
 
 export const tableLayout = property('captionSide');
 tableLayout.AUTO = tableLayout(AUTO);

@@ -1,8 +1,8 @@
-import { property } from 'utils';
+import { property } from '../../../utils';
 import {
     AUTO, DASHED, DOTTED, DOUBLE, GROOVE, HIDDEN, INSET, MEDIUM, NONE, OUTSET, REPEAT, RIDGE, ROUND, SOLID, SPACE,
     STRETCH, THICK, THIN
-} from 'constants';
+} from '../../../constants';
 
 export const border = property('border');
 border.hidden = (...values) => border(HIDDEN, ...values);

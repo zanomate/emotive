@@ -1,4 +1,4 @@
-import { property } from 'utils';
+import { property } from '../../../utils';
 
 export const pause = property('pause');
 

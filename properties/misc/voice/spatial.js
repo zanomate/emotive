@@ -1,8 +1,8 @@
-import { property } from 'utils';
+import { property } from '../../../utils';
 import {
     ABOVE, BEHIND, BELOW, CENTER, CENTER_LEFT, CENTER_RIGHT, FAR_LEFT, FAR_RIGHT, HIGHER, LEFT, LEFT_SIDE, LEFTWARDS,
     LEVEL, LOWER, RIGHT, RIGHT_SIDE, RIGHTWARDS
-} from 'constants';
+} from '../../../constants';
 
 export const azimuth = property('azimuth');
 azimuth.LEFT_SIDE = azimuth(LEFT_SIDE);

@@ -72,8 +72,8 @@ export const args = (...args) => concatWithSpaces(args
  * @param values
  * @returns {Object} the style object containing the single valorized property.
  */
-export const property = (name, ...values) => (
-    {[name]: args(...values)}
+export const property = (name) => (
+    (...values) => ({[name]: args(...values)})
 );
 
 /**

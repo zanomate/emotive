@@ -1,5 +1,5 @@
-import { method } from 'utils';
-import { END, START } from 'constants';
+import { method } from '../utils';
+import { END, START } from '../constants';
 
 export const cubicBezier = method('cubic-bezier');
 

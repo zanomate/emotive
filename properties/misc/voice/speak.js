@@ -1,5 +1,5 @@
-import { property } from 'utils';
-import { ALWAYS, CODE, CONTINUOUS, DIGITS, NONE, ONCE, SPELL_OUT } from 'constants';
+import { property } from '../../../utils';
+import { ALWAYS, CODE, CONTINUOUS, DIGITS, NONE, ONCE, SPELL_OUT } from '../../../constants';
 
 export const speak = property('speak');
 speak.SPELL_OUT = speak(SPELL_OUT);

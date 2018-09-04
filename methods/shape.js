@@ -1,5 +1,5 @@
-import { method } from 'utils';
-import { CLOSEST_SIDE, EVENODD, FARTHEST_SIDE, NONZERO } from 'constants';
+import { method } from '../utils';
+import { CLOSEST_SIDE, EVENODD, FARTHEST_SIDE, NONZERO } from '../constants';
 
 export const rect = method('rect');
 
@@ -13,6 +13,6 @@ export const ellipse = method('ellipse');
 ellipse.closestSide = (...params) => ellipse(CLOSEST_SIDE, ...params);
 ellipse.farthestSide = (...params) => ellipse(FARTHEST_SIDE, ...params);
 
-export const polygon = new method('polygon');
+export const polygon = method('polygon');
 polygon.nonzero = (...params) => polygon(NONZERO, ...params);
 polygon.evenodd = (...params) => polygon(EVENODD, ...params);

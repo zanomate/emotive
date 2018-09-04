@@ -1,8 +1,8 @@
-import { property } from 'utils';
+import { property } from '../../utils';
 import {
     ALL, ALPHABETIC, AUTO, BASELINE, BORDER_BOX, BOTTOM, CENTER, CENTRAL, FIRST, GRID, HANGING, HEBREW, IDEOGRAPHIC,
     MATHEMATICAL, MIDDLE, NONE, NORMAL, STRETCH, SUB, SUPER, TEXT_BOTTOM, TEXT_TOP, TOP
-} from 'constants';
+} from '../../constants';
 
 export const alignmentBaseline = property('alignmentBaseline');
 alignmentBaseline.BASELINE = alignmentBaseline(BASELINE);

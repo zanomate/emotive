@@ -1,8 +1,8 @@
-import { property } from 'utils';
+import { property } from '../../utils';
 import {
     AUTO, COLOR, COLOR_BURN, COLOR_DODGE, DARKEN, DIFFERENCE, EXCLUSION, HARD_LIGHT, HUE, ISOLATE, LIGHTEN, LUMINOSITY,
     MULTIPLY, NORMAL, OVERLAY, SATURATION, SCREEN, SOFT_LIGHT
-} from 'constants';
+} from '../../constants';
 
 export const mixBlendMode = property('mixBlendMode');
 mixBlendMode.NORMAL = mixBlendMode(NORMAL);

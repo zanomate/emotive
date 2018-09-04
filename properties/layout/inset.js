@@ -1,5 +1,5 @@
-import { property } from 'utils';
-import { AUTO } from 'constants';
+import { property } from '../../utils';
+import { AUTO } from '../../constants';
 
 export const inset = property('inset');
 inset.AUTO = inset(AUTO);

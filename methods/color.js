@@ -1,4 +1,4 @@
-import { method } from 'utils';
+import { method } from '../utils';
 
 export const rgb = method('rgb');
 export const rgba = method('rgba');

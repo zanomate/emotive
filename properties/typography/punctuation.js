@@ -1,5 +1,5 @@
-import { property } from 'utils';
-import { ALLOW_END, AUTO, FIRST, FORCE_END, LAST, MANUAL, NONE } from 'constants';
+import { property } from '../../utils';
+import { ALLOW_END, AUTO, FIRST, FORCE_END, LAST, MANUAL, NONE } from '../../constants';
 
 export const hangingPunctuation = property('hangingPunctuation');
 hangingPunctuation.NONE = hangingPunctuation(NONE);

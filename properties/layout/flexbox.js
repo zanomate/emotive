@@ -1,16 +1,9 @@
-import { property } from 'utils';
+import { property } from '../../utils';
 import {
-    AUTO, COLUMN, COLUMN_REVERSE, CONTENT, NONE, NOWRAP, ROW, ROW_REVERSE, WRAP, WRAP_REVERSE
-} from 'constants';
-import {
-    BASELINE,
-    CENTER, END, FIRST, FLEX_END, FLEX_START, LAST, LEFT, LEGACY, NORMAL, RIGHT, SAFE, SELF_END, SELF_START,
-    SPACE_AROUND,
-    SPACE_BETWEEN,
-    SPACE_EVENLY,
-    START,
-    STRETCH, UNSAFE
-} from 'constants';
+    AUTO, BASELINE, CENTER, COLUMN, COLUMN_REVERSE, CONTENT, END, FIRST, FLEX_END, FLEX_START, LAST, LEFT, LEGACY, NONE,
+    NORMAL, NOWRAP, RIGHT, ROW, ROW_REVERSE, SAFE, SELF_END, SELF_START, SPACE_AROUND, SPACE_BETWEEN, SPACE_EVENLY,
+    START, STRETCH, UNSAFE, WRAP, WRAP_REVERSE
+} from '../../constants';
 
 export const flex = property('flex');
 flex.NONE = flex(NONE);

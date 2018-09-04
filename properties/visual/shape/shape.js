@@ -1,5 +1,5 @@
-import { property } from 'utils';
-import { NONE, RECT, ROUND } from 'constants';
+import { property } from '../../../utils';
+import { NONE, RECT, ROUND } from '../../../constants';
 
 export const shape = property('shape');
 shape.RECT = shape(RECT);

@@ -1,5 +1,5 @@
-import { property } from 'utils';
-import { ALWAYS, AUTO, AVOID, LEFT, RIGHT } from 'constants';
+import { property } from '../../utils';
+import { ALWAYS, AUTO, AVOID, LEFT, RIGHT } from '../../constants';
 
 export const pageBreakBefore = property('pageBreakBefore');
 pageBreakBefore.AUTO = pageBreakBefore(AUTO);

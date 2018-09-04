@@ -1,10 +1,10 @@
-import { property } from 'utils';
+import { property } from '../../utils';
 import {
     AUTO, BLOCK, CONTENTS, DISPLAY, FLEX, FLOW, FLOW_ROOT, GRID, INLINE, INLINE_BLOCK, INLINE_FLEX, INLINE_GRID,
     INLINE_TABLE, LIST_ITEM, NONE, OUTSIDE_SHAPE, PARENT, RUBY, RUBY_BASE, RUBY_BASE_CONTAINER, RUBY_TEXT,
     RUBY_TEXT_CONTAINER, RUN_IN, SHAPE_BOX, SUBGRID, TABLE, TABLE_CAPTION, TABLE_CELL, TABLE_COLUMN, TABLE_COLUMN_GROUP,
     TABLE_FOOTER_GROUP, TABLE_HEADER_GROUP, TABLE_ROW, TABLE_ROW_GROUP
-} from 'constants';
+} from '../../constants';
 
 export const display = property('display');
 display.NONE = display(NONE);

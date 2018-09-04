@@ -1,6 +1,6 @@
-import { property } from 'utils';
-import { AUTO, BOTH, HORIZONTAL, LANDSCAPE, MAX_CONTENT, MIN_CONTENT, NONE, PORTRAIT, VERTICAL } from 'constants';
-import { fitContent } from 'functions';
+import { property } from '../../utils';
+import { AUTO, BOTH, HORIZONTAL, LANDSCAPE, MAX_CONTENT, MIN_CONTENT, NONE, PORTRAIT, VERTICAL } from '../../constants';
+import { fitContent } from '../../methods';
 
 export const size = property('size');
 size.AUTO = size(AUTO);
@@ -51,7 +51,7 @@ maxWidth.fitContent = (...values) => maxWidth(fitContent(...values));
 
 /* Height */
 
-export const height = property('width');
+export const height = property('height');
 height.AUTO = height(AUTO);
 height.MIN_CONTENT = height(MIN_CONTENT);
 height.MAX_CONTENT = height(MAX_CONTENT);

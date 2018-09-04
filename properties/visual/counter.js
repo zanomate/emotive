@@ -1,5 +1,5 @@
-import { property } from 'utils';
-import { NONE } from 'constants';
+import { property } from '../../utils';
+import { NONE } from '../../constants';
 
 export const counterSet = property('counterSet');
 counterSet.NONE = counterSet(NONE);

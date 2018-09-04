@@ -1,9 +1,9 @@
-import { property } from 'utils';
+import { property } from '../../../utils';
 import {
     ADD, ALPHA, AUTO, BORDER_BOX, BOTTOM, CENTER, CONTAIN, CONTENT_BOX, COVER, EXCLUDE, FILL, FILL_BOX, INTERSECT, LEFT,
     LUMINANCE, MARGIN_BOX, NO_CLIP, NO_REPEAT, NONE, PADDING_BOX, REPEAT, REPEAT_X, REPEAT_Y, RIGHT, ROUND, SPACE,
     STRETCH, STROKE_BOX, SUBTRACT, TOP, VIEW_BOX
-} from 'constants';
+} from '../../../constants';
 
 export const mask = property('mask');
 

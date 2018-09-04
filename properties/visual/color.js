@@ -1,5 +1,5 @@
-import { property } from 'utils';
-import { AUTO, TRANSPARENT } from 'constants';
+import { property } from '../../utils';
+import { AUTO, TRANSPARENT } from '../../constants';
 
 export const color = property('color');
 color.TRANSPARENT = color(TRANSPARENT);

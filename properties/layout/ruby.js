@@ -1,7 +1,7 @@
-import { property } from 'utils';
+import { property } from '../../utils';
 import {
     AUTO, CENTER, COLLAPSE, INTER_CHARACTER, LEFT, OVER, RIGHT, SEPARATE, SPACE_AROUND, SPACE_BETWEEN, START, UNDER
-} from 'constants';
+} from '../../constants';
 
 export const rubyPosition = property('rubyPosition');
 rubyPosition.OVER = rubyPosition(OVER);

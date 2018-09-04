@@ -1,9 +1,9 @@
-import { property } from 'utils'
+import { property } from '../../utils'
 import {
     ALL, AUTO, BIDI_OVERRIDE, DIGITS, EMBED, HORIZONTAL_TB, ISOLATE, ISOLATE_OVERRIDE, LTR, MIXED, NONE, NORMAL,
     PLAINTEXT, RTL, SIDEWAYS, SIDEWAYS_LR, SIDEWAYS_RL, UPRIGHT, VERTICAL_LR, VERTICAL_RL
-} from 'constants';
-import { deg } from 'data-types';
+} from '../../constants';
+import { deg } from '../../data-types';
 
 export const direction = property('direction');
 direction.LTR = direction(LTR);

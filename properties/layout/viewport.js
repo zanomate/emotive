@@ -1,5 +1,5 @@
-import { property } from 'utils';
-import { AUTO, CONTAIN, COVER, LANDSCAPE, PORTRAIT } from 'constants';
+import { property } from '../../utils';
+import { AUTO, CONTAIN, COVER, LANDSCAPE, PORTRAIT } from '../../constants';
 
 export const viewportFit = property('viewportFit');
 viewportFit.AUTO = viewportFit(AUTO);

@@ -1,5 +1,5 @@
-import { property } from 'utils';
-import { BASELINE, BOTTOM, MIDDLE, NONE, NORMAL, SUB, SUPER, TEXT_BOTTOM, TEXT_TOP, TOP } from 'constants';
+import { property } from '../../utils';
+import { BASELINE, BOTTOM, MIDDLE, NONE, NORMAL, SUB, SUPER, TEXT_BOTTOM, TEXT_TOP, TOP } from '../../constants';
 
 export const lineHeight = property('lineHeight');
 lineHeight.NORMAL = lineHeight(NORMAL);

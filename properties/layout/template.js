@@ -1,5 +1,5 @@
-import { concatWithSpaces, property } from 'utils';
-import { AUTO, NONE, SAME } from 'constants';
+import { concatWithSpaces, property } from '../../utils';
+import { AUTO, NONE, SAME } from '../../constants';
 
 export const chains = property('chains');
 chains.NONE = chains(NONE);

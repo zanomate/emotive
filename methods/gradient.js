@@ -1,7 +1,7 @@
-import { method } from 'utils';
+import { method } from '../utils';
 import {
     BOTTOM, CIRCLE, CLOSEST_CORNER, CLOSEST_SIDE, ELLIPSE, FARTHEST_CORNER, FARTHEST_SIDE, LEFT, RIGHT, TO, TOP
-} from 'constants';
+} from '../constants';
 
 export const linearGradient = method('linear-gradient');
 linearGradient.toTop = (...params) => linearGradient(TO, TOP, ...params);

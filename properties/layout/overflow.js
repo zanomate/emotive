@@ -1,8 +1,8 @@
-import { property } from 'utils';
-import { rect } from 'functions';
+import { property } from '../../utils';
+import { rect } from '../../methods';
 import {
     ALWAYS, AUTO, CLIP, DISCARD, ELLIPSIS, FRAGMENTS, HIDDEN, NONE, OVERFLOW, PAGINATE, SCROLL, STABLE, VISIBLE
-} from 'constants';
+} from '../../constants';
 
 export const overflow = property('overflow');
 overflow.AUTO = overflow(AUTO);

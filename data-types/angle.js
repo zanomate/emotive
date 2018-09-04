@@ -1,5 +1,5 @@
-import { measure } from 'utils';
-import { DEG, GRAD, RAD, TURN } from 'constants';
+import { measure } from '../utils';
+import { DEG, GRAD, RAD, TURN } from '../constants';
 
 // Units
 export const deg = measure(DEG);

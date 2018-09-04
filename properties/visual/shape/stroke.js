@@ -1,9 +1,9 @@
-import { property } from 'utils';
+import { property } from '../../../utils';
 import {
     ARCS, AROUND, AUTO, BEVEL, BORDER_BOX, BOTTOM, BOUNDING_BOX, BUTT, CENTER, CLONE, COMPRESS, CONTENT_BOX, CROP,
     DASHES, FILL_BOX, GAPS, INSET, LEFT, MATCH_PARENT, MITER, NO_REPEAT, NONE, OUTSET, PADDING_BOX, REPEAT, REPEAT_X,
     REPEAT_Y, RIGHT, ROUND, SLICE, SPACE, SQUARE, STRETCH, STROKE_BOX, STUPID, TOP, TRANSPARENT
-} from 'constants';
+} from '../../../constants';
 
 export const stroke = property('stroke');
 

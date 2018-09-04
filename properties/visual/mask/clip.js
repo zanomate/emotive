@@ -1,7 +1,7 @@
-import { property } from 'utils';
+import { property } from '../../../utils';
 import {
     AUTO, BORDER_BOX, CONTENT_BOX, EVENODD, FILL_BOX, MARGIN_BOX, NONE, NONZERO, PADDING_BOX, STROKE_BOX, VIEW_BOX
-} from 'constants';
+} from '../../../constants';
 
 export const clip = property('clip');
 clip.AUTO = clip(AUTO);

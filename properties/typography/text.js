@@ -1,10 +1,10 @@
-import { property } from 'utils';
+import { property } from '../../utils';
 import {
     ANYWHERE, AUTO, BLINK, CAPITALIZE, CENTER, CIRCLE, CLIP, CURRENT_COLOR, DASHED, DOT, DOTTED, DOUBLE, DOUBLE_CIRCLE,
     ELLIPSIS, END, FILLED, FULL_WIDTH, INTER_CHARACTER, INTER_WORD, JUSTIFY, JUSTIFY_ALL, LEFT, LINE_THROUGH, LOOSE,
     LOWERCASE, MATCH_PARENT, NONE, NORMAL, NOWRAP, OPEN, OVERLINE, PRE, PRE_LINE, PRE_WRAP, RIGHT, SESAME, SOLID, START,
     STRICT, TRIANGLE, UNDER, UNDERLINE, UPPERCASE, WAVY
-} from 'constants';
+} from '../../constants';
 
 export const textAlign = property('textAlign');
 textAlign.START = textAlign(START);

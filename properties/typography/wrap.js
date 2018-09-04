@@ -1,5 +1,5 @@
-import { property } from 'utils';
-import { BREAK_SPACES, BREAK_WORD, NORMAL } from 'constants';
+import { property } from '../../utils';
+import { BREAK_SPACES, BREAK_WORD, NORMAL } from '../../constants';
 
 export const wordWrap = property('wordWrap');
 wordWrap.NORMAL = wordWrap(NORMAL);

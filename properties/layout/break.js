@@ -1,7 +1,7 @@
-import { property } from 'utils';
+import { property } from '../../utils';
 import {
     AUTO, AVOID, AVOID_COLUMN, AVOID_PAGE, AVOID_REGION, CLONE, COLUMN, LEFT, PAGE, RECTO, REGION, RIGHT, SLICE, VERSO
-} from 'constants';
+} from '../../constants';
 
 export const breakBefore = property('breakBefore');
 breakBefore.AUTO = breakBefore(AUTO);

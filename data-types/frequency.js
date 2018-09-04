@@ -1,5 +1,5 @@
-import { measure } from 'utils';
-import { HZ, KHZ } from 'constants';
+import { measure } from '../utils';
+import { HZ, KHZ } from '../constants';
 
 // Units
 export const Hz = measure(HZ);

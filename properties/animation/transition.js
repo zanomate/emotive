@@ -1,6 +1,6 @@
-import { property } from 'utils';
-import { ALL, EASE, EASE_IN, EASE_IN_OUT, EASE_OUT, LINEAR, NONE, STEP_END, STEP_START } from 'constants';
-import { cubicBezier, frames, steps } from 'functions';
+import { property } from '../../utils';
+import { ALL, EASE, EASE_IN, EASE_IN_OUT, EASE_OUT, LINEAR, NONE, STEP_END, STEP_START } from '../../constants';
+import { cubicBezier, frames, steps } from '../../methods';
 
 export const transition = property('transition');
 
