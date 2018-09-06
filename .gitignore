@@ -1,2 +1,5 @@
-#ide
+#node
+node_modules
+
+#intellij
 .idea
