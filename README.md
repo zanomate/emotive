@@ -47,6 +47,19 @@ or [Yarn](https://yarnpkg.com/lang/en/)
 yarn add emotive
 ```
 
+## Index
+- [Emotive](#emotive)
+	- [Index](#index)
+	- [What does "Emotive" do?](#what-does-emotive-do)
+- [Usage](#usage)
+	- [Properties](#properties)
+	- [Units](#units)
+	- [List](#list)
+	- [Methods](#methods)
+	- [Values](#values)
+	- [Constants](#constants)
+- [Manage Imports](#manage-imports)
+
 ## What does "Emotive" do?
 Emotive essentially provides an easy way to write and populate any CSS property without having trouble converting javascript data types into CSS compatbile one. Furthermore it provides a complete list of ready-to-use constants and methods to compose your stylesheets without boring and confusing wrap operations, language injection or value interpolation.
 
