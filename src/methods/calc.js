@@ -1,4 +1,4 @@
-import { method } from 'utils';
+import { method } from '../utils';
 
 export const add = (...values) => `(${values.join(' + ')})`;
 export const sub = (...values) => `(${values.join(' - ')})`;

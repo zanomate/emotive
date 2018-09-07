@@ -1,51 +1,27 @@
-/* global __dirname, require, module*/
-
 const webpack = require('webpack');
-const path = require('path');
-const env = require('yargs').argv.env; // use --env with webpack 2
 const pkg = require('./package.json');
 
-let libraryName = pkg.name;
-
-let outputFileExt, mode;
-
-if (env === 'build') {
-  mode = 'production';
-  outputFileExt = '.min.js';
-} else {
-  mode = 'development';
-  outputFileExt = '.js';
-}
-
-const config = {
-  mode: mode,
-  entry:  __dirname + '/src/index.js',
-  devtool: 'source-map',
+module.exports = {
+  mode: 'production',
+  context: __dirname,
+  entry:  './src/index.js',
   output: {
-    path: __dirname + '/lib',
-    filename: libraryName + outputFileExt,
-    library: libraryName,
-    libraryTarget: 'umd',
-    umdNamedDefine: true
+    path: __dirname,
+    filename: pkg.name + '.js',
+    library: pkg.name
   },
   module: {
     rules: [
       {
-        test: /(\.jsx|\.js)$/,
+        test: /(\.js)$/,
         loader: 'babel-loader',
-        exclude: /(node_modules|bower_components)/
+        exclude: /node_modules/
       },
       {
-        test: /(\.jsx|\.js)$/,
+        test: /(\.js)$/,
         loader: 'eslint-loader',
         exclude: /node_modules/
       }
     ]
-  },
-  resolve: {
-    modules: [path.resolve('./node_modules'), path.resolve('./src')],
-    extensions: ['.json', '.js']
   }
 };
-
-module.exports = config;

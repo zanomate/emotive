@@ -4,7 +4,6 @@ import {
     MM, MS, PC, PERCENTAGE, PT, PX, Q, RAD, REM, RLH, S, TURN, VB, VH, VI, VMAX,
     VMIN, VW
 } from '../constants';
-import { method } from 'utils';
 
 /* Angle */
 export const deg = measure(DEG);
