@@ -235,7 +235,8 @@ let myStyle = css(
 	Border(px(1), SOLID, BLACK),
 	Position.ABSOLUTE,
 	Top(cm(50)),
-	Left(calc(x(50), px(-40))))
+	Left(calc(x(50), px(-40)))
+);
 ``` 
 
 Importing the entire module with a single statement can be a solution, but the resulting code became difficult to read.
@@ -243,7 +244,7 @@ Importing the entire module with a single statement can be a solution, but the r
 ```js
 import * as e from 'emotive';
 
-let myStyle = css(
+let myStyle = e.css(
 	e.Display.BLOCK,
 	e.FontSize(e.em(10)),
 	e.Width(e.px(80)),
@@ -253,13 +254,13 @@ let myStyle = css(
 	e.Position.ABSOLUTE,
 	e.Top(e.cm(50)),
 	e.Left(e.calc(e.x(50), e.px(-40)))
-) 
+);
 ```
 
 For this reason, Emotive provides some container objects, one for each major category of the library.
 
 ```js
-import { Properties, Methods, Measures, Colors } from 'emotive';
+import { Properties, Methods, Measures, Colors, css } from 'emotive';
 
 let myStyle = css(
 	Properties.Display.BLOCK,
@@ -271,7 +272,7 @@ let myStyle = css(
 	Properties.Position.ABSOLUTE,
 	Properties.Top(Measures.cm(50)),
 	Properties.Left(Methods.calc(Measures.x(50), Measures.px(-40)))
-)
+);
 ```
 
 Below the list of all the container objects.
@@ -307,6 +308,6 @@ let myStyle = css(
 	Property.Position.ABSOLUTE,
 	Property.Top(cm(50)),
 	Property.Left(calc(x(50), px(-40)))
-)
+);
 ```
 
