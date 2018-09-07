@@ -1,6 +1,6 @@
 **IMPORTANT: This is only a draft. The module is still in development**
 
-Version: 0.3.0
+Version: 0.3.1
 
 
 # Emotive
