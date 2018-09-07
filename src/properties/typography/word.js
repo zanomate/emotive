@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import { BREAK_ALL, BREAK_WORD, KEEP_ALL, NORMAL } from '../../constants';
 
 const WordBreak = property('wordBreak');

@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 
 const Padding = property('padding');
 export { Padding };

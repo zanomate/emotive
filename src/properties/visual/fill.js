@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     AROUND, AUTO, BORDER_BOX, BOTTOM, BOUNDING_BOX, CLONE, CONTENT_BOX, EVENODD,
     FILL_BOX, LEFT, MATCH_PARENT, NO_REPEAT, NONE, NONZERO, PADDING_BOX, REPEAT,

@@ -1,4 +1,4 @@
-import { method } from '../utils';
+import { method } from '../utils/factory';
 
 export const blur = method('blur');
 export const brightness = method('brightness');

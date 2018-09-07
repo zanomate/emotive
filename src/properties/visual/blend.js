@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     AUTO, COLOR, COLOR_BURN, COLOR_DODGE, DARKEN, DIFFERENCE, EXCLUSION,
     HARD_LIGHT, HUE, ISOLATE, LIGHTEN, LUMINOSITY, MULTIPLY, NORMAL, OVERLAY,

@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     ABOVE, ALWAYS, AUTO, BEHIND, BELOW, CENTER, CENTER_LEFT, CENTER_RIGHT, CODE,
     CONTINUOUS, DIGITS, FAR_LEFT, FAR_RIGHT, FASTER, HIGH, HIGHER, LEFT,

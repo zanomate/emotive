@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     AUTO, BASELINE, CENTER, COLUMN, COLUMN_REVERSE, CONTENT, END, FIRST,
     FLEX_END, FLEX_START, LAST, LEFT, LEGACY, NONE, NORMAL, NOWRAP, RIGHT, ROW,

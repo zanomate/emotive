@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     _100, _200, _300, _400, _500, _600, _700, _800, _900, ALL_PETITE_CAPS,
     ALL_SMALL_CAPS, AUTO, BOLD, BOLDER, CAPTION, COMMON_LIGATURES, CONDENSED,

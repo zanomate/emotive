@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     CLOSE, CLOSE_QUOTE, CONTENTS, DOCUMENT_URL, NO_CLOSE_QUOTE, NO_OPEN_QUOTE,
     NONE, NORMAL, OPEN, OPEN_QUOTE

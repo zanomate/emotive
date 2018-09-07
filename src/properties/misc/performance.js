@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     CONTENT, LAYOUT, NONE, PAINT, SIZE, STRICT, STYLE
 } from '../../constants';

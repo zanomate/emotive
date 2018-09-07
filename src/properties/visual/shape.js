@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import { NONE, RECT, ROUND } from '../../constants';
 
 const Shape = property('shape');

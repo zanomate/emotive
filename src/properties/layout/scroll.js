@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     ALWAYS, AUTO, BLOCK, BOTH, CENTER, END, INLINE, MANDATORY, NONE, NORMAL,
     PROXIMITY, SMOOTH, START, X, Y

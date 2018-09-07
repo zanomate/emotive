@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import { BORDER_BOX, CONTENT_BOX } from '../../constants';
 
 const BoxSizing = property('boxSizing');

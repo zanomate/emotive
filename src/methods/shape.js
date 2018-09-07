@@ -1,4 +1,4 @@
-import { method } from '../utils';
+import { method } from '../utils/factory';
 import { CLOSEST_SIDE, EVENODD, FARTHEST_SIDE, NONZERO } from '../constants';
 
 export const rect = method('rect');

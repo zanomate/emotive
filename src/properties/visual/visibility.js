@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import { COLLAPSE, HIDDEN, VISIBLE } from '../../constants';
 
 const Visibility = property('visibility');

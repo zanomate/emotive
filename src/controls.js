@@ -1,3 +1,7 @@
+export function css(...styles) {
+    return Object.assign({}, ...styles);
+}
+
 // export function If(condition, styleSuccess, styleFailure) {
 //     if (condition) {
 //         return styleSuccess;

@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     AUTO, BORDER_BOX, CONTENT_BOX, EVENODD, FILL_BOX, MARGIN_BOX, NONE, NONZERO,
     PADDING_BOX, STROKE_BOX, VIEW_BOX

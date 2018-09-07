@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     ALL, AUTO, BALANCE, BALANCE_ALL, DASHED, DOTTED, DOUBLE, GROOVE, HIDDEN,
     INSET, MEDIUM, NONE, NORMAL, OUTSET, RIDGE, SOLID, THICK, THIN, TRANSPARENT

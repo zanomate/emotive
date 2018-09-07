@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     ALL, ALPHABETIC, AUTO, BASELINE, BORDER_BOX, BOTTOM, CENTER, CENTRAL, FIRST,
     GRID, HANGING, HEBREW, IDEOGRAPHIC, MATHEMATICAL, MIDDLE, NONE, NORMAL,

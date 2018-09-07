@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     ALLOW_END, AUTO, FIRST, FORCE_END, LAST, MANUAL, NONE
 } from '../../constants';

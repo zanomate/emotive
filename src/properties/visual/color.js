@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import { AUTO, TRANSPARENT } from '../../constants';
 
 const Color = property('color');

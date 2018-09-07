@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     AUTO, DASHED, DOTTED, DOUBLE, GROOVE, HIDDEN, INSET, INVERT, MEDIUM, NONE,
     OUTSET, RIDGE, SOLID, THICK, THIN

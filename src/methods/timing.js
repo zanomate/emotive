@@ -1,4 +1,4 @@
-import { method } from '../utils';
+import { method } from '../utils/factory';
 import { END, START } from '../constants';
 
 export const cubicBezier = method('cubic-bezier');

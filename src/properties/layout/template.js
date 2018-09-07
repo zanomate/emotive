@@ -1,4 +1,4 @@
-import { concatWithSpaces, property } from '../../utils';
+import { concatWithSpaces, property } from '../../utils/factory';
 import { AUTO, NONE, SAME } from '../../constants';
 
 const Chains = property('chains');

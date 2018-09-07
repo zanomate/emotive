@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     BLOCK_END, BLOCK_START, BOTTOM, COLUMN, INLINE, INLINE_END, INLINE_START,
     LAST, LEFT, NONE, PAGE, REGION, RIGHT, SNAP_BLOCK, SNAP_INLINE, TOP

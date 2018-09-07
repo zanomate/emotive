@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     AUTO, COLUMN, DENSE, MAX_CONTENT, MIN_CONTENT, NONE, ROW, SPAN
 } from '../../constants';

@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     ARMENIAN, CIRCLE, DECIMAL, DECIMAL_LEADING_ZERO, DISC, GEORGIAN, INSIDE,
     LIST_CONTAINER, LIST_ITEM, LOWER_ALPHA, LOWER_GREEK, LOWER_LATIN,

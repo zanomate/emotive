@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import { AUTO, LINEARRGB, NONE, SRGB, TRANSPARENT } from '../../constants';
 import {
     blur, brightness, contrast, dropShadow, grayscale, hueRotate, invert,

@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     ALL, EASE, EASE_IN, EASE_IN_OUT, EASE_OUT, LINEAR, NONE, STEP_END,
     STEP_START

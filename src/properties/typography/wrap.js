@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import { BREAK_SPACES, BREAK_WORD, NORMAL } from '../../constants';
 
 const WordWrap = property('wordWrap');

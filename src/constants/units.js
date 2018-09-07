@@ -32,9 +32,3 @@ export const VI = 'vi';
 export const VMAX = 'vmax';
 export const VMIN = 'vmin';
 export const VW = 'vw';
-
-export const Units = {
-    CAP, CH, CM, DEG, DPCM, DPI, DPPX, EM, EX, FR, GRAD, HZ, IC, IN, KHZ, LH,
-    MM, MS, PC, PERCENTAGE, PT, PX, Q, RAD, REM, RLH, S, TURN, VB, VH, VI, VMAX,
-    VMIN, VW
-};

@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     AUTO, BOTTOM, COLLAPSE, FIXED, HIDE, SEPARATE, SHOW, TOP
 } from '../../constants';

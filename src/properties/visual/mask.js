@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     ADD, ALPHA, AUTO, BORDER_BOX, BOTTOM, CENTER, CONTAIN, CONTENT_BOX, COVER,
     EXCLUDE, FILL, FILL_BOX, INTERSECT, LEFT, LUMINANCE, MARGIN_BOX, NO_CLIP,

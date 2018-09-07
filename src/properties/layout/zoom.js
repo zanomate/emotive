@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import { AUTO, FIXED, ZOOM } from '../../constants';
 
 const Zoom = property('zoom');

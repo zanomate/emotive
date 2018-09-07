@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import { REVERT } from '../../constants';
 
 const All = property('all');

@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     ALWAYS, AUTO, CLIP, DISCARD, ELLIPSIS, FRAGMENTS, HIDDEN, NONE, OVERFLOW,
     PAGINATE, SCROLL, STABLE, VISIBLE

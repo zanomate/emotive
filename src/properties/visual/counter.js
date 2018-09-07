@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import { NONE } from '../../constants';
 
 const CounterSet = property('counterSet');

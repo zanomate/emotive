@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     AUTO, AVOID, AVOID_COLUMN, AVOID_PAGE, AVOID_REGION, CLONE, COLUMN, LEFT,
     PAGE, RECTO, REGION, RIGHT, SLICE, VERSO

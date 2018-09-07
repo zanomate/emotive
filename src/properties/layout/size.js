@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     AUTO, BOTH, HORIZONTAL, LANDSCAPE, MAX_CONTENT, MIN_CONTENT, NONE, PORTRAIT,
     VERTICAL

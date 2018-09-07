@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     ALTERNATE, ALTERNATE_REVERSE, BACKWARDS, BOTH, EASE, EASE_IN, EASE_IN_OUT,
     EASE_OUT, FORWARDS, INFINITE, LINEAR, NONE, NORMAL, PAUSED, REVERSE,

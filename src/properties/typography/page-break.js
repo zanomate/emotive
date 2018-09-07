@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import { ALWAYS, AUTO, AVOID, LEFT, RIGHT } from '../../constants';
 
 const PageBreakBefore = property('pageBreakBefore');

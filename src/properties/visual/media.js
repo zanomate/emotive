@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import { CONTAIN, COVER, FILL, FRONT_IMAGE, NONE, SCALE_DOWN } from '../../constants';
 
 const ImageOrientation = property('imageOrientation');

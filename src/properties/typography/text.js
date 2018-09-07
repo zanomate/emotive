@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     ANYWHERE, AUTO, BLINK, CAPITALIZE, CENTER, CIRCLE, CLIP, CURRENT_COLOR,
     DASHED, DOT, DOTTED, DOUBLE, DOUBLE_CIRCLE, ELLIPSIS, END, FILLED,

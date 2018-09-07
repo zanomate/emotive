@@ -1,10 +1,9 @@
-import { measure } from '../utils';
+import { measure } from '../utils/factory';
 import {
     CAP, CH, CM, DEG, DPCM, DPI, DPPX, EM, EX, FR, GRAD, HZ, IC, IN, KHZ, LH,
     MM, MS, PC, PERCENTAGE, PT, PX, Q, RAD, REM, RLH, S, TURN, VB, VH, VI, VMAX,
     VMIN, VW
 } from '../constants';
-import { method } from 'utils';
 
 /* Angle */
 export const deg = measure(DEG);

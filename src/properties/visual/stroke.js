@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     ARCS, AROUND, AUTO, BEVEL, BORDER_BOX, BOTTOM, BOUNDING_BOX, BUTT, CENTER,
     CLONE, COMPRESS, CONTENT_BOX, CROP, DASHES, FILL_BOX, GAPS, INSET, LEFT,

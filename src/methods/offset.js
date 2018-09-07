@@ -1,3 +1,3 @@
-import { method } from '../utils';
+import { method } from '../utils/factory';
 
 export const ray = method('ray');

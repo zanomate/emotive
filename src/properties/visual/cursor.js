@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     ALIAS, ALL_SCROLL, AUTO, CELL, COL_RESIZE, CONTEXT_MENU, COPY, CROSSHAIR,
     DEFAULT, E_RESIZE, EW_RESIZE, GRAB, GRABBING, HELP, MOVE, N_RESIZE,

@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     AUTO, CENTER, COLLAPSE, INTER_CHARACTER, LEFT, OVER, RIGHT, SEPARATE,
     SPACE_AROUND, SPACE_BETWEEN, START, UNDER

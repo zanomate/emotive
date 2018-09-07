@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     AUTO, BLOCK, CONTENTS, DISPLAY, FLEX, FLOW, FLOW_ROOT, GRID, INLINE,
     INLINE_BLOCK, INLINE_FLEX, INLINE_GRID, INLINE_TABLE, LIST_ITEM, NONE,

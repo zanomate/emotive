@@ -1,4 +1,4 @@
-import { method } from '../utils';
+import { method } from '../utils/factory';
 import {
     BOTTOM, CIRCLE, CLOSEST_CORNER, CLOSEST_SIDE, ELLIPSE, FARTHEST_CORNER,
     FARTHEST_SIDE, LEFT, RIGHT, TO, TOP

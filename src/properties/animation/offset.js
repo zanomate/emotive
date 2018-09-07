@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import { AUTO, NONE, REVERSE } from '../../constants';
 import { ray } from '../../methods';
 

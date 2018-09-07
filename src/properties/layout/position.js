@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import { ABSOLUTE, AUTO, FIXED, RELATIVE, STATIC, STICKY } from '../../constants';
 
 const Position = property('position');

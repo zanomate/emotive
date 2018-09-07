@@ -1,4 +1,4 @@
-import { property } from '../../utils';
+import { property } from '../../utils/factory';
 import {
     ALL, AUTO, BIDI_OVERRIDE, DIGITS, EMBED, HORIZONTAL_TB, ISOLATE,
     ISOLATE_OVERRIDE, LTR, MIXED, NONE, NORMAL, PLAINTEXT, RTL, SIDEWAYS,
