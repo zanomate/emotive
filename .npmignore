@@ -1,0 +1,14 @@
+#intellij
+.idea
+
+#sources
+src
+
+#node
+node_modules
+package-lock.json
+
+#config
+.babelrc
+.eslintrc
+webpack.config.js
