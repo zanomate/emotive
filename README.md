@@ -1,13 +1,13 @@
-**IMPORTANT: This is only a draft. The module is still in development**
 
-Version: 0.3.3
+**IMPORTANT: This is only a draft. The module is still in development**
+Actual version: 0.3.3
 
 
 # Emotive
 Dynamic ***"css in js"*** without interpolation or language injection.
 
 ```js
-let myStyle = css(
+let myStyle = style(
 	Display.BLOCK,
 	FontSize(em(10)),
 	Width(px(80)),
@@ -35,13 +35,15 @@ this code is equivalent to:
 	left: calc(50% + -40px);
 ```
 
-Install with [Npm](https://www.npmjs.com/)
+## Install
+
+Install with [Npm](https://www.npmjs.com/package/emotive)
 
 ```
 npm install --save emotive
 ```
 
-or [Yarn](https://yarnpkg.com/lang/en/)
+or [Yarn](https://yarnpkg.com/en/package/emotive)
 
 ```
 yarn add emotive
@@ -49,13 +51,15 @@ yarn add emotive
 
 ## Index
 - [Emotive](#emotive)
-	- [Index](#index)
+	- [Install](#install)
 	- [What does "Emotive" do?](#what-does-emotive-do)
 - [Usage](#usage)
 	- [Properties](#properties)
 	- [Units](#units)
 	- [List](#list)
 	- [Methods](#methods)
+		- [Calculations](#calculations-calc)
+		- [Colors](#colors-hex)
 	- [Values](#values)
 	- [Constants](#constants)
 - [Manage Imports](#manage-imports)
@@ -173,6 +177,110 @@ Again, you can use ***arrays*** to specify complex parameter (each possibly comp
 ```js
 Background(linearGradient('to top left', ['blue', '50%'], 'red', ['white', '30%']))
 // background: linear-gradient(to top left, blue 50%, red, white 30%);
+```
+
+### Calculations (calc)
+As for all the other methods, css' `calc()` has its own corresponding in Emotive, but it behave slightly different.
+
+By default, passed parameters are summed together:
+
+```js
+Top(calc(x(50), px(20)))
+// top: calc(50% + 20px)
+
+const customSize = 20;
+Top(calc(x(50), px(15), em(customSize)))
+// top: calc(50% + 15px + 20em)
+```
+
+Multiplications with adimensional constants can be made Javascript-side:
+
+```js
+const customSize = 20;
+Top(calc(px(15), em(2*customSize)))
+// top: calc(15px + 40em)
+```
+
+Subtractions can be written by simply negate the value to subtract:
+
+```js
+Top(calc(x(50), px(-20)))
+// top: calc(50% + -20px)
+
+const size1 = 20;
+Top(calc(x(50), px(-size1)))
+// top: calc(50% + -20px)
+
+// WRONG!
+const size2 = px(20);
+Top(calc(x(50), -size1)) // you cannot negate a string!
+```
+
+Any more complex formula can be written in two different ways:
+- Using additional `add(), sub(), mul()` and `div()` methods:
+	```js
+	const customSize = px(20);
+
+	Top(calc(div(customSize, 2)))
+	// top: calc(20px / 2)
+
+	Top(calc(div(add(x(50), customSize), 2)))
+	// top: calc((50% + 20px) / 2)
+	```
+- Using **arrays**. This approach is reccomended due to its easy writing.
+	Parameters passed inside an array are multiplied together:
+	```js
+	Top(calc([px(50), 2]))
+	// top: calc(50px * 2)
+
+	Top(calc(px(50), [px(20), 2]))
+	// top: calc(50% + (20px * 2))
+
+	Top(calc([px(50), .5], [px(-20), 2]))
+	// top: calc((50% * .5) + (-20px * 2))
+	```
+	As usual, parameters passed into **nested arrays** restore default behavior between them, and so on:
+	```js
+	Top(calc([[x(50), px(-20)], 2]))
+	// top: calc((50px + -20px) * 2)
+	
+	Top(calc([[x(50), [2.5, px(-20)]], 2]))
+	// top: calc((50px + (2.5 * -20px)) * 2)
+	```
+
+Finally, remember that, if you don't need to use Javascript variables inside it, it is always possible to use custom strings:
+```js
+Top(calc('(50px + -20px) * 2')
+// top: calc((50px + -20px) * 2)
+```
+
+### Colors (hex)
+
+Other than classic css' `rgb(), rgba(), hsl()` and `hsla()` methods, Emotive also implement two exclusive methods related to **hex color** format.
+
+`hex()` method just append a "sharp" `#` before the passed code, if not present:
+```js
+// These sencences are equivalent
+BacgroundColor(hex('aabbcc'))
+BacgroundColor(hex('#aabbcc'))
+// background-color: #abcdef;
+
+// 3/4/8-digit versions
+BacgroundColor(hex('abc')) // background-color: #ddd;
+BacgroundColor(hex('abcd')) // background-color: #ddda;
+BacgroundColor(hex('aabbccdd')) // background-color: #dadadacc;
+```
+
+`hexa()` method behave the same, but accept an additional decimal parameter representing the **alpha** value:
+
+```js
+BacgroundColor(hexa('aabbcc', 0)) // background-color: #dadada00;
+BacgroundColor(hexa('aabbcc', .5)) // background-color: #dadada7f;
+BacgroundColor(hexa('aabbcc', 1)) // background-color: #dadadaff;
+
+const CUSTOM_COLOR = hex('abcdef');
+BacgroundColor(hexa(CUSTOM_COLOR, .25)) // background-color: #abcdef3f;
+BacgroundColor(hexa(AQUAMARINE, .75)) // background-color: #abcdefbf;
 ```
 
 ## Values
