@@ -1,51 +1,30 @@
-/* global __dirname, require, module*/
-
-const webpack = require('webpack');
+/* global __dirname, module*/
 const path = require('path');
-const env = require('yargs').argv.env; // use --env with webpack 2
-const pkg = require('./package.json');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-let libraryName = pkg.name;
-
-let outputFileExt, mode;
-
-if (env === 'build') {
-  mode = 'production';
-  outputFileExt = '.min.js';
-} else {
-  mode = 'development';
-  outputFileExt = '.js';
-}
-
-const config = {
-  mode: mode,
-  entry:  __dirname + '/src/index.js',
-  devtool: 'source-map',
-  output: {
-    path: __dirname + '/lib',
-    filename: libraryName + outputFileExt,
-    library: libraryName,
-    libraryTarget: 'umd',
-    umdNamedDefine: true
-  },
-  module: {
-    rules: [
-      {
-        test: /(\.jsx|\.js)$/,
-        loader: 'babel-loader',
-        exclude: /(node_modules|bower_components)/
-      },
-      {
-        test: /(\.jsx|\.js)$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/
-      }
-    ]
-  },
-  resolve: {
-    modules: [path.resolve('./node_modules'), path.resolve('./src')],
-    extensions: ['.json', '.js']
-  }
+module.exports = {
+    entry: './src/index.js',
+    output: {
+        library: 'emotive',
+        libraryTarget: 'umd',
+        path: path.resolve(__dirname, 'lib'),
+        filename: 'emotive.js',
+        publicPath: '/lib'
+    },
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader'
+                }
+            }
+        ]
+    },
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin()
+        ]
+    }
 };
-
-module.exports = config;

@@ -1,5 +1,5 @@
 import { method } from '../utils/factory';
-import { ALPHABETIC, CYCLIC, FIXED, NUMERIC, SYMBOLIC } from 'constants';
+import { ALPHABETIC, CYCLIC, FIXED, NUMERIC, SYMBOLIC } from '../constants';
 
 export const counter = method('counter');
 

@@ -5,7 +5,6 @@ export * from './filter';
 export * from './font';
 export * from './gradient';
 export * from './image';
-export * from '../data-types/measures';
 export * from './offset';
 export * from './paged-media';
 export * from './shape';

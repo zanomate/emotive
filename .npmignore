@@ -10,5 +10,4 @@ package-lock.json
 
 #config
 .babelrc
-.eslintrc
 webpack.config.js

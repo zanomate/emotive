@@ -1,5 +1,5 @@
-import { method } from 'utils/factory';
-import { DOTTED, SOLID, SPACE } from 'constants';
+import { method } from '../utils/factory';
+import { DOTTED, SOLID, SPACE } from '../constants';
 
 export const targetCounter = method('targetCounter');
 

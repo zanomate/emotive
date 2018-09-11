@@ -53,6 +53,7 @@ yarn add emotive
 - [Emotive](#emotive)
 	- [Install](#install)
 	- [What does "Emotive" do?](#what-does-emotive-do)
+	- [Do I need this?](#do-i-need-this)
 - [Usage](#usage)
 	- [Properties](#properties)
 	- [Units](#units)
@@ -60,6 +61,7 @@ yarn add emotive
 	- [Methods](#methods)
 		- [Calculations](#calculations-calc)
 		- [Colors](#colors-hex)
+		- [Exceptions](#exceptions)
 	- [Values](#values)
 	- [Constants](#constants)
 - [Manage Imports](#manage-imports)
@@ -69,9 +71,26 @@ Emotive essentially provides an easy way to write and populate any CSS property 
 
 That it means: "No more quotes! No more backticks!".
 
+## Do I need this?
+Emotive is meant to take full advantage of javascript inline styling; that's the reason why **React** is the best fit framework in which to use this library.
+```jsx
+import { style, FontSize, FontWeight, px } from 'emotive';
+
+let myStyle = style(
+	FontSize(px(24)),
+	FontWeight.BOLDER
+);
+
+export const myComponent = (props) => (
+	<span style={myStyle}>
+		Emotive is COOL!
+	</span>
+);
+```
+This does not mean you cannot use Emotive in any other Javascript context.
 
 # Usage
-Using Emotive is easy. You know CSS, you know Emotive too. Just follow the steps listed below.
+Write styles with Emotive is easy. You know CSS, you know Emotive too.
 
 ## Properties
 **Every CSS property** has a corrisponding Javascript method (*UpperCamelCase* notation).
@@ -283,6 +302,25 @@ BacgroundColor(hexa(CUSTOM_COLOR, .25)) // background-color: #abcdef3f;
 BacgroundColor(hexa(AQUAMARINE, .75)) // background-color: #abcdefbf;
 ```
 
+### Exceptions
+***Some CSS methods use a completely custom notation*** to parse their parameters. It's the case of many of the method used to define *shapes* (`inset()`, `circle()`, `ellipse()`, ...)
+
+
+Let's consider `clip-path` property and `inset()` method. 
+```css
+clip-path: inset(22% 12% 15px round 5px)
+```
+CSS use the keyword *round* to understand which of the passed parameters defines the shape (`22% 12% 15px`) and which defines border radius (`5px`). Also, differently to the major part of CSS methods, parameters are not separated by commas.
+
+For these reasons, Emotive version of these methods act similar by concatenating arguments with spaces (instead of commas).
+
+```js
+// these sentences are equivalent
+ClipPath(inset(x(22), x(12), px(15), 'round', px(5)))
+ClipPath(inset(x(22, 12), px(15), ROUND, px(5)))
+ClipPath(inset('22% 12% 15px round 5px'))
+```
+
 ## Values
 **Every value** that can be used to specify a property is directly available calling the corresponding property sub-object (*UPPER_CASE* notation).
 
@@ -340,14 +378,14 @@ Styling with Emotive can lead to a significant increment of the number of import
 
 ```js
 import {
-	css, // main method
+	style, // main method
 	Display, FontSize, Width, Height, Margin, Border, Position, Top, Left, // properties
 	calc, // methods
 	em, px, cm, x, // measures
 	BLACK, SOLID // constants
 } from 'emotive';
 
-let myStyle = css(
+let myStyle = style(
 	Display.BLOCK,
 	FontSize(em(10)),
 	Width(px(80)),
@@ -365,7 +403,7 @@ Importing the entire module with a single statement can be a solution, but the r
 ```js
 import * as e from 'emotive';
 
-let myStyle = e.css(
+let myStyle = e.style(
 	e.Display.BLOCK,
 	e.FontSize(e.em(10)),
 	e.Width(e.px(80)),
@@ -381,9 +419,9 @@ let myStyle = e.css(
 For this reason, Emotive provides some container objects, one for each major category of the library.
 
 ```js
-import { Properties, Methods, Measures, Colors, css } from 'emotive';
+import { Properties, Methods, Measures, Colors, style } from 'emotive';
 
-let myStyle = css(
+let myStyle = style(
 	Properties.Display.BLOCK,
 	Properties.FontSize(Measures.em(10)),
 	Properties.Width(Measures.px(80)),
@@ -412,14 +450,14 @@ In most cases the best solution is a combination of different imports rules and 
 
 ```js
 import {
-	css,
+	style,
 	Properties as Property,
 	Colors as Color,
 	px, em, cm, x,
 	calc
 } from 'emotive';
 
-let myStyle = css(
+let myStyle = style(
 	Property.Display.BLOCK,
 	Property.FontSize(em(10)),
 	Property.Width(px(80)),
@@ -431,4 +469,3 @@ let myStyle = css(
 	Property.Left(calc(x(50), px(-40)))
 );
 ```
-
