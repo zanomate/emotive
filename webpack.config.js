@@ -1,30 +1,35 @@
-/* global __dirname, module*/
-const path = require('path');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+/* global __dirname, require, module*/
 
-module.exports = {
-    entry: './src/index.js',
+// const webpack = require('webpack');
+const path = require('path');
+const pkg = require('./package.json');
+
+let libraryName = pkg.name;
+
+const config = {
+    mode: 'production',
+    entry:  __dirname + '/src/index.js',
+    devtool: 'source-map',
     output: {
-        library: 'emotive',
+        path: __dirname + '/lib',
+        filename: libraryName + '.js',
+        library: libraryName,
         libraryTarget: 'umd',
-        path: path.resolve(__dirname, 'lib'),
-        filename: 'emotive.js',
-        publicPath: '/lib'
+        umdNamedDefine: true
     },
     module: {
         rules: [
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader'
-                }
+                loader: 'babel-loader',
+                exclude: /node_modules/
             }
         ]
     },
-    optimization: {
-        minimizer: [
-            new UglifyJsPlugin()
-        ]
+    resolve: {
+        modules: [path.resolve('./node_modules'), path.resolve('./src')],
+        extensions: ['.js']
     }
 };
+
+module.exports = config;
