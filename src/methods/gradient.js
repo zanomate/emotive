@@ -1,36 +1,31 @@
 import { method } from '../utils/factory';
 import {
-    BOTTOM, CIRCLE, CLOSEST_CORNER, CLOSEST_SIDE, ELLIPSE, FARTHEST_CORNER,
-    FARTHEST_SIDE, LEFT, RIGHT, TO, TOP
+    CIRCLE, CLOSEST_CORNER, CLOSEST_SIDE, ELLIPSE, FARTHEST_CORNER,
+    FARTHEST_SIDE, TO_BOTTOM, TO_BOTTOM_LEFT, TO_BOTTOM_RIGHT, TO_LEFT,
+    TO_RIGHT, TO_TOP, TO_TOP_LEFT, TO_TOP_RIGHT
 } from '../constants';
 
 export const linearGradient = method('linear-gradient');
-linearGradient.toTop = (...params) => linearGradient(TO, TOP, ...params);
-linearGradient.toLeft = (...params) => linearGradient(TO, LEFT, ...params);
-linearGradient.toRight = (...params) => linearGradient(TO, RIGHT, ...params);
-linearGradient.toBottom = (...params) => linearGradient(TO, BOTTOM, ...params);
-linearGradient.toTopLeft = (...params) => linearGradient(TO, TOP, LEFT, ...params);
-linearGradient.toTopRight = (...params) => linearGradient(TO, TOP, RIGHT, ...params);
-linearGradient.toBottomLeft = (...params) => linearGradient(TO, BOTTOM, LEFT, ...params);
-linearGradient.toBottomRight = (...params) => linearGradient(TO, BOTTOM, RIGHT, ...params);
+linearGradient.toTop = (...params) => linearGradient(TO_TOP, ...params);
+linearGradient.toLeft = (...params) => linearGradient(TO_LEFT, ...params);
+linearGradient.toRight = (...params) => linearGradient(TO_RIGHT, ...params);
+linearGradient.toBottom = (...params) => linearGradient(TO_BOTTOM, ...params);
+linearGradient.toTopLeft = (...params) => linearGradient(TO_TOP_LEFT, ...params);
+linearGradient.toTopRight = (...params) => linearGradient(TO_TOP_RIGHT, ...params);
+linearGradient.toBottomLeft = (...params) => linearGradient(TO_BOTTOM_LEFT, ...params);
+linearGradient.toBottomRight = (...params) => linearGradient(TO_BOTTOM_RIGHT, ...params);
 
 export const repeatingLinearGradient = method('repeating-linear-gradient');
-repeatingLinearGradient.toTop = (...params) => repeatingLinearGradient(TO, TOP, ...params);
-repeatingLinearGradient.toLeft = (...params) => repeatingLinearGradient(TO, LEFT, ...params);
-repeatingLinearGradient.toRight = (...params) => repeatingLinearGradient(TO, RIGHT, ...params);
-repeatingLinearGradient.toBottom = (...params) => repeatingLinearGradient(TO, BOTTOM, ...params);
-repeatingLinearGradient.toTopLeft = (...params) => repeatingLinearGradient(TO, TOP, LEFT, ...params);
-repeatingLinearGradient.toTopRight = (...params) => repeatingLinearGradient(TO, TOP, RIGHT, ...params);
-repeatingLinearGradient.toBottomLeft = (...params) => repeatingLinearGradient(TO, BOTTOM, LEFT, ...params);
-repeatingLinearGradient.toBottomRight = (...params) => repeatingLinearGradient(TO, BOTTOM, RIGHT, ...params);
+repeatingLinearGradient.toTop = (...params) => repeatingLinearGradient(TO_TOP, ...params);
+repeatingLinearGradient.toLeft = (...params) => repeatingLinearGradient(TO_LEFT, ...params);
+repeatingLinearGradient.toRight = (...params) => repeatingLinearGradient(TO_RIGHT, ...params);
+repeatingLinearGradient.toBottom = (...params) => repeatingLinearGradient(TO_BOTTOM, ...params);
+repeatingLinearGradient.toTopLeft = (...params) => repeatingLinearGradient(TO_TOP_LEFT, ...params);
+repeatingLinearGradient.toTopRight = (...params) => repeatingLinearGradient(TO_TOP_RIGHT, ...params);
+repeatingLinearGradient.toBottomLeft = (...params) => repeatingLinearGradient(TO_BOTTOM_LEFT, ...params);
+repeatingLinearGradient.toBottomRight = (...params) => repeatingLinearGradient(TO_BOTTOM_RIGHT, ...params);
 
 export const radialGradient = method('radial-gradient');
-radialGradient.extent = {
-    CLOSEST_SIDE: 'closest-side',
-    CLOSEST_CORNER: 'closest-corner',
-    FARTHEST_SIDE: 'farthest-side',
-    FARTHEST_CORNER: 'farthest-corner'
-};
 radialGradient.closestSide = (...params) => radialGradient(CLOSEST_SIDE, ...params);
 radialGradient.closestCorner = (...params) => radialGradient(CLOSEST_CORNER, ...params);
 radialGradient.farthestSide = (...params) => radialGradient(FARTHEST_SIDE, ...params);

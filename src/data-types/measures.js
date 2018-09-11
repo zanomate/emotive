@@ -3,7 +3,7 @@ import {
     CAP, CH, CM, DEG, DPCM, DPI, DPPX, EM, EX, FR, GRAD, HZ, IC, IN, KHZ, LH,
     MM, MS, PC, PERCENTAGE, PT, PX, Q, RAD, REM, RLH, S, TURN, VB, VH, VI, VMAX,
     VMIN, VW
-} from '../constants';
+} from './units';
 
 /* Angle */
 export const deg = measure(DEG);
@@ -51,9 +51,3 @@ export const dppx = measure(DPPX);
 /* Time */
 export const s = measure(S);
 export const ms = measure(MS);
-
-export const Measures = {
-    deg, grad, rad, turn, fr, Hz, kHz, cap, ch, em, ex, ic, lh, rem, rlh, vh,
-    vw, vi, vb, vmin, vmax, px, cm, mm, quart, inch, pc, pt, percent, x, dpi,
-    dpcm, dppx, s, ms
-};

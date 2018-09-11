@@ -127,7 +127,7 @@ Padding(px(20, 10, 15))
 Some properties accept a ***"list" of values***, commonly separated by commas in CSS. You can specify theme with **arrays**:
 
 ```js
-FontFamily(['Sans Extrabold', 'sans-serif']) // font-family: Sans Extrabold, sans-serif;
+FontFamily(['"Sans Extrabold"', 'sans-serif']) // font-family: "Sans Extrabold", sans-serif;
 FontFamily(['sans-serif'] ) // font-family: sans-serif;
 FontFamily('sans-serif') // font-family: sans-serif;
 ```
@@ -135,11 +135,11 @@ FontFamily('sans-serif') // font-family: sans-serif;
 even with shorthands properties: 
 
 ```js
-Font(em(1.2), 'bolder', ['Sans Extrabold', 'sans-serif'])
-// font: 1.2em bolder 'Gill Sans Extrabold', 'sans-serif';
+Font(em(1.2), 'bolder', ['"Sans Extrabold"', 'sans-serif'])
+// font: 1.2em bolder "Sans Extrabold", sans-serif;
 ```
 
-if you need to specify a ***list of complex values***, each composed by many argouments, just use **nested arrays**:
+If you need to specify a ***list of complex values***, each composed by many argouments, just use **nested arrays**:
 
 ```js
 // these sentences are equivalent

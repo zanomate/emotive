@@ -4,7 +4,7 @@ import {
     ISOLATE_OVERRIDE, LTR, MIXED, NONE, NORMAL, PLAINTEXT, RTL, SIDEWAYS,
     SIDEWAYS_LR, SIDEWAYS_RL, UPRIGHT, VERTICAL_LR, VERTICAL_RL
 } from '../../constants';
-import { deg } from '../../methods/measures';
+import { deg } from '../../data-types/measures';
 
 const Direction = property('direction');
 Direction.LTR = Direction(LTR);
