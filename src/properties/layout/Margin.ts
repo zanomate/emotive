@@ -1,7 +1,6 @@
 import { property, Sheet, Value } from '../..';
 import { Keywords } from '../../constants';
 import { Length } from '../../index';
-import { set } from './Padding';
 
 export namespace Margin {
     export const set = (...values: Value[]): Sheet => ({margin: property(values)});
