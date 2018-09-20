@@ -1,0 +1,42 @@
+import { property, Sheet, Value } from '../..';
+import { Keywords } from '../../constants';
+
+export namespace Cursor {
+    export const set = (...values: Value[]): Sheet => ({cursor: property(values)});
+    export const AUTO: Sheet = set(Keywords.AUTO);
+    export const DEFAULT: Sheet = set(Keywords.DEFAULT);
+    export const NONE: Sheet = set(Keywords.NONE);
+    export const CONTEXT_MENU: Sheet = set(Keywords.CONTEXT_MENU);
+    export const HELP: Sheet = set(Keywords.HELP);
+    export const POINTER: Sheet = set(Keywords.POINTER);
+    export const PROGRESS: Sheet = set(Keywords.PROGRESS);
+    export const WAIT: Sheet = set(Keywords.WAIT);
+    export const CELL: Sheet = set(Keywords.CELL);
+    export const CROSSHAIR: Sheet = set(Keywords.CROSSHAIR);
+    export const TEXT: Sheet = set(Keywords.TEXT);
+    export const VERTICAL_TEXT: Sheet = set(Keywords.VERTICAL_TEXT);
+    export const ALIAS: Sheet = set(Keywords.ALIAS);
+    export const COPY: Sheet = set(Keywords.COPY);
+    export const MOVE: Sheet = set(Keywords.MOVE);
+    export const NO_DROP: Sheet = set(Keywords.NO_DROP);
+    export const NOT_ALLOWED: Sheet = set(Keywords.NOT_ALLOWED);
+    export const GRAB: Sheet = set(Keywords.GRAB);
+    export const GRABBING: Sheet = set(Keywords.GRABBING);
+    export const ALL_SCROLL: Sheet = set(Keywords.ALL_SCROLL);
+    export const COL_RESIZE: Sheet = set(Keywords.COL_RESIZE);
+    export const ROW_RESIZE: Sheet = set(Keywords.ROW_RESIZE);
+    export const N_RESIZE: Sheet = set(Keywords.N_RESIZE);
+    export const E_RESIZE: Sheet = set(Keywords.E_RESIZE);
+    export const S_RESIZE: Sheet = set(Keywords.S_RESIZE);
+    export const W_RESIZE: Sheet = set(Keywords.W_RESIZE);
+    export const NE_RESIZE: Sheet = set(Keywords.NE_RESIZE);
+    export const NW_RESIZE: Sheet = set(Keywords.NW_RESIZE);
+    export const SE_RESIZE: Sheet = set(Keywords.SE_RESIZE);
+    export const SW_RESIZE: Sheet = set(Keywords.SW_RESIZE);
+    export const EW_RESIZE: Sheet = set(Keywords.EW_RESIZE);
+    export const NS_RESIZE: Sheet = set(Keywords.NS_RESIZE);
+    export const NESW_RESIZE: Sheet = set(Keywords.NESW_RESIZE);
+    export const NWSE_RESIZE: Sheet = set(Keywords.NWSE_RESIZE);
+    export const ZOOM_IN: Sheet = set(Keywords.ZOOM_IN);
+    export const ZOOM_OUT: Sheet = set(Keywords.ZOOM_OUT);
+}

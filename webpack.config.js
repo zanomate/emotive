@@ -1,35 +1,30 @@
 /* global __dirname, require, module*/
 
-// const webpack = require('webpack');
 const path = require('path');
-const pkg = require('./package.json');
+const CopyPlugin = require('copy-webpack-plugin');
 
-let libraryName = pkg.name;
-
-const config = {
-    mode: 'production',
-    entry:  __dirname + '/src/index.js',
-    devtool: 'source-map',
+module.exports = {
+    mode: 'none',
+    entry: './src/index.ts',
     output: {
-        path: __dirname + '/lib',
-        filename: libraryName + '.js',
-        library: libraryName,
+        path: path.resolve(__dirname, './dist'),
+        filename: 'emotive.js',
         libraryTarget: 'umd',
+        library: 'emotive',
         umdNamedDefine: true
     },
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/
-            }
-        ]
-    },
     resolve: {
-        modules: [path.resolve('./node_modules'), path.resolve('./src')],
-        extensions: ['.js']
+        extensions: ['.ts']
+    },
+    plugins: [
+        new CopyPlugin([
+            './build'
+        ])
+    ],
+    module: {
+        rules: [{
+            test: /\.ts$/,
+            loader: 'ts-loader'
+        }]
     }
 };
-
-module.exports = config;

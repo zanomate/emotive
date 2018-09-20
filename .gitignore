@@ -1,8 +1,8 @@
-#node
-node_modules
-
 #intellij
 .idea
 
-#webpack
-lib
+#node
+node_modules
+
+#build
+dist

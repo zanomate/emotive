@@ -2,34 +2,19 @@
   "name": "emotive",
   "version": "0.4.1",
   "description": "Dynamic \"css in js\" without interpolation or language injection",
-  "main": "lib/emotive.js",
-  "scripts": {
-    "build": "webpack"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zanomate/emotive.git"
-  },
-  "keywords": [
-    "css-in-js",
-    "es6",
-    "library",
-    "react"
-  ],
   "author": "zanomate",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/zanomate/emotive/issues"
+  "scripts": {
+    "clean": "shx rm -rf dist",
+    "dist": "webpack",
+    "build": "npm run clean && npm run dist"
   },
-  "homepage": "https://github.com/zanomate/emotive#readme",
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.51",
-    "@babel/preset-env": "^7.0.0",
-    "babel-loader": "^8.0.0-beta.4",
-    "uglifyjs-webpack-plugin": "^1.2.7",
-    "webpack": "^4.17.2",
-    "webpack-cli": "^3.1.0",
-    "jsdom": "11.11.0",
-    "jsdom-global": "3.0.2"
+    "copy-webpack-plugin": "^4.5.2",
+    "shx": "^0.3.2",
+    "ts-loader": "^5.1.0",
+    "typescript": "^3.0.3",
+    "webpack": "^4.19.0",
+    "webpack-cli": "^3.1.0"
   }
 }
