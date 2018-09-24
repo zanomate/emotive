@@ -1,6 +1,7 @@
-import { Keyword } from '../../constants';
-import { Angle, Size, Param, property, Sheet, Value } from '../../index';
-import * as Method from '../../methods';
+import { Keyword } from 'constants';
+import { Param, property, Sheet, Value } from 'core';
+import { Angle, Size } from 'datatypes';
+import { Method } from 'methods';
 
 export namespace Offset {
     export const set = (...values: Value[]): Sheet => ({offset: property(values)});

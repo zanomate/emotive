@@ -1,5 +1,5 @@
-import { property, Sheet, Value } from '../..';
-import { Keyword } from '../../constants';
+import { Keyword } from 'constants';
+import { property, Sheet, Value } from 'core';
 
 export namespace Visibility {
     export const set = (...values: Value[]): Sheet => ({visibility: property(values)});

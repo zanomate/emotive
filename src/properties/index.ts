@@ -1,4 +1,4 @@
-import { Sheet } from '../core';
+import { Sheet } from 'core';
 
 export * from './animation/Animation';
 export * from './animation/Offset';

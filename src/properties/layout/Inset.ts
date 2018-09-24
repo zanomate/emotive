@@ -1,5 +1,5 @@
-import { property, Sheet, Value } from '../..';
-import { Keyword } from '../../constants';
+import { Keyword } from 'constants';
+import { property, Sheet, Value } from 'core';
 
 export namespace Inset {
     export const set = (...values: Value[]): Sheet => ({inset: property(values)});

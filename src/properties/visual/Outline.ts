@@ -1,6 +1,7 @@
-import { Method, Param, property, Sheet, Value } from '../..';
-import { Keyword } from '../../constants';
-import { Color, Size } from '../../index';
+import { Color, Keyword } from 'constants';
+import { Param, property, Sheet, Value } from 'core';
+import { Size } from 'datatypes';
+import { Method } from 'methods';
 
 export namespace Outline {
     export const set = (...values: Value[]): Sheet => ({outline: property(values)});

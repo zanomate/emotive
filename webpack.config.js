@@ -14,7 +14,14 @@ module.exports = {
         umdNamedDefine: true
     },
     resolve: {
-        extensions: ['.ts']
+        extensions: ['.ts'],
+        alias: {
+            constants: path.join(__dirname, 'src/constants'),
+            core: path.join(__dirname, 'src/core'),
+            datatypes: path.join(__dirname, 'src/datatypes'),
+            methods: path.join(__dirname, 'src/methods'),
+            properties: path.join(__dirname, 'src/properties')
+        }
     },
     plugins: [
         new CopyPlugin([

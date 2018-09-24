@@ -1,5 +1,5 @@
-import { property, Sheet, Value } from '../..';
-import { Size } from '../../index';
+import { property, Sheet, Value } from 'core';
+import { Size } from 'datatypes';
 
 export namespace Padding {
     export const set = (...values: Value[]): Sheet => ({padding: property(values)});

@@ -2,6 +2,14 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es5",
+    "baseUrl": "./src",
+    "paths": {
+      "constants/*": ["constants/*"],
+      "core/*": ["core/*"],
+      "datatypes/*": ["datatypes/*"],
+      "methods/*": ["methods/*"],
+      "properties/*": ["properties/*"]
+    },
     "removeComments": true,
     "outDir": "./dist",
     "declaration": true,

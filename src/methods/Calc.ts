@@ -1,5 +1,4 @@
-import { method } from '../core/Utils';
-import { Param } from '../core/Types';
+import { method, Param } from 'core';
 
 export function add(...params: Param[]): string {
     return '(' + params.join(' + ') + ')';
@@ -17,6 +16,20 @@ export function div(...params: Param[]): string {
     return '(' + params.join(' / ') + ')';
 }
 
+export function calc(...params: Param[]): string {
+    return 'calc(' + addParams(...params) + ')';
+}
+
+export function fitContent(...params: Param[]): string {
+    return method('fit-content', params);
+}
+
+export function minmax(...params: Param[]): string {
+    return method('minmax', params);
+}
+
+/* utils */
+
 function addParams(...params: Param[]): string {
     return params.map(value => {
         if (Array.isArray(value)) {
@@ -33,16 +46,4 @@ function mulParams(...params: Param[]): string {
         }
         return value;
     }).join(' * ');
-}
-
-export function calc(...params: Param[]): string {
-    return 'calc(' + addParams(...params) + ')';
-}
-
-export function fitContent(...params: Param[]): string {
-    return method('fit-content', params);
-}
-
-export function minmax(...params: Param[]): string {
-    return method('minmax', params);
 }

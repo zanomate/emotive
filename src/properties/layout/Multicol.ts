@@ -1,7 +1,7 @@
-import { Param, property, Sheet, Value } from '../..';
-import { Keyword } from '../../constants';
-import { Color, Size } from '../../index';
-import * as Method from '../../methods';
+import { Color, Keyword } from 'constants';
+import { Param, property, Sheet, Value } from 'core';
+import { Size } from 'datatypes';
+import { Method } from 'methods';
 
 export namespace Columns {
     export const set = (...values: Value[]): Sheet => ({columns: property(values)});

@@ -1,6 +1,6 @@
-import { Param, property, Sheet, Value } from '../..';
-import { Keyword } from '../../constants';
-import { Size } from '../../index';
+import { Keyword } from 'constants';
+import { Param, property, Sheet, Value } from 'core';
+import { Size } from 'datatypes';
 
 export namespace Font {
     export const set = (...values: Value[]): Sheet => ({font: property(values)});

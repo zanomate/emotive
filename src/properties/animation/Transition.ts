@@ -1,5 +1,7 @@
-import { Method, Param, property, Sheet, Time, Value } from '../..';
-import { Keyword } from '../../constants';
+import { Keyword } from 'constants';
+import { Param, property, Sheet, Value } from 'core';
+import { Time } from 'datatypes';
+import { Method } from 'methods';
 
 export namespace Transition {
     export const set = (...values: Value[]): Sheet => ({transition: property(values)});

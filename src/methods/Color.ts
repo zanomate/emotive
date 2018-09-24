@@ -1,5 +1,4 @@
-import { method } from '../core/Utils';
-import { Param } from '../core/Types';
+import { method, Param } from 'core';
 
 export function rgb(...values: Param[]): string {
     return method('rgb', values);

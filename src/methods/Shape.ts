@@ -1,6 +1,5 @@
-import { Keyword } from '../constants';
-import { method } from '../core/Utils';
-import { Param } from '../core/Types';
+import { Keyword } from 'constants';
+import { method, Param } from 'core';
 
 export function rect(...params: Param[]): string {
     return method('rect', params);

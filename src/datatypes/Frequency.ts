@@ -1,6 +1,5 @@
-import { Unit } from '../constants';
-import { Measure } from '../core/Types';
-import { measure } from '../core/Utils';
+import { Unit } from 'constants';
+import { Measure, measure } from 'core';
 
 export namespace Frequency {
     export const Hz: Measure = (...values) => measure(Unit.HZ, values);

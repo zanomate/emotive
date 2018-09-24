@@ -1,5 +1,5 @@
-import { property, Sheet, Value } from '../..';
-import { Keyword } from '../../constants';
+import { Keyword } from 'constants';
+import { property, Sheet, Value } from 'core';
 
 export namespace MixBlendMode {
     export const set = (...values: Value[]): Sheet => ({mixBlendMode: property(values)});

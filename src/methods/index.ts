@@ -1,14 +1,3 @@
-export * from './Calc';
-export * from './Color';
-export * from './Counter';
-export * from './Filter';
-export * from './Font';
-export * from './Gradient';
-export * from './Image';
-export * from './Offset';
-export * from './PagedMedia';
-export * from './Shape';
-export * from './Timing';
-export * from './Transform';
-export * from './Url';
-export * from './Variable';
+import * as Method from './Method';
+
+export { Method };

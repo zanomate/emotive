@@ -1,5 +1,4 @@
-import { method } from '../core/Utils';
-import { Param } from '../core/Types';
+import { method, Param } from 'core';
 
 export function blur(...params: Param[]): string {
     return method('blur', params);

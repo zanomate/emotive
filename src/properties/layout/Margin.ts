@@ -1,6 +1,6 @@
-import { property, Sheet, Value } from '../..';
-import { Keyword } from '../../constants';
-import { Size } from '../../datatypes';
+import { Keyword } from 'constants';
+import { property, Sheet, Value } from 'core';
+import { Size } from 'datatypes';
 
 export namespace Margin {
     export const set = (...values: Value[]): Sheet => ({margin: property(values)});
