@@ -1,7 +1,7 @@
-import { property, Sheet, Value } from '../..';
-import { Keyword } from '../../constants';
-import { Color, Size, Param } from '../..';
-import * as Method from '../../methods';
+import { Color, Keyword } from 'constants';
+import { Param, property, Sheet, Value } from 'core';
+import { Size } from 'datatypes';
+import { Method } from 'methods';
 
 export namespace Border {
     export const set = (...values: Value[]): Sheet => ({border: property(values)});

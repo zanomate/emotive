@@ -1,7 +1,6 @@
-import { Method } from '../..';
-import { Keyword } from '../../constants';
-import { Param, Sheet, Value } from '../../core';
-import { property } from '../../core/Utils';
+import { Keyword } from 'constants';
+import { Param, property, Sheet, Value } from 'core';
+import { Method } from 'methods';
 
 export namespace Clip {
     export const set = (...values: Value[]): Sheet => ({clip: property(values)});

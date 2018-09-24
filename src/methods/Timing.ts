@@ -1,5 +1,4 @@
-import { Param } from '../core/Types';
-import { method } from '../core/Utils';
+import { method, Param } from 'core';
 
 export function cubicBezier(...params: Param[]): string {
     return method('cubic-bezier', params);

@@ -1,6 +1,6 @@
-import { property, Sheet, Value } from '../..';
-import { Keyword } from '../../constants';
-import { Size } from '../../index';
+import { Keyword } from 'constants';
+import { property, Sheet, Value } from 'core';
+import { Size } from 'datatypes';
 
 export namespace Mask {
     export const set = (...values: Value[]): Sheet => ({mask: property(values)});

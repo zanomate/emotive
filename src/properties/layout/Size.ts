@@ -1,6 +1,7 @@
-import { Method, Param, property, Sheet, Value } from '../..';
-import { Keyword } from '../../constants';
-import { Size as Sz } from '../../datatypes';
+import { Keyword } from 'constants';
+import { Param, property, Sheet, Value } from 'core';
+import { Size as Sz } from 'datatypes';
+import { Method } from 'methods';
 
 export namespace Size {
     export const set = (...values: Value[]): Sheet => ({size: property(values)});

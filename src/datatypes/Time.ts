@@ -1,6 +1,5 @@
-import { Measure } from '../core/Types';
-import { measure } from '../core/Utils';
-import { Unit } from '../constants';
+import { Unit } from 'constants';
+import { Measure, measure } from 'core';
 
 export namespace Time {
     export const s: Measure = (...values) => measure(Unit.S, values);

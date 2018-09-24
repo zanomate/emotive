@@ -1,6 +1,6 @@
-import { Method, Param, property, Sheet, Value } from '../..';
-import { Keyword } from '../../constants';
-import { Color } from '../../index';
+import { Color, Keyword } from 'constants';
+import { Param, property, Sheet, Value } from 'core';
+import { Method } from 'methods';
 
 export namespace Background {
     export const set = (...values: Value[]): Sheet => ({background: property(values)});

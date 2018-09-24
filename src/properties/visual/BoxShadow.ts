@@ -1,6 +1,5 @@
-import { Keyword } from '../../constants/index';
-import { Sheet, Value } from '../../core';
-import { property } from '../../core/Utils';
+import { Keyword } from 'constants';
+import { property, Sheet, Value } from 'core';
 
 export namespace BoxShadow {
     export const set = (...values: Value[]): Sheet => ({boxShadow: property(values)});

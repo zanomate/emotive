@@ -1,5 +1,6 @@
-import { Method, Param, property, Sheet, Value } from '../..';
-import { Keyword } from '../../constants';
+import { Keyword } from 'constants';
+import { Param, property, Sheet, Value } from 'core';
+import { Method } from 'methods';
 
 export namespace Content {
     export const set = (...values: Value[]): Sheet => ({content: property(values)});

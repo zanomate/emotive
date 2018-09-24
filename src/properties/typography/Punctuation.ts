@@ -1,5 +1,6 @@
-import { Size, property, Sheet, Value } from '../..';
-import { Keyword } from '../../constants';
+import { Keyword } from 'constants';
+import { property, Sheet, Value } from 'core';
+import { Size } from 'datatypes';
 
 export namespace HangingPunctuation {
     export const set = (...values: Value[]): Sheet => ({hangingPunctuation: property(values)});

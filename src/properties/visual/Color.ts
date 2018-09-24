@@ -1,5 +1,6 @@
-import { Color as Clr, Method, Param, property, Sheet, Value } from '../..';
-import { Keyword } from '../../constants';
+import { Color as Clr, Keyword } from 'constants';
+import { Param, property, Sheet, Value } from 'core';
+import { Method } from 'methods';
 
 export namespace Color {
     export const set = (...values: Value[]): Sheet => ({color: property(values)});

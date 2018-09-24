@@ -1,7 +1,7 @@
-import { property, Sheet, Value } from '../..';
-import { Keyword } from '../../constants';
-import { Size, Param } from '../../index';
-import * as Method from '../../methods';
+import { Keyword } from 'constants';
+import { Param, property, Sheet, Value } from 'core';
+import { Size } from 'datatypes';
+import { Method } from 'methods';
 
 export namespace ShapeOutside {
     export const set = (...values: Value[]): Sheet => ({shapeOutside: property(values)});
