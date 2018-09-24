@@ -18,7 +18,8 @@ module.exports = {
     },
     plugins: [
         new CopyPlugin([
-            './build'
+            './build',
+            './README.md'
         ])
     ],
     module: {
