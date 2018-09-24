@@ -1,7 +1,7 @@
 import { property, Sheet, Value } from '../..';
-import { Keywords } from '../../constants';
+import { Keyword } from '../../constants';
 
 export namespace ZIndex {
     export const set = (...values: Value[]): Sheet => ({zIndex: property(values)});
-    export const AUTO: Sheet = set(Keywords.AUTO);
+    export const AUTO: Sheet = set(Keyword.AUTO);
 }

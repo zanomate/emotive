@@ -1,4 +1,4 @@
-import { Keywords } from '../constants';
+import { Keyword } from '../constants';
 import { method } from '../core/Utils';
 import { Param } from '../core/Types';
 
@@ -15,8 +15,8 @@ export function circle(...params: Param[]): string {
 }
 
 export namespace circle {
-    export const closestSide = (...params: Param[]): string => circle(Keywords.CLOSEST_SIDE, ...params);
-    export const farthestSide = (...params: Param[]): string => circle(Keywords.FARTHEST_SIDE, ...params);
+    export const closestSide = (...params: Param[]): string => circle(Keyword.CLOSEST_SIDE, ...params);
+    export const farthestSide = (...params: Param[]): string => circle(Keyword.FARTHEST_SIDE, ...params);
 }
 
 export function ellipse(...params: Param[]): string {
@@ -24,8 +24,8 @@ export function ellipse(...params: Param[]): string {
 }
 
 export namespace ellipse {
-    export const closestSide = (...params: Param[]): string => ellipse(Keywords.CLOSEST_SIDE, ...params);
-    export const farthestSide = (...params: Param[]): string => ellipse(Keywords.FARTHEST_SIDE, ...params);
+    export const closestSide = (...params: Param[]): string => ellipse(Keyword.CLOSEST_SIDE, ...params);
+    export const farthestSide = (...params: Param[]): string => ellipse(Keyword.FARTHEST_SIDE, ...params);
 }
 
 export function polygon(...params: Param[]): string {
@@ -33,6 +33,6 @@ export function polygon(...params: Param[]): string {
 }
 
 export namespace polygon {
-    export const nonzero = (...params: Param[]): string => polygon(Keywords.NONZERO, ...params);
-    export const evenodd = (...params: Param[]): string => polygon(Keywords.EVENODD, ...params);
+    export const nonzero = (...params: Param[]): string => polygon(Keyword.NONZERO, ...params);
+    export const evenodd = (...params: Param[]): string => polygon(Keyword.EVENODD, ...params);
 }

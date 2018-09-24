@@ -1,6 +1,6 @@
 import { Measure } from '../core/Types';
 import { measure } from '../core/Utils';
-import { Unit } from './index';
+import { Unit } from '../constants';
 
 export namespace Resolution {
     export const dpi: Measure = (...values) => measure(Unit.DPI, values);

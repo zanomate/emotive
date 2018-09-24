@@ -1,4 +1,4 @@
-export namespace Colors {
+export namespace Color {
     export const BLACK: string = 'black';
     export const SILVER: string = 'silver';
     export const GRAY: string = 'gray';

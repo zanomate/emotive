@@ -1,8 +1,8 @@
-import { Unit } from '.';
+import { Unit } from '../constants';
 import { Measure } from '../core/Types';
 import { measure } from '../core/Utils';
 
-export namespace Length {
+export namespace Size {
     export const x: Measure = (...values) => measure(Unit.PERCENTAGE, values);
     export const cap: Measure = (...values) => measure(Unit.CAP, values);
     export const ch: Measure = (...values) => measure(Unit.CH, values);

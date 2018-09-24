@@ -1,16 +1,16 @@
 import { property, Sheet, Value } from '../..';
-import { Keywords } from '../../constants';
+import { Keyword } from '../../constants';
 
 export namespace TableLayout {
     export const set = (...values: Value[]): Sheet => ({tableLayout: property(values)});
-    export const AUTO: Sheet = set(Keywords.AUTO);
-    export const FIXED: Sheet = set(Keywords.FIXED);
+    export const AUTO: Sheet = set(Keyword.AUTO);
+    export const FIXED: Sheet = set(Keyword.FIXED);
 }
 
 export namespace BorderCollapse {
     export const set = (...values: Value[]): Sheet => ({borderCollapse: property(values)});
-    export const COLLAPSE: Sheet = set(Keywords.COLLAPSE);
-    export const SEPARATE: Sheet = set(Keywords.SEPARATE);
+    export const COLLAPSE: Sheet = set(Keyword.COLLAPSE);
+    export const SEPARATE: Sheet = set(Keyword.SEPARATE);
 }
 
 export namespace BorderSpacing {
@@ -19,12 +19,12 @@ export namespace BorderSpacing {
 
 export namespace CaptionSide {
     export const set = (...values: Value[]): Sheet => ({captionSide: property(values)});
-    export const TOP: Sheet = set(Keywords.TOP);
-    export const BOTTOM: Sheet = set(Keywords.BOTTOM);
+    export const TOP: Sheet = set(Keyword.TOP);
+    export const BOTTOM: Sheet = set(Keyword.BOTTOM);
 }
 
 export namespace EmptyCells {
     export const set = (...values: Value[]): Sheet => ({emptyCells: property(values)});
-    export const SHOW: Sheet = set(Keywords.SHOW);
-    export const HIDE: Sheet = set(Keywords.HIDE);
+    export const SHOW: Sheet = set(Keyword.SHOW);
+    export const HIDE: Sheet = set(Keyword.HIDE);
 }

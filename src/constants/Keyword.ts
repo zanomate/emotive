@@ -1,4 +1,4 @@
-export namespace Keywords {
+export namespace Keyword {
     export const ABOVE: string = 'above';
     export const ABSOLUTE: string = 'absolute';
     export const ADD: string = 'add';

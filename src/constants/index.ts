@@ -1,2 +1,4 @@
-export * from './Colors';
-export * from './Keywords';
+export * from './Color';
+export * from './Keyword';
+export * from './Property';
+export * from './Unit';

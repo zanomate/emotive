@@ -1,50 +1,50 @@
 import { property, Sheet, Value } from '../..';
-import { Keywords } from '../../constants';
+import { Keyword } from '../../constants';
 
 export namespace Display {
     export const set = (...values: Value[]): Sheet => ({display: property(values)});
-    export const NONE: Sheet = set(Keywords.NONE);
-    export const BLOCK: Sheet = set(Keywords.BLOCK);
-    export const INLINE_BLOCK: Sheet = set(Keywords.INLINE_BLOCK);
-    export const INLINE: Sheet = set(Keywords.INLINE);
-    export const LIST_ITEM: Sheet = set(Keywords.LIST_ITEM);
-    export const TABLE: Sheet = set(Keywords.TABLE);
-    export const INLINE_TABLE: Sheet = set(Keywords.INLINE_TABLE);
-    export const TABLE_ROW: Sheet = set(Keywords.TABLE_ROW);
-    export const TABLE_ROW_GROUP: Sheet = set(Keywords.TABLE_ROW_GROUP);
-    export const TABLE_COLUMN: Sheet = set(Keywords.TABLE_COLUMN);
-    export const TABLE_COLUMN_GROUP: Sheet = set(Keywords.TABLE_COLUMN_GROUP);
-    export const TABLE_HEADER_GROUP: Sheet = set(Keywords.TABLE_HEADER_GROUP);
-    export const TABLE_FOOTER_GROUP: Sheet = set(Keywords.TABLE_FOOTER_GROUP);
-    export const TABLE_CELL: Sheet = set(Keywords.TABLE_CELL);
-    export const TABLE_CAPTION: Sheet = set(Keywords.TABLE_CAPTION);
-    export const FLEX: Sheet = set(Keywords.FLEX);
-    export const GRID: Sheet = set(Keywords.GRID);
-    export const SUBGRID: Sheet = set(Keywords.SUBGRID);
-    export const INLINE_FLEX: Sheet = set(Keywords.INLINE_FLEX);
-    export const INLINE_GRID: Sheet = set(Keywords.INLINE_GRID);
-    export const RUBY: Sheet = set(Keywords.RUBY);
-    export const RUBY_BASE: Sheet = set(Keywords.RUBY_BASE);
-    export const RUBY_TEXT: Sheet = set(Keywords.RUBY_TEXT);
-    export const RUBY_BASE_CONTAINER: Sheet = set(Keywords.RUBY_BASE_CONTAINER);
-    export const RUBY_TEXT_CONTAINER: Sheet = set(Keywords.RUBY_TEXT_CONTAINER);
-    export const CONTENTS: Sheet = set(Keywords.CONTENTS);
-    export const RUN_IN: Sheet = set(Keywords.RUN_IN);
-    export const FLOW: Sheet = set(Keywords.FLOW);
-    export const FLOW_ROOT: Sheet = set(Keywords.FLOW_ROOT);
+    export const NONE: Sheet = set(Keyword.NONE);
+    export const BLOCK: Sheet = set(Keyword.BLOCK);
+    export const INLINE_BLOCK: Sheet = set(Keyword.INLINE_BLOCK);
+    export const INLINE: Sheet = set(Keyword.INLINE);
+    export const LIST_ITEM: Sheet = set(Keyword.LIST_ITEM);
+    export const TABLE: Sheet = set(Keyword.TABLE);
+    export const INLINE_TABLE: Sheet = set(Keyword.INLINE_TABLE);
+    export const TABLE_ROW: Sheet = set(Keyword.TABLE_ROW);
+    export const TABLE_ROW_GROUP: Sheet = set(Keyword.TABLE_ROW_GROUP);
+    export const TABLE_COLUMN: Sheet = set(Keyword.TABLE_COLUMN);
+    export const TABLE_COLUMN_GROUP: Sheet = set(Keyword.TABLE_COLUMN_GROUP);
+    export const TABLE_HEADER_GROUP: Sheet = set(Keyword.TABLE_HEADER_GROUP);
+    export const TABLE_FOOTER_GROUP: Sheet = set(Keyword.TABLE_FOOTER_GROUP);
+    export const TABLE_CELL: Sheet = set(Keyword.TABLE_CELL);
+    export const TABLE_CAPTION: Sheet = set(Keyword.TABLE_CAPTION);
+    export const FLEX: Sheet = set(Keyword.FLEX);
+    export const GRID: Sheet = set(Keyword.GRID);
+    export const SUBGRID: Sheet = set(Keyword.SUBGRID);
+    export const INLINE_FLEX: Sheet = set(Keyword.INLINE_FLEX);
+    export const INLINE_GRID: Sheet = set(Keyword.INLINE_GRID);
+    export const RUBY: Sheet = set(Keyword.RUBY);
+    export const RUBY_BASE: Sheet = set(Keyword.RUBY_BASE);
+    export const RUBY_TEXT: Sheet = set(Keyword.RUBY_TEXT);
+    export const RUBY_BASE_CONTAINER: Sheet = set(Keyword.RUBY_BASE_CONTAINER);
+    export const RUBY_TEXT_CONTAINER: Sheet = set(Keyword.RUBY_TEXT_CONTAINER);
+    export const CONTENTS: Sheet = set(Keyword.CONTENTS);
+    export const RUN_IN: Sheet = set(Keyword.RUN_IN);
+    export const FLOW: Sheet = set(Keyword.FLOW);
+    export const FLOW_ROOT: Sheet = set(Keyword.FLOW_ROOT);
 }
 
 export namespace ShapeInside {
     export const set = (...values: Value[]): Sheet => ({shapeInside: property(values)});
-    export const AUTO: Sheet = set(Keywords.AUTO);
-    export const OUTSIDE_SHAPE: Sheet = set(Keywords.OUTSIDE_SHAPE);
-    export const SHAPE_BOX: Sheet = set(Keywords.SHAPE_BOX);
-    export const DISPLAY: Sheet = set(Keywords.DISPLAY);
+    export const AUTO: Sheet = set(Keyword.AUTO);
+    export const OUTSIDE_SHAPE: Sheet = set(Keyword.OUTSIDE_SHAPE);
+    export const SHAPE_BOX: Sheet = set(Keyword.SHAPE_BOX);
+    export const DISPLAY: Sheet = set(Keyword.DISPLAY);
 }
 
 export namespace BorderBoundary {
     export const set = (...values: Value[]): Sheet => ({borderBoundary: property(values)});
-    export const NONE: Sheet = set(Keywords.NONE);
-    export const PARENT: Sheet = set(Keywords.PARENT);
-    export const DISPLAY: Sheet = set(Keywords.DISPLAY);
+    export const NONE: Sheet = set(Keyword.NONE);
+    export const PARENT: Sheet = set(Keyword.PARENT);
+    export const DISPLAY: Sheet = set(Keyword.DISPLAY);
 }

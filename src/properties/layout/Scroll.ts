@@ -1,10 +1,10 @@
 import { property, Sheet, Value } from '../..';
-import { Keywords } from '../../constants';
+import { Keyword } from '../../constants';
 
 export namespace ScrollBehavior {
     export const set = (...values: Value[]): Sheet => ({scrollBehavior: property(values)});
-    export const AUTO: Sheet = set(Keywords.AUTO);
-    export const SMOOTH: Sheet = set(Keywords.SMOOTH);
+    export const AUTO: Sheet = set(Keyword.AUTO);
+    export const SMOOTH: Sheet = set(Keyword.SMOOTH);
 }
 
 export namespace ScrollMargin {
@@ -53,7 +53,7 @@ export namespace ScrollMarginBottom {
 
 export namespace ScrollPadding {
     export const set = (...values: Value[]): Sheet => ({scrollPadding: property(values)});
-    export const AUTO: Sheet = set(Keywords.AUTO);
+    export const AUTO: Sheet = set(Keyword.AUTO);
 }
 
 export namespace ScrollPaddingBlock {
@@ -98,26 +98,26 @@ export namespace ScrollPaddingBottom {
 
 export namespace ScrollSnapAlign {
     export const set = (...values: Value[]): Sheet => ({scrollSnapAlign: property(values)});
-    export const NONE: Sheet = set(Keywords.NONE);
-    export const START: Sheet = set(Keywords.START);
-    export const END: Sheet = set(Keywords.END);
-    export const CENTER: Sheet = set(Keywords.CENTER);
+    export const NONE: Sheet = set(Keyword.NONE);
+    export const START: Sheet = set(Keyword.START);
+    export const END: Sheet = set(Keyword.END);
+    export const CENTER: Sheet = set(Keyword.CENTER);
 }
 
 export namespace ScrollSnapStop {
     export const set = (...values: Value[]): Sheet => ({scrollSnapStop: property(values)});
-    export const NORMAL: Sheet = set(Keywords.NORMAL);
-    export const ALWAYS: Sheet = set(Keywords.ALWAYS);
+    export const NORMAL: Sheet = set(Keyword.NORMAL);
+    export const ALWAYS: Sheet = set(Keyword.ALWAYS);
 }
 
 export namespace ScrollSnapType {
     export const set = (...values: Value[]): Sheet => ({scrollSnapType: property(values)});
-    export const NONE: Sheet = set(Keywords.NONE);
-    export const X: Sheet = set(Keywords.X);
-    export const Y: Sheet = set(Keywords.Y);
-    export const INLINE: Sheet = set(Keywords.INLINE);
-    export const BLOCK: Sheet = set(Keywords.BLOCK);
-    export const BOTH: Sheet = set(Keywords.BOTH);
-    export const MANDATORY: Sheet = set(Keywords.MANDATORY);
-    export const PROXIMITY: Sheet = set(Keywords.PROXIMITY);
+    export const NONE: Sheet = set(Keyword.NONE);
+    export const X: Sheet = set(Keyword.X);
+    export const Y: Sheet = set(Keyword.Y);
+    export const INLINE: Sheet = set(Keyword.INLINE);
+    export const BLOCK: Sheet = set(Keyword.BLOCK);
+    export const BOTH: Sheet = set(Keyword.BOTH);
+    export const MANDATORY: Sheet = set(Keyword.MANDATORY);
+    export const PROXIMITY: Sheet = set(Keyword.PROXIMITY);
 }

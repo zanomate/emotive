@@ -1,4 +1,4 @@
-import { Unit } from '.';
+import { Unit } from '../constants';
 import { Measure } from '../core/Types';
 import { measure } from '../core/Utils';
 

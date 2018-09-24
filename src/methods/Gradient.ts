@@ -1,4 +1,4 @@
-import { Keywords } from '../constants';
+import { Keyword } from '../constants';
 import { method } from '../core/Utils';
 import { Param } from '../core/Types';
 
@@ -7,14 +7,14 @@ export function linearGradient(...params: Param[]): string {
 }
 
 export namespace linearGradient {
-    export const toTop = (...params: Param[]): string => linearGradient(Keywords.TO_TOP, ...params);
-    export const toLeft = (...params: Param[]): string => linearGradient(Keywords.TO_LEFT, ...params);
-    export const toRight = (...params: Param[]): string => linearGradient(Keywords.TO_RIGHT, ...params);
-    export const toBottom = (...params: Param[]): string => linearGradient(Keywords.TO_BOTTOM, ...params);
-    export const toTopLeft = (...params: Param[]): string => linearGradient(Keywords.TO_TOP_LEFT, ...params);
-    export const toTopRight = (...params: Param[]): string => linearGradient(Keywords.TO_TOP_RIGHT, ...params);
-    export const toBottomLeft = (...params: Param[]): string => linearGradient(Keywords.TO_BOTTOM_LEFT, ...params);
-    export const toBottomRight = (...params: Param[]): string => linearGradient(Keywords.TO_BOTTOM_RIGHT, ...params);
+    export const toTop = (...params: Param[]): string => linearGradient(Keyword.TO_TOP, ...params);
+    export const toLeft = (...params: Param[]): string => linearGradient(Keyword.TO_LEFT, ...params);
+    export const toRight = (...params: Param[]): string => linearGradient(Keyword.TO_RIGHT, ...params);
+    export const toBottom = (...params: Param[]): string => linearGradient(Keyword.TO_BOTTOM, ...params);
+    export const toTopLeft = (...params: Param[]): string => linearGradient(Keyword.TO_TOP_LEFT, ...params);
+    export const toTopRight = (...params: Param[]): string => linearGradient(Keyword.TO_TOP_RIGHT, ...params);
+    export const toBottomLeft = (...params: Param[]): string => linearGradient(Keyword.TO_BOTTOM_LEFT, ...params);
+    export const toBottomRight = (...params: Param[]): string => linearGradient(Keyword.TO_BOTTOM_RIGHT, ...params);
 }
 
 export function repeatingLinearGradient(...params: Param[]): string {
@@ -22,14 +22,14 @@ export function repeatingLinearGradient(...params: Param[]): string {
 }
 
 export namespace repeatingLinearGradient {
-    export const toTop = (...params: Param[]): string => repeatingLinearGradient(Keywords.TO_TOP, ...params);
-    export const toLeft = (...params: Param[]): string => repeatingLinearGradient(Keywords.TO_LEFT, ...params);
-    export const toRight = (...params: Param[]): string => repeatingLinearGradient(Keywords.TO_RIGHT, ...params);
-    export const toBottom = (...params: Param[]): string => repeatingLinearGradient(Keywords.TO_BOTTOM, ...params);
-    export const toTopLeft = (...params: Param[]): string => repeatingLinearGradient(Keywords.TO_TOP_LEFT, ...params);
-    export const toTopRight = (...params: Param[]): string => repeatingLinearGradient(Keywords.TO_TOP_RIGHT, ...params);
-    export const toBottomLeft = (...params: Param[]): string => repeatingLinearGradient(Keywords.TO_BOTTOM_LEFT, ...params);
-    export const toBottomRight = (...params: Param[]): string => repeatingLinearGradient(Keywords.TO_BOTTOM_RIGHT, ...params);
+    export const toTop = (...params: Param[]): string => repeatingLinearGradient(Keyword.TO_TOP, ...params);
+    export const toLeft = (...params: Param[]): string => repeatingLinearGradient(Keyword.TO_LEFT, ...params);
+    export const toRight = (...params: Param[]): string => repeatingLinearGradient(Keyword.TO_RIGHT, ...params);
+    export const toBottom = (...params: Param[]): string => repeatingLinearGradient(Keyword.TO_BOTTOM, ...params);
+    export const toTopLeft = (...params: Param[]): string => repeatingLinearGradient(Keyword.TO_TOP_LEFT, ...params);
+    export const toTopRight = (...params: Param[]): string => repeatingLinearGradient(Keyword.TO_TOP_RIGHT, ...params);
+    export const toBottomLeft = (...params: Param[]): string => repeatingLinearGradient(Keyword.TO_BOTTOM_LEFT, ...params);
+    export const toBottomRight = (...params: Param[]): string => repeatingLinearGradient(Keyword.TO_BOTTOM_RIGHT, ...params);
 }
 
 export function radialGradient(...params: Param[]): string {
@@ -37,12 +37,12 @@ export function radialGradient(...params: Param[]): string {
 }
 
 export namespace radialGradient {
-    export const closestSide = (...params: Param[]): string => radialGradient(Keywords.CLOSEST_SIDE, ...params);
-    export const closestCorner = (...params: Param[]): string => radialGradient(Keywords.CLOSEST_CORNER, ...params);
-    export const farthestSide = (...params: Param[]): string => radialGradient(Keywords.FARTHEST_SIDE, ...params);
-    export const farthestCorner = (...params: Param[]): string => radialGradient(Keywords.FARTHEST_CORNER, ...params);
-    export const circle = (...params: Param[]): string => radialGradient(Keywords.CIRCLE, ...params);
-    export const ellipse = (...params: Param[]): string => radialGradient(Keywords.ELLIPSE, ...params);
+    export const closestSide = (...params: Param[]): string => radialGradient(Keyword.CLOSEST_SIDE, ...params);
+    export const closestCorner = (...params: Param[]): string => radialGradient(Keyword.CLOSEST_CORNER, ...params);
+    export const farthestSide = (...params: Param[]): string => radialGradient(Keyword.FARTHEST_SIDE, ...params);
+    export const farthestCorner = (...params: Param[]): string => radialGradient(Keyword.FARTHEST_CORNER, ...params);
+    export const circle = (...params: Param[]): string => radialGradient(Keyword.CIRCLE, ...params);
+    export const ellipse = (...params: Param[]): string => radialGradient(Keyword.ELLIPSE, ...params);
 }
 
 export function repeatingRadialGradient(...params: Param[]): string {
@@ -50,10 +50,10 @@ export function repeatingRadialGradient(...params: Param[]): string {
 }
 
 export namespace repeatingRadialGradient {
-    export const closestSide = (...params: Param[]): string => repeatingRadialGradient(Keywords.CLOSEST_SIDE, ...params);
-    export const closestCorner = (...params: Param[]): string => repeatingRadialGradient(Keywords.CLOSEST_CORNER, ...params);
-    export const farthestSide = (...params: Param[]): string => repeatingRadialGradient(Keywords.FARTHEST_SIDE, ...params);
-    export const farthestCorner = (...params: Param[]): string => repeatingRadialGradient(Keywords.FARTHEST_CORNER, ...params);
-    export const circle = (...params: Param[]): string => repeatingRadialGradient(Keywords.CIRCLE, ...params);
-    export const ellipse = (...params: Param[]): string => repeatingRadialGradient(Keywords.ELLIPSE, ...params);
+    export const closestSide = (...params: Param[]): string => repeatingRadialGradient(Keyword.CLOSEST_SIDE, ...params);
+    export const closestCorner = (...params: Param[]): string => repeatingRadialGradient(Keyword.CLOSEST_CORNER, ...params);
+    export const farthestSide = (...params: Param[]): string => repeatingRadialGradient(Keyword.FARTHEST_SIDE, ...params);
+    export const farthestCorner = (...params: Param[]): string => repeatingRadialGradient(Keyword.FARTHEST_CORNER, ...params);
+    export const circle = (...params: Param[]): string => repeatingRadialGradient(Keyword.CIRCLE, ...params);
+    export const ellipse = (...params: Param[]): string => repeatingRadialGradient(Keyword.ELLIPSE, ...params);
 }

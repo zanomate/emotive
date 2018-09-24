@@ -1,29 +1,29 @@
 import { property, Sheet, Value } from '../..';
-import { Keywords } from '../../constants';
+import { Keyword } from '../../constants';
 
 export namespace BreakBefore {
     export const set = (...values: Value[]): Sheet => ({breakBefore: property(values)});
-    export const AUTO: Sheet = set(Keywords.AUTO);
-    export const AVOID: Sheet = set(Keywords.AVOID);
-    export const AVOID_PAGE: Sheet = set(Keywords.AVOID_PAGE);
-    export const PAGE: Sheet = set(Keywords.PAGE);
-    export const LEFT: Sheet = set(Keywords.LEFT);
-    export const RIGHT: Sheet = set(Keywords.RIGHT);
-    export const RECTO: Sheet = set(Keywords.RECTO);
-    export const VERSO: Sheet = set(Keywords.VERSO);
-    export const AVOID_COLUMN: Sheet = set(Keywords.AVOID_COLUMN);
-    export const COLUMN: Sheet = set(Keywords.COLUMN);
-    export const AVOID_REGION: Sheet = set(Keywords.AVOID_REGION);
-    export const REGION: Sheet = set(Keywords.REGION);
+    export const AUTO: Sheet = set(Keyword.AUTO);
+    export const AVOID: Sheet = set(Keyword.AVOID);
+    export const AVOID_PAGE: Sheet = set(Keyword.AVOID_PAGE);
+    export const PAGE: Sheet = set(Keyword.PAGE);
+    export const LEFT: Sheet = set(Keyword.LEFT);
+    export const RIGHT: Sheet = set(Keyword.RIGHT);
+    export const RECTO: Sheet = set(Keyword.RECTO);
+    export const VERSO: Sheet = set(Keyword.VERSO);
+    export const AVOID_COLUMN: Sheet = set(Keyword.AVOID_COLUMN);
+    export const COLUMN: Sheet = set(Keyword.COLUMN);
+    export const AVOID_REGION: Sheet = set(Keyword.AVOID_REGION);
+    export const REGION: Sheet = set(Keyword.REGION);
 }
 
 export namespace BreakInside {
     export const set = (...values: Value[]): Sheet => ({breakInside: property(values)});
-    export const AUTO: Sheet = set(Keywords.AUTO);
-    export const AVOID: Sheet = set(Keywords.AVOID);
-    export const AVOID_PAGE: Sheet = set(Keywords.AVOID_PAGE);
-    export const AVOID_COLUMN: Sheet = set(Keywords.AVOID_COLUMN);
-    export const AVOID_REGION: Sheet = set(Keywords.AVOID_REGION);
+    export const AUTO: Sheet = set(Keyword.AUTO);
+    export const AVOID: Sheet = set(Keyword.AVOID);
+    export const AVOID_PAGE: Sheet = set(Keyword.AVOID_PAGE);
+    export const AVOID_COLUMN: Sheet = set(Keyword.AVOID_COLUMN);
+    export const AVOID_REGION: Sheet = set(Keyword.AVOID_REGION);
 }
 
 export namespace Orphans {
@@ -36,6 +36,6 @@ export namespace Widows {
 
 export namespace BoxDecorationBreak {
     export const set = (...values: Value[]): Sheet => ({boxDecorationBreak: property(values)});
-    export const SLICE: Sheet = set(Keywords.SLICE);
-    export const CLONE: Sheet = set(Keywords.CLONE);
+    export const SLICE: Sheet = set(Keyword.SLICE);
+    export const CLONE: Sheet = set(Keyword.CLONE);
 }

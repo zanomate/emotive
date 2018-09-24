@@ -1,29 +1,29 @@
 import { property, Sheet, Value } from '../..';
-import { Keywords } from '../../constants';
+import { Keyword } from '../../constants';
 
 /* Cue */
 
 export namespace Cue {
     export const set = (...values: Value[]): Sheet => ({cue: property(values)});
-    export const NONE: Sheet = set(Keywords.NONE);
+    export const NONE: Sheet = set(Keyword.NONE);
 }
 
 export namespace CueBefore {
     export const set = (...values: Value[]): Sheet => ({cueBefore: property(values)});
-    export const NONE: Sheet = set(Keywords.NONE);
+    export const NONE: Sheet = set(Keyword.NONE);
 }
 
 export namespace CueAfter {
     export const set = (...values: Value[]): Sheet => ({cueAfter: property(values)});
-    export const NONE: Sheet = set(Keywords.NONE);
+    export const NONE: Sheet = set(Keyword.NONE);
 }
 
 /* Mixing */
 
 export namespace PlayDuring {
     export const set = (...values: Value[]): Sheet => ({playDuring: property(values)});
-    export const AUTO: Sheet = set(Keywords.AUTO);
-    export const NONE: Sheet = set(Keywords.NONE);
+    export const AUTO: Sheet = set(Keyword.AUTO);
+    export const NONE: Sheet = set(Keyword.NONE);
 }
 
 /* Pause */
@@ -44,65 +44,65 @@ export namespace PauseAfter {
 
 export namespace Azimuth {
     export const set = (...values: Value[]): Sheet => ({azimuth: property(values)});
-    export const LEFT_SIDE: Sheet = set(Keywords.LEFT_SIDE);
-    export const FAR_LEFT: Sheet = set(Keywords.FAR_LEFT);
-    export const LEFT: Sheet = set(Keywords.LEFT);
-    export const CENTER_LEFT: Sheet = set(Keywords.CENTER_LEFT);
-    export const CENTER: Sheet = set(Keywords.CENTER);
-    export const CENTER_RIGHT: Sheet = set(Keywords.CENTER_RIGHT);
-    export const RIGHT: Sheet = set(Keywords.RIGHT);
-    export const FAR_RIGHT: Sheet = set(Keywords.FAR_RIGHT);
-    export const RIGHT_SIDE: Sheet = set(Keywords.RIGHT_SIDE);
-    export const BEHIND: Sheet = set(Keywords.BEHIND);
-    export const LEFTWARDS: Sheet = set(Keywords.LEFTWARDS);
-    export const RIGHTWARDS: Sheet = set(Keywords.RIGHTWARDS);
+    export const LEFT_SIDE: Sheet = set(Keyword.LEFT_SIDE);
+    export const FAR_LEFT: Sheet = set(Keyword.FAR_LEFT);
+    export const LEFT: Sheet = set(Keyword.LEFT);
+    export const CENTER_LEFT: Sheet = set(Keyword.CENTER_LEFT);
+    export const CENTER: Sheet = set(Keyword.CENTER);
+    export const CENTER_RIGHT: Sheet = set(Keyword.CENTER_RIGHT);
+    export const RIGHT: Sheet = set(Keyword.RIGHT);
+    export const FAR_RIGHT: Sheet = set(Keyword.FAR_RIGHT);
+    export const RIGHT_SIDE: Sheet = set(Keyword.RIGHT_SIDE);
+    export const BEHIND: Sheet = set(Keyword.BEHIND);
+    export const LEFTWARDS: Sheet = set(Keyword.LEFTWARDS);
+    export const RIGHTWARDS: Sheet = set(Keyword.RIGHTWARDS);
 }
 
 export namespace Elevation {
     export const set = (...values: Value[]): Sheet => ({elevation: property(values)});
-    export const BELOW: Sheet = set(Keywords.BELOW);
-    export const LEVEL: Sheet = set(Keywords.LEVEL);
-    export const ABOVE: Sheet = set(Keywords.ABOVE);
-    export const HIGHER: Sheet = set(Keywords.HIGHER);
-    export const LOWER: Sheet = set(Keywords.LOWER);
+    export const BELOW: Sheet = set(Keyword.BELOW);
+    export const LEVEL: Sheet = set(Keyword.LEVEL);
+    export const ABOVE: Sheet = set(Keyword.ABOVE);
+    export const HIGHER: Sheet = set(Keyword.HIGHER);
+    export const LOWER: Sheet = set(Keyword.LOWER);
 }
 
 /* Speak */
 
 export namespace Speak {
     export const set = (...values: Value[]): Sheet => ({speak: property(values)});
-    export const SPELL_OUT: Sheet = set(Keywords.SPELL_OUT);
+    export const SPELL_OUT: Sheet = set(Keyword.SPELL_OUT);
 }
 
 export namespace SpeakPunctuation {
     export const set = (...values: Value[]): Sheet => ({speakPunctuation: property(values)});
-    export const CODE: Sheet = set(Keywords.CODE);
-    export const NONE: Sheet = set(Keywords.NONE);
+    export const CODE: Sheet = set(Keyword.CODE);
+    export const NONE: Sheet = set(Keyword.NONE);
 }
 
 export namespace SpeakNumeral {
     export const set = (...values: Value[]): Sheet => ({speakNumeral: property(values)});
-    export const DIGITS: Sheet = set(Keywords.DIGITS);
-    export const CONTINUOUS: Sheet = set(Keywords.CONTINUOUS);
+    export const DIGITS: Sheet = set(Keyword.DIGITS);
+    export const CONTINUOUS: Sheet = set(Keyword.CONTINUOUS);
 }
 
 export namespace SpeakHeader {
     export const set = (...values: Value[]): Sheet => ({speakHeader: property(values)});
-    export const ONCE: Sheet = set(Keywords.ONCE);
-    export const ALWAYS: Sheet = set(Keywords.ALWAYS);
+    export const ONCE: Sheet = set(Keyword.ONCE);
+    export const ALWAYS: Sheet = set(Keyword.ALWAYS);
 }
 
 /* Voice */
 
 export namespace SpeechRate {
     export const set = (...values: Value[]): Sheet => ({speechRate: property(values)});
-    export const X_SLOW: Sheet = set(Keywords.X_SLOW);
-    export const SLOW: Sheet = set(Keywords.SLOW);
-    export const MEDIUM: Sheet = set(Keywords.MEDIUM);
-    export const FAST: Sheet = set(Keywords.FAST);
-    export const X_FAST: Sheet = set(Keywords.X_FAST);
-    export const FASTER: Sheet = set(Keywords.FASTER);
-    export const SLOWER: Sheet = set(Keywords.SLOWER);
+    export const X_SLOW: Sheet = set(Keyword.X_SLOW);
+    export const SLOW: Sheet = set(Keyword.SLOW);
+    export const MEDIUM: Sheet = set(Keyword.MEDIUM);
+    export const FAST: Sheet = set(Keyword.FAST);
+    export const X_FAST: Sheet = set(Keyword.X_FAST);
+    export const FASTER: Sheet = set(Keyword.FASTER);
+    export const SLOWER: Sheet = set(Keyword.SLOWER);
 }
 
 export namespace VoiceFamily {
@@ -111,11 +111,11 @@ export namespace VoiceFamily {
 
 export namespace Pitch {
     export const set = (...values: Value[]): Sheet => ({pitch: property(values)});
-    export const X_LOW: Sheet = set(Keywords.X_LOW);
-    export const LOW: Sheet = set(Keywords.LOW);
-    export const MEDIUM: Sheet = set(Keywords.MEDIUM);
-    export const HIGH: Sheet = set(Keywords.HIGH);
-    export const X_HIGH: Sheet = set(Keywords.X_HIGH);
+    export const X_LOW: Sheet = set(Keyword.X_LOW);
+    export const LOW: Sheet = set(Keyword.LOW);
+    export const MEDIUM: Sheet = set(Keyword.MEDIUM);
+    export const HIGH: Sheet = set(Keyword.HIGH);
+    export const X_HIGH: Sheet = set(Keyword.X_HIGH);
 }
 
 export namespace PitchRange {
@@ -134,10 +134,10 @@ export namespace Richness {
 
 export namespace Volume {
     export const set = (...values: Value[]): Sheet => ({volume: property(values)});
-    export const SILENT: Sheet = set(Keywords.SILENT);
-    export const X_SOFT: Sheet = set(Keywords.X_SOFT);
-    export const SOFT: Sheet = set(Keywords.SOFT);
-    export const MEDIUM: Sheet = set(Keywords.MEDIUM);
-    export const LOUD: Sheet = set(Keywords.LOUD);
-    export const X_LOUD: Sheet = set(Keywords.X_LOUD);
+    export const SILENT: Sheet = set(Keyword.SILENT);
+    export const X_SOFT: Sheet = set(Keyword.X_SOFT);
+    export const SOFT: Sheet = set(Keyword.SOFT);
+    export const MEDIUM: Sheet = set(Keyword.MEDIUM);
+    export const LOUD: Sheet = set(Keyword.LOUD);
+    export const X_LOUD: Sheet = set(Keyword.X_LOUD);
 }

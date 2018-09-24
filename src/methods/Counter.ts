@@ -1,4 +1,4 @@
-import { Keywords } from '../constants';
+import { Keyword } from '../constants';
 import { method } from '../core/Utils';
 import { Param } from '../core/Types';
 
@@ -15,9 +15,9 @@ export function symbols(...params: Param[]): string {
 }
 
 export namespace symbols {
-    export const cyclic = (...params: Param[]): string => symbols(Keywords.CYCLIC, ...params);
-    export const numeric = (...params: Param[]): string => symbols(Keywords.NUMERIC, ...params);
-    export const alphabetic = (...params: Param[]): string => symbols(Keywords.ALPHABETIC, ...params);
-    export const symbolic = (...params: Param[]): string => symbols(Keywords.SYMBOLIC, ...params);
-    export const fixed = (...params: Param[]): string => symbols(Keywords.FIXED, ...params);
+    export const cyclic = (...params: Param[]): string => symbols(Keyword.CYCLIC, ...params);
+    export const numeric = (...params: Param[]): string => symbols(Keyword.NUMERIC, ...params);
+    export const alphabetic = (...params: Param[]): string => symbols(Keyword.ALPHABETIC, ...params);
+    export const symbolic = (...params: Param[]): string => symbols(Keyword.SYMBOLIC, ...params);
+    export const fixed = (...params: Param[]): string => symbols(Keyword.FIXED, ...params);
 }
