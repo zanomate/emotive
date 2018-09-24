@@ -1,5 +1,8 @@
+#intellij
+.idea
+
 #node
 node_modules
 
-#intellij
-.idea
+#build
+dist
