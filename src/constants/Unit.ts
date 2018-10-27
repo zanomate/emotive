@@ -1,36 +1,40 @@
-export namespace Unit {
-    export const CAP: string = 'cap';
-    export const CH: string = 'ch';
-    export const CM: string = 'cm';
-    export const DEG: string = 'deg';
-    export const DPCM: string = 'dpcm';
-    export const DPI: string = 'dpi';
-    export const DPPX: string = 'dppx';
-    export const EM: string = 'em';
-    export const EX: string = 'ex';
-    export const FR: string = 'fr';
-    export const GRAD: string = 'grad';
-    export const HZ: string = 'Hz';
-    export const IC: string = 'ic';
-    export const IN: string = 'in';
-    export const KHZ: string = 'kHz';
-    export const LH: string = 'lh';
-    export const MM: string = 'mm';
-    export const MS: string = 'ms';
-    export const PC: string = 'pc';
-    export const PERCENTAGE: string = '%';
-    export const PT: string = 'pt';
-    export const PX: string = 'px';
-    export const Q: string = 'Q';
-    export const RAD: string = 'rad';
-    export const REM: string = 'rem';
-    export const RLH: string = 'rlh';
-    export const S: string = 's';
-    export const TURN: string = 'turn';
-    export const VB: string = 'vb';
-    export const VH: string = 'vh';
-    export const VI: string = 'vi';
-    export const VMAX: string = 'vmax';
-    export const VMIN: string = 'vmin';
-    export const VW: string = 'vw';
+import { ExportModifier, StaticModifier, StringType, value } from 'gen/base';
+import { MDN } from 'gen/mdn';
+import { UPPER_CASE } from 'gen/naming';
+import * as ts from 'typescript';
+
+const units: string[] = [];
+units.push(...MDN.Types.Angle);
+units.push(...MDN.Types.Frequency);
+units.push(...MDN.Types.Length);
+units.push(...MDN.Types.Resolution);
+units.push(...MDN.Types.Time);
+
+function genUnit(name: string, symbol: string) {
+    return ts.createProperty(
+        [],
+        [StaticModifier],
+        name,
+        undefined,
+        StringType,
+        value(symbol)
+    )
 }
+
+function genUnits() {
+
+    let declarations: ts.PropertyDeclaration[] = [];
+    units.map(unit => declarations.push(genUnit(UPPER_CASE(unit), unit)));
+    declarations.push(genUnit('PERCENTAGE', '%'));
+
+    return ts.createClassDeclaration(
+        [],
+        [ExportModifier],
+        'Unit',
+        [],
+        [],
+        declarations
+    );
+}
+
+export const Unit = genUnits();

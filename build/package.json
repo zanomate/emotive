@@ -1,6 +1,6 @@
 {
   "name": "emotive",
-  "version": "0.5.2",
+  "version": "1.0.0",
   "description": "Dynamic \"css in js\" without interpolation or language injection",
   "author": "zanomate",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "emotive",
     "react"
   ],
-  "main": "./emotive.js",
-  "types": "./types"
+  "bundleDependencies": false,
+  "main": "emotive.js",
+  "types": "emotive.d.ts"
 }

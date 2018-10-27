@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "baseUrl": ".",
+    "removeComments": true,
+    "outDir": "../dist",
+    "declaration": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "lib": ["es2015"]
+  }
+}
