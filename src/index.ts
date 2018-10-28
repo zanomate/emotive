@@ -1,19 +1,17 @@
-import { Color } from 'constants/Color';
-import { Keyword } from 'constants/Keyword';
-import { Unit } from 'constants/Unit';
-import { Angle, Frequency, Length, Resolution, Time } from 'datatypes/datatypes';
-import { appendFile, appendNode, writefile } from 'gen/print';
-import { Method } from 'methods/methods';
-import { Css } from 'properties/properties';
+import {genColor} from 'constants/Color';
+import {Keyword} from 'constants/Keyword';
+import {Unit} from 'constants/Unit';
+import {Angle, Frequency, Length, Resolution, Time} from 'datatypes/datatypes';
+import {appendFile, appendNode, writefile} from 'core/print';
+import {Method} from 'methods/methods';
+import {genCss} from "properties/properties";
 
 // CORE
-appendFile('./src/core/types.ts');
-appendFile('./src/core/utils.ts');
-appendFile('./src/core/factory.ts');
+appendFile('./src/core/core.ts');
 
 // CONSTANTS
 appendNode(Keyword);
-appendNode(Color);
+genColor();
 appendNode(Unit);
 
 // DATA TYPES
@@ -27,6 +25,6 @@ appendNode(Time);
 appendNode(Method);
 
 // PROPERTIES
-appendNode(Css);
+genCss();
 
 writefile();

@@ -1,8 +1,8 @@
 import {
     array, arrow, block, buildDatatypeId, call, DotDotDotToken, ExportModifier, id, NumberType, ret, StaticModifier,
     StringType, value
-} from 'gen/base';
-import { MDN } from 'gen/mdn';
+} from 'core/base';
+import { MDN } from 'core/mdn';
 import * as ts from 'typescript';
 
 const paramsId = id('params');

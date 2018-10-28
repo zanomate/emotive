@@ -1,5 +1,5 @@
 import { resolveSyntaxByName, Term } from 'css-syntax-parser';
-import { MDN } from 'gen/mdn';
+import { MDN } from 'core/mdn';
 
 function genProperties(): { [name: string]: Term } {
 

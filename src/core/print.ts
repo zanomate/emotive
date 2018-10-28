@@ -41,4 +41,5 @@ export function writefile() {
         parser: 'typescript',
         tabWidth: 4
     }));
+    // fs.writeFileSync('build/emotive.ts', codeToWrite.join(''));
 }

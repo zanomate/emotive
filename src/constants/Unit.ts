@@ -1,6 +1,6 @@
-import { ExportModifier, StaticModifier, StringType, value } from 'gen/base';
-import { MDN } from 'gen/mdn';
-import { UPPER_CASE } from 'gen/naming';
+import { ExportModifier, StaticModifier, StringType, value } from 'core/base';
+import { MDN } from 'core/mdn';
+import { UPPER_CASE } from 'core/naming';
 import * as ts from 'typescript';
 
 const units: string[] = [];

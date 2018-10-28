@@ -18,6 +18,8 @@
     "react"
   ],
   "bundleDependencies": false,
-  "main": "emotive.js",
-  "types": "emotive.d.ts"
+  "main": "emotive.cjs.js",
+  "module": "emotive.esm.js",
+  "types": "emotive.d.ts",
+  "umd:main": "./emotive.umd.js"
 }

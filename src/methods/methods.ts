@@ -2,9 +2,9 @@ import { BracketsTerm, ComposedTerm, MethodTerm, Term } from 'css-syntax-parser'
 import {
     array, arrow, block, buildMethodId, call, DotDotDotToken, ExportModifier, id, ParamType, ret, StaticModifier,
     StringType, value
-} from 'gen/base';
-import { lowerCamelCase } from 'gen/naming';
-import { properties } from 'gen/properties';
+} from 'core/base';
+import { lowerCamelCase } from 'core/naming';
+import { properties } from 'core/properties';
 import { calc, calcAdd, calcMul } from 'methods/calc';
 import { hex, hexa } from 'methods/colors';
 import * as ts from 'typescript';

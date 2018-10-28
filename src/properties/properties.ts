@@ -1,15 +1,14 @@
-import { Sheet } from 'core/types';
-import { BracketsTerm, ComposedTerm, DataTypeTerm, KeywordTerm, MethodTerm, Term } from 'css-syntax-parser';
+import {BracketsTerm, ComposedTerm, DataTypeTerm, KeywordTerm, MethodTerm, Term} from 'css-syntax-parser';
 import {
     access, array, arrow, buildPropertyId, call, DotDotDotToken, ExportModifier, id, NumberType, ParamType, ref,
-    StaticModifier,
-    value
-} from 'gen/base';
-import { MDN } from 'gen/mdn';
-import { lowerCamelCase, UPPER_CASE, UpperCamelCase } from 'gen/naming';
-import { properties } from 'gen/properties';
-import { sheet } from 'properties/sheet';
+    StaticModifier, value
+} from 'core/base';
+import {MDN} from 'core/mdn';
+import {lowerCamelCase, UPPER_CASE, UpperCamelCase} from 'core/naming';
+import {properties} from 'core/properties';
 import * as ts from 'typescript';
+import {appendNode} from "core/print";
+import {genSheet} from "properties/sheet";
 
 const SheetType = ref(id('Sheet'));
 
@@ -90,9 +89,9 @@ function genPropertyUnit(jsName: string, datatype: string, unit: string) {
     );
 }
 
-function genProperty(propertyName: string) {
+function genProperty(propertyName: string): ts.Identifier {
 
-    const className = UpperCamelCase(propertyName);
+    const className = '_' + UpperCamelCase(propertyName);
     const jsName = lowerCamelCase(propertyName);
 
     const declarations: { [id: string]: ts.PropertyDeclaration } = {};
@@ -151,34 +150,48 @@ function genProperty(propertyName: string) {
 
     extractFromTerm(properties[propertyName]);
 
-    return ts.createClassDeclaration(
+    const classDeclaration = ts.createClassDeclaration(
         [],
-        [ExportModifier],
+        [],
         className,
         [],
         [],
         Object.values(declarations)
     );
+
+    appendNode(classDeclaration);
+    return id(className);
 }
 
-function genCss() {
+export function genCss() {
 
-    const statements: ts.Statement[] = [];
+    const elements: { [name: string]: ts.Identifier } = {};
 
-    statements.push(sheet);
+    // sheet
+    elements['sheet'] = genSheet();
 
+    // properties
     Object.keys(properties).map(propertyName => {
-        statements.push(genProperty(propertyName));
+        elements[propertyName] = genProperty(propertyName);
     });
 
-    const CssId = id('Css');
-
-    return ts.createModuleDeclaration(
-        [],
+    const cssId = id('Css');
+    const css = ts.createVariableStatement(
         [ExportModifier],
-        CssId,
-        ts.createModuleBlock(statements)
+        ts.createVariableDeclarationList(
+            [
+                ts.createVariableDeclaration(
+                    cssId,
+                    undefined,
+                    ts.createObjectLiteral(
+                        Object.keys(elements).map(name => ts.createPropertyAssignment(UpperCamelCase(name), elements[name])),
+                        false
+                    )
+                )
+            ],
+            ts.NodeFlags.Const
+        )
     );
-}
 
-export const Css = genCss();
+    appendNode(css);
+}

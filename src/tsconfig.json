@@ -7,7 +7,6 @@
       "constants/*": ["./constants/*"],
       "core/*": ["./core/*"],
       "datatypes/*": ["./datatypes/*"],
-      "gen/*": ["./gen/*"],
       "methods/*": ["./methods/*"],
       "properties/*": ["./properties/*"]
     },

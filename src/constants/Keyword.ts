@@ -1,7 +1,7 @@
 import { BracketsTerm, ComposedTerm, KeywordTerm, MethodTerm, Term } from 'css-syntax-parser';
-import { ExportModifier, StaticModifier, StringType, value } from 'gen/base';
-import { UPPER_CASE } from 'gen/naming';
-import { properties } from 'gen/properties';
+import { ExportModifier, StaticModifier, StringType, value } from 'core/base';
+import { UPPER_CASE } from 'core/naming';
+import { properties } from 'core/properties';
 import * as ts from 'typescript';
 
 const keywords: string[] = [];

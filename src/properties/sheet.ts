@@ -1,17 +1,19 @@
-import { access, array, block, call, DotDotDotToken, ExportModifier, id, ret, SheetType } from 'gen/base';
+import {access, array, block, call, DotDotDotToken, ExportModifier, id, ret, SheetType} from 'core/base';
 import * as ts from 'typescript';
+import {appendNode} from "core/print";
 
-// export const sheetId = id('sheet');
-export const sheet = (() => {
+export function genSheet(): ts.Identifier {
+
+    const sheetId = id('_sheet');
 
     const propertiesId = id('properties');
     const propertiesType = array(SheetType);
 
-    const sheetId = id('sheet');
-    const sheetDeclaration = ts.createVariableStatement(
+    const resultId = id('sheet');
+    const resultDeclaration = ts.createVariableStatement(
         [],
         ts.createVariableDeclarationList(
-            [ts.createVariableDeclaration(sheetId, SheetType, ts.createObjectLiteral())],
+            [ts.createVariableDeclaration(resultId, SheetType, ts.createObjectLiteral())],
             ts.NodeFlags.Const
         )
     );
@@ -30,14 +32,14 @@ export const sheet = (() => {
                         id('(<any>Object)'),
                         'assign'
                     ),
-                    sheetId,
+                    resultId,
                     propertyId
                 )
             )
         )
     );
 
-    return ts.createFunctionDeclaration(
+    const fun = ts.createFunctionDeclaration(
         [],
         [ExportModifier],
         undefined,
@@ -55,10 +57,13 @@ export const sheet = (() => {
         ],
         SheetType,
         block(
-            sheetDeclaration,
+            resultDeclaration,
             loop,
-            ret(sheetId)
+            ret(resultId)
         )
     );
 
-})();
+    appendNode(fun);
+    return sheetId;
+
+}

@@ -1,5 +1,27 @@
-import { Param } from 'core/types';
-import { concatWithCommas, concatWithSpaces } from 'core/utils';
+export type Param = number | string | Array<any>;
+export type Sheet = { [propertyName: string]: string };
+
+const concatWithSpaces = (values: Param[]): string => values.join(' ');
+
+const concatWithCommas = (values: Param[]): string => values.join(', ');
+
+function addParams(...params: Param[]): string {
+    return params.map(value => {
+        if (Array.isArray(value)) {
+            return '(' + mulParams(...value) + ')';
+        }
+        return value;
+    }).join(' + ');
+}
+
+function mulParams(...params: Param[]): string {
+    return params.map(value => {
+        if (Array.isArray(value)) {
+            return '(' + addParams(...value) + ')';
+        }
+        return value;
+    }).join(' * ');
+}
 
 const buildDatatype = (unit: string, nums: number[]): string =>
     nums.map((num) => num + (num ? unit : '')).join(' ');
