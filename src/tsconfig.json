@@ -6,6 +6,7 @@
     "paths": {
       "constants/*": ["./constants/*"],
       "core/*": ["./core/*"],
+      "data/*": ["./data/*"],
       "datatypes/*": ["./datatypes/*"],
       "methods/*": ["./methods/*"],
       "properties/*": ["./properties/*"]

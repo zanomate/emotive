@@ -1,40 +1,39 @@
-import { ExportModifier, StaticModifier, StringType, value } from 'core/base';
-import { MDN } from 'core/mdn';
+import { ExportModifier, id, value } from 'core/base';
 import { UPPER_CASE } from 'core/naming';
+import { appendNode } from 'core/print';
+import { Mdn } from 'data/mdn';
 import * as ts from 'typescript';
 
-const units: string[] = [];
-units.push(...MDN.Types.Angle);
-units.push(...MDN.Types.Frequency);
-units.push(...MDN.Types.Length);
-units.push(...MDN.Types.Resolution);
-units.push(...MDN.Types.Time);
+export function genUnit() {
 
-function genUnit(name: string, symbol: string) {
-    return ts.createProperty(
-        [],
-        [StaticModifier],
-        name,
-        undefined,
-        StringType,
-        value(symbol)
-    )
-}
+    const units: { [name: string]: string } = {};
+    Mdn.Types.Angle.map(unit => units[unit] = unit);
+    Mdn.Types.Frequency.map(unit => units[unit] = unit);
+    Mdn.Types.Length.map(unit => units[unit] = unit);
+    units['percentage'] = '%';
+    Mdn.Types.Resolution.map(unit => units[unit] = unit);
+    Mdn.Types.Time.map(unit => units[unit] = unit);
 
-function genUnits() {
-
-    let declarations: ts.PropertyDeclaration[] = [];
-    units.map(unit => declarations.push(genUnit(UPPER_CASE(unit), unit)));
-    declarations.push(genUnit('PERCENTAGE', '%'));
-
-    return ts.createClassDeclaration(
-        [],
+    const unitId = id('Unit');
+    const unit = ts.createVariableStatement(
         [ExportModifier],
-        'Unit',
-        [],
-        [],
-        declarations
+        ts.createVariableDeclarationList(
+            [
+                ts.createVariableDeclaration(
+                    unitId,
+                    undefined,
+                    ts.createObjectLiteral(
+                        Object.keys(units).sort().map(unitName => ts.createPropertyAssignment(
+                            UPPER_CASE(unitName),
+                            value(units[unitName])
+                        )),
+                        false
+                    )
+                )
+            ],
+            ts.NodeFlags.Const
+        )
     );
-}
 
-export const Unit = genUnits();
+    appendNode(unit);
+}

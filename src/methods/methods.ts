@@ -1,84 +1,121 @@
-import { BracketsTerm, ComposedTerm, MethodTerm, Term } from 'css-syntax-parser';
 import {
-    array, arrow, block, buildMethodId, call, DotDotDotToken, ExportModifier, id, ParamType, ret, StaticModifier,
-    StringType, value
+    array, arrow, block, buildMethodId, call, DotDotDotToken, ExportModifier, id, ParamType, ret, StringType, value
 } from 'core/base';
 import { lowerCamelCase } from 'core/naming';
-import { properties } from 'core/properties';
-import { calc, calcAdd, calcMul } from 'methods/calc';
-import { hex, hexa } from 'methods/colors';
+import { appendFile, appendNode } from 'core/print';
+import resolveSyntax, { BracketsTerm, ComposedTerm, MethodTerm, Term } from 'css-syntax-parser';
+import { Mdn } from 'data/mdn';
 import * as ts from 'typescript';
 
-const methods: string[] = [];
-const excludedMethods = ['calc'];
+export function genMethods() {
 
-function addMethods(...methodList: string[]) {
-    for (let method of methodList) {
-        if (!methods.includes(method) && !excludedMethods.includes(method)) {
-            methods.push(method);
+    const excludedMethods = ['calc'];
+
+    const extractMethods = (term: Term, extracted: string[]): string[] => {
+        if (term instanceof ComposedTerm) {
+            term.children.map(child => extractMethods(child, extracted));
         }
-    }
-}
+        else if (term instanceof BracketsTerm) {
+            extractMethods(term.content, extracted);
+        }
+        else if (term instanceof MethodTerm) {
+            const keyword = term.name;
+            if (!extracted.includes(keyword) && !excludedMethods.includes(keyword)) {
+                extracted.push(keyword);
+            }
+        }
+        return extracted;
+    };
 
-function extractMethods(term: Term) {
-    if (term instanceof ComposedTerm) {
-        term.children.map(child => extractMethods(child));
-    }
-    else if (term instanceof BracketsTerm) {
-        extractMethods(term.content);
-    }
-    else if (term instanceof MethodTerm) {
-        addMethods(term.name);
-    }
-}
+    let methodNames: string[] = [];
 
-function genMethods() {
+    Object.keys(Mdn.Properties).map(propertyName => {
+        const term = resolveSyntax(Mdn.Properties[propertyName]);
+        extractMethods(term, methodNames);
+    });
 
-    Object.values(properties).map(propertyTerm => extractMethods(propertyTerm));
+    Object.keys(Mdn.Syntaxes).map(syntaxName => {
+        const term = resolveSyntax(Mdn.Syntaxes[syntaxName]);
+        extractMethods(term, methodNames);
+    });
 
-    const propertyDeclarations: ts.PropertyDeclaration[] = [];
+    let methods: { [name: string]: ts.Identifier } = {};
 
     const paramsId = id('params');
     const paramsType = array(ParamType);
 
-    methods.sort().map(method => {
-        try {
-            let methodName = lowerCamelCase(method);
-            propertyDeclarations.push(ts.createProperty(
+    methodNames
+        .filter(methodName => {
+            try {
+                lowerCamelCase(methodName);
+            }
+            catch (e) {
+                console.warn('Unable to create method for', methodName);
+                return false;
+            }
+            return true;
+        })
+        .map(methodName => {
+            const jsName = lowerCamelCase(methodName);
+            const innerMethodName = '_' + jsName;
+            const methodId = id(innerMethodName);
+            const method = ts.createVariableStatement(
                 [],
-                [StaticModifier],
-                methodName,
-                undefined,
-                undefined,
-                arrow(
-                    [ts.createParameter([], [], DotDotDotToken, paramsId, undefined, paramsType)],
-                    StringType,
-                    block(ret(call(buildMethodId, value(method), paramsId)))
+                ts.createVariableDeclarationList(
+                    [
+                        ts.createVariableDeclaration(
+                            methodId,
+                            undefined,
+                            arrow(
+                                [ts.createParameter(
+                                    [],
+                                    [],
+                                    DotDotDotToken,
+                                    paramsId,
+                                    undefined,
+                                    paramsType
+                                )],
+                                StringType,
+                                block(ret(call(buildMethodId, value(methodName), paramsId)))
+                            )
+                        )
+                    ],
+                    ts.NodeFlags.Const
                 )
-            ));
-        }
-        catch (e) {
-            console.warn('Unable to create method for', method);
-        }
-    });
+            );
+            appendNode(method);
+            methods[jsName] = methodId;
+        });
 
     // Calc
-    propertyDeclarations.push(calcAdd);
-    propertyDeclarations.push(calcMul);
-    propertyDeclarations.push(calc);
+    appendFile('./src/methods/calc.ts');
+    methods['calc'] = id('_calc');
 
     // Colors
-    propertyDeclarations.push(hex);
-    propertyDeclarations.push(hexa);
+    appendFile('./src/methods/colors.ts');
+    methods['hex'] = id('_hex');
+    methods['hexa'] = id('_hexa');
 
-    return ts.createClassDeclaration(
-        [],
+    const methodContainerId = id('Method');
+    const methodContainer = ts.createVariableStatement(
         [ExportModifier],
-        'Method',
-        [],
-        [],
-        propertyDeclarations
+        ts.createVariableDeclarationList(
+            [
+                ts.createVariableDeclaration(
+                    methodContainerId,
+                    undefined,
+                    ts.createObjectLiteral(
+                        Object.keys(methods).sort().map(methodName => ts.createPropertyAssignment(
+                            methodName,
+                            methods[methodName]
+                        )),
+                        true
+                    )
+                )
+            ],
+            ts.NodeFlags.Const
+        )
     );
-}
 
-export const Method = genMethods();
+    appendNode(methodContainer);
+}

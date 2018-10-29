@@ -1,28 +1,26 @@
-import {genColor} from 'constants/Color';
-import {Keyword} from 'constants/Keyword';
-import {Unit} from 'constants/Unit';
-import {Angle, Frequency, Length, Resolution, Time} from 'datatypes/datatypes';
-import {appendFile, appendNode, writefile} from 'core/print';
-import {Method} from 'methods/methods';
-import {genCss} from "properties/properties";
+import { genColor } from 'constants/Color';
+import { genKeyword } from 'constants/Keyword';
+import { getProperty } from 'constants/Property';
+import { genUnit } from 'constants/Unit';
+import { appendFile, writefile } from 'core/print';
+import { genDataTypes } from 'datatypes/datatypes';
+import { genMethods } from 'methods/methods';
+import { genCss } from 'properties/properties';
 
 // CORE
 appendFile('./src/core/core.ts');
 
 // CONSTANTS
-appendNode(Keyword);
+genKeyword();
+getProperty();
 genColor();
-appendNode(Unit);
+genUnit();
 
 // DATA TYPES
-appendNode(Angle);
-appendNode(Frequency);
-appendNode(Length);
-appendNode(Resolution);
-appendNode(Time);
+genDataTypes();
 
 // METHODS
-appendNode(Method);
+genMethods();
 
 // PROPERTIES
 genCss();

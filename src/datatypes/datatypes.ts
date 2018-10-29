@@ -1,55 +1,63 @@
 import {
-    array, arrow, block, buildDatatypeId, call, DotDotDotToken, ExportModifier, id, NumberType, ret, StaticModifier,
-    StringType, value
+    array, arrow, block, buildDatatypeId, call, DotDotDotToken, ExportModifier, id, NumberType, ret, StringType, value
 } from 'core/base';
-import { MDN } from 'core/mdn';
+import { appendNode } from 'core/print';
+import { Mdn } from 'data/mdn';
 import * as ts from 'typescript';
 
-const paramsId = id('params');
-const paramsType = array(NumberType);
 
-function genDatatypeMethod(name: string, symbol: string) {
-    return ts.createProperty(
-        [],
-        [StaticModifier],
-        name,
-        undefined,
-        undefined,
-        arrow(
-            [
-                ts.createParameter([], [], DotDotDotToken, paramsId, undefined, paramsType)
-            ],
-            StringType,
-            block(ret(call(buildDatatypeId, value(symbol), paramsId)))
-        )
-    )
-}
+function genDatatype(datatypeName: string, listOfUnits: string[]) {
 
-function genDatatype(name: string, units: string[]) {
-
-    const declarations: ts.PropertyDeclaration[] = [];
-
-    // Percentage
-    if (name === 'Length') {
-        declarations.push(genDatatypeMethod('X', '%'));
+    let units: { [name: string]: string } = {};
+    listOfUnits.map(unit => {
+        units[unit] = unit;
+    });
+    if (datatypeName === 'Length') {
+        units['X'] = '%';
     }
 
-    units.map(unit => {
-        declarations.push(genDatatypeMethod(unit, unit));
-    });
+    const paramsId = id('params');
+    const paramsType = array(NumberType);
 
-    return ts.createClassDeclaration(
-        [],
+    const datatypeId = id(datatypeName);
+    const datatype = ts.createVariableStatement(
         [ExportModifier],
-        name,
-        [],
-        [],
-        declarations
+        ts.createVariableDeclarationList(
+            [
+                ts.createVariableDeclaration(
+                    datatypeId,
+                    undefined,
+                    ts.createObjectLiteral(
+                        Object.keys(units).sort().map(unitName => ts.createPropertyAssignment(
+                            unitName,
+                            arrow(
+                                [ts.createParameter(
+                                    [],
+                                    [],
+                                    DotDotDotToken,
+                                    paramsId,
+                                    undefined,
+                                    paramsType
+                                )],
+                                StringType,
+                                block(ret(call(buildDatatypeId, value(units[unitName]), paramsId)))
+                            )
+                        )),
+                        false
+                    )
+                )
+            ],
+            ts.NodeFlags.Const
+        )
     );
+
+    appendNode(datatype);
 }
 
-export const Angle = genDatatype('Angle', MDN.Types.Angle);
-export const Frequency = genDatatype('Frequency', MDN.Types.Frequency);
-export const Length = genDatatype('Length', MDN.Types.Length);
-export const Resolution = genDatatype('Resolution', MDN.Types.Resolution);
-export const Time = genDatatype('Time', MDN.Types.Time);
+export function genDataTypes() {
+    genDatatype('Angle', Mdn.Types.Angle);
+    genDatatype('Frequency', Mdn.Types.Frequency);
+    genDatatype('Length', Mdn.Types.Length);
+    genDatatype('Resolution', Mdn.Types.Resolution);
+    genDatatype('Time', Mdn.Types.Time);
+}
