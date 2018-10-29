@@ -1,16 +1,15 @@
 import {
-    access, array, arrow, buildPropertyId, call, DotDotDotToken, ExportModifier, id, NumberType, ParamType, SheetType,
-    StringType, value
+    access, array, arrow, assign, buildPropertyId, call, constant, Expr, Id, id, NumberType, obj, param, ParamType,
+    SheetType, spread, StringType, value
 } from 'core/base';
-import { lowerCamelCase, UPPER_CASE, UpperCamelCase } from 'core/naming';
-import { appendFile, appendNode } from 'core/print';
+import {lowerCamelCase, UPPER_CASE, UpperCamelCase} from 'core/naming';
+import {appendFile, appendNode} from 'core/print';
 import {
     BracketsTerm, ComposedTerm, DataTypeTerm, KeywordTerm, MethodTerm, resolveSyntaxByName, Term
 } from 'css-syntax-parser';
-import { ColorsData } from 'data/colors';
-import { Mdn } from 'data/mdn';
-import { PropertiesData } from 'data/properties';
-import * as ts from 'typescript';
+import {ColorsData} from 'data/colors';
+import {Mdn} from 'data/mdn';
+import {PropertiesData} from 'data/properties';
 
 const numsId = id('nums');
 const numsType = array(NumberType);
@@ -22,29 +21,22 @@ const paramsType = array(ParamType);
  * Generates the Emotive object corresponding to the specified CSS property
  * @param cssProperty the CSS property name (e.g. 'text-align')
  */
-function genProperty(cssProperty: string): ts.Identifier {
+function genProperty(cssProperty: string): Id {
 
     const jsName = lowerCamelCase(cssProperty); // (e.g. textAlign)
     const EmotiveName = UpperCamelCase(cssProperty); // (e.g. TextAlign)
     const innerPropertyName = '_' + EmotiveName; // (e.g. _TextAlign)
 
-    const attributes: { [id: string]: ts.Expression } = {};
+    const propertyAttributes: { [id: string]: Expr } = {};
 
     const genSet = () => {
-        attributes['set'] = arrow(
+        propertyAttributes['set'] = arrow(
             [
-                ts.createParameter(
-                    [],
-                    [],
-                    DotDotDotToken,
-                    paramsId,
-                    undefined,
-                    paramsType
-                )
+                param(paramsId, paramsType, true)
             ],
             SheetType,
-            ts.createObjectLiteral([
-                ts.createPropertyAssignment(jsName, call(buildPropertyId, paramsId))
+            obj([
+                assign(jsName, call(buildPropertyId, paramsId))
             ])
         );
     };
@@ -52,9 +44,9 @@ function genProperty(cssProperty: string): ts.Identifier {
     const genKeyword = (cssValue: string) => {
         try {
             const emotiveValue = UPPER_CASE(cssValue);
-            if (!attributes.hasOwnProperty(emotiveValue)) {
-                attributes[emotiveValue] = ts.createObjectLiteral([
-                    ts.createPropertyAssignment(jsName, value(cssValue))
+            if (!propertyAttributes.hasOwnProperty(emotiveValue)) {
+                propertyAttributes[emotiveValue] = obj([
+                    assign(jsName, value(cssValue))
                 ]);
             }
         }
@@ -66,21 +58,14 @@ function genProperty(cssProperty: string): ts.Identifier {
     const genMethod = (cssName: string) => {
         try {
             const emotiveValue = lowerCamelCase(cssName);
-            if (!attributes.hasOwnProperty(emotiveValue)) {
-                attributes[emotiveValue] = arrow(
+            if (!propertyAttributes.hasOwnProperty(emotiveValue)) {
+                propertyAttributes[emotiveValue] = arrow(
                     [
-                        ts.createParameter(
-                            [],
-                            [],
-                            DotDotDotToken,
-                            paramsId,
-                            undefined,
-                            paramsType
-                        )
+                        param(paramsId, paramsType, true)
                     ],
                     SheetType,
-                    ts.createObjectLiteral([
-                        ts.createPropertyAssignment(jsName, call(access(id('Method'), emotiveValue), ts.createSpread(paramsId)))
+                    obj([
+                        assign(jsName, call(access(id('Method'), emotiveValue), spread(paramsId)))
                     ])
                 );
             }
@@ -96,65 +81,37 @@ function genProperty(cssProperty: string): ts.Identifier {
     const hexa = 'hexa';
 
     const genColorMethods = () => {
-        attributes[hex] = arrow(
+        propertyAttributes[hex] = arrow(
             [
-                ts.createParameter(
-                    [],
-                    [],
-                    undefined,
-                    codeId,
-                    undefined,
-                    StringType
-                )
+                param(codeId, StringType)
             ],
             SheetType,
-            ts.createObjectLiteral([
-                ts.createPropertyAssignment(jsName, call(access(id('Method'), hex), codeId))
+            obj([
+                assign(jsName, call(access(id('Method'), hex), codeId))
             ])
         );
-        attributes[hexa] = arrow(
+        propertyAttributes[hexa] = arrow(
             [
-                ts.createParameter(
-                    [],
-                    [],
-                    undefined,
-                    codeId,
-                    undefined,
-                    StringType
-                ),
-                ts.createParameter(
-                    [],
-                    [],
-                    undefined,
-                    alphaId,
-                    undefined,
-                    NumberType
-                )
+                param(codeId, StringType),
+                param(alphaId, NumberType),
             ],
             SheetType,
-            ts.createObjectLiteral([
-                ts.createPropertyAssignment(jsName, call(access(id('Method'), hexa), codeId, alphaId))
+            obj([
+                assign(jsName, call(access(id('Method'), hexa), codeId, alphaId))
             ])
         );
     };
 
     const genUnit = (datatype: string, unit: string) => {
         try {
-            if (!attributes.hasOwnProperty(unit)) {
-                attributes[unit] = arrow(
+            if (!propertyAttributes.hasOwnProperty(unit)) {
+                propertyAttributes[unit] = arrow(
                     [
-                        ts.createParameter(
-                            [],
-                            [],
-                            DotDotDotToken,
-                            numsId,
-                            undefined,
-                            numsType
-                        )
+                        param(numsId, numsType, true)
                     ],
                     SheetType,
-                    ts.createObjectLiteral([
-                        ts.createPropertyAssignment(jsName, call(access(id(datatype), unit), ts.createSpread(numsId)))
+                    obj([
+                        assign(jsName, call(access(id(datatype), unit), spread(numsId)))
                     ])
                 );
             }
@@ -164,7 +121,7 @@ function genProperty(cssProperty: string): ts.Identifier {
         }
     };
 
-    const extractFromTerm = (term: Term, extracted: { [id: string]: ts.Expression }) => {
+    const extractFromTerm = (term: Term, extracted: { [id: string]: Expr }) => {
 
         if (term instanceof ComposedTerm) {
             term.children.map(child => extractFromTerm(child, extracted));
@@ -216,23 +173,13 @@ function genProperty(cssProperty: string): ts.Identifier {
     const term = resolveSyntaxByName(cssProperty, true);
 
     genSet();
-    extractFromTerm(term, attributes);
+    extractFromTerm(term, propertyAttributes);
 
     const propertyId = id(innerPropertyName);
-    const property = ts.createVariableStatement(
-        [],
-        ts.createVariableDeclarationList(
-            [
-                ts.createVariableDeclaration(
-                    propertyId,
-                    undefined,
-                    ts.createObjectLiteral(
-                        Object.keys(attributes).map(name => ts.createPropertyAssignment(name, attributes[name])),
-                        false
-                    )
-                )
-            ],
-            ts.NodeFlags.Const
+    const property = constant(
+        propertyId,
+        obj(
+            Object.keys(propertyAttributes).map(name => assign(name, propertyAttributes[name]))
         )
     );
 
@@ -242,7 +189,7 @@ function genProperty(cssProperty: string): ts.Identifier {
 
 export function genCss() {
 
-    const elements: { [name: string]: ts.Identifier } = {};
+    const elements: { [name: string]: Id } = {};
 
     // sheet
     appendFile('./src/properties/sheet.ts');
@@ -265,21 +212,12 @@ export function genCss() {
         });
 
     const cssId = id('Css');
-    const css = ts.createVariableStatement(
-        [ExportModifier],
-        ts.createVariableDeclarationList(
-            [
-                ts.createVariableDeclaration(
-                    cssId,
-                    undefined,
-                    ts.createObjectLiteral(
-                        Object.keys(elements).sort().map(name => ts.createPropertyAssignment(name, elements[name])),
-                        false
-                    )
-                )
-            ],
-            ts.NodeFlags.Const
-        )
+    const css = constant(
+        cssId,
+        obj(
+            Object.keys(elements).sort().map(name => assign(name, elements[name])),
+        ),
+        true
     );
 
     appendNode(css);

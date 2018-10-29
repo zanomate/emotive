@@ -12,8 +12,8 @@
     "build:esm": "tsc --module es2015 --target es5 --outDir dist build/emotive.ts && shx mv dist/emotive.js dist/emotive.esm.js",
     "build:cjs": "tsc --module commonjs --target es5 --outDir dist --declaration --declarationDir dist build/emotive.ts && shx mv dist/emotive.js dist/emotive.cjs.js",
     "build:umd": "rollup dist/emotive.esm.js --format umd --name emotive --file dist/emotive.umd.js",
-    "cp": "shx cp build/package.json dist/package.json",
-    "all": "npm run clean && npm run gen && npm run build"
+    "cp": "shx cp build/package.json dist/package.json && shx cp README.md dist/README.md",
+    "all": "npm run clean && npm run gen && npm run build && npm run cp"
   },
   "devDependencies": {
     "@types/node": "^10.12.0",

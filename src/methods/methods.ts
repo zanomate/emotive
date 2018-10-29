@@ -1,10 +1,10 @@
 import {
-    array, arrow, block, buildMethodId, call, DotDotDotToken, ExportModifier, id, ParamType, ret, StringType, value
+    array, arrow, assign, block, buildMethodId, call, constant, id, obj, param, ParamType, ret, StringType, value
 } from 'core/base';
-import { lowerCamelCase } from 'core/naming';
-import { appendFile, appendNode } from 'core/print';
-import resolveSyntax, { BracketsTerm, ComposedTerm, MethodTerm, Term } from 'css-syntax-parser';
-import { Mdn } from 'data/mdn';
+import {lowerCamelCase} from 'core/naming';
+import {appendFile, appendNode} from 'core/print';
+import resolveSyntax, {BracketsTerm, ComposedTerm, MethodTerm, Term} from 'css-syntax-parser';
+import {Mdn} from 'data/mdn';
 import * as ts from 'typescript';
 
 export function genMethods() {
@@ -67,14 +67,7 @@ export function genMethods() {
                             methodId,
                             undefined,
                             arrow(
-                                [ts.createParameter(
-                                    [],
-                                    [],
-                                    DotDotDotToken,
-                                    paramsId,
-                                    undefined,
-                                    paramsType
-                                )],
+                                [param(paramsId, paramsType, true)],
                                 StringType,
                                 block(ret(call(buildMethodId, value(methodName), paramsId)))
                             )
@@ -97,25 +90,15 @@ export function genMethods() {
     methods['hexa'] = id('_hexa');
 
     const methodContainerId = id('Method');
-    const methodContainer = ts.createVariableStatement(
-        [ExportModifier],
-        ts.createVariableDeclarationList(
-            [
-                ts.createVariableDeclaration(
-                    methodContainerId,
-                    undefined,
-                    ts.createObjectLiteral(
-                        Object.keys(methods).sort().map(methodName => ts.createPropertyAssignment(
-                            methodName,
-                            methods[methodName]
-                        )),
-                        true
-                    )
-                )
-            ],
-            ts.NodeFlags.Const
-        )
+    const methodContainer = constant(
+        methodContainerId,
+        obj(
+            Object.keys(methods).sort().map(methodName => assign(
+                methodName,
+                methods[methodName]
+            ))
+        ),
+        true
     );
-
     appendNode(methodContainer);
 }
