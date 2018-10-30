@@ -1,10 +1,9 @@
-
-**IMPORTANT: This is only a draft. The module is still in development**
-Actual version: 0.5
-
-
 # Emotive
 Dynamic ***"css in js"*** without interpolation or language injection.
+
+[![npm version](https://badge.fury.io/js/emotive.svg)](https://badge.fury.io/js/emotive)
+
+[![npm version](http://img.badgesize.io/https://unpkg.com/emotive/emotive.umd.js?label=umd%20size)](http://img.badgesize.io/https://unpkg.com/emotion/dist/emotion.umd.min.js?label=core%20size)
 
 ```js
 let myStyle = Css.sheet(
@@ -13,38 +12,36 @@ let myStyle = Css.sheet(
 	Css.Width.px(80),
 	Css.Height.AUTO,
 	Css.Margin.px(20,10,10),
-	Css.Border.solid(Size.px(1), BLACK),
+	Css.Border.set(Length.px(1), Keyword.SOLID, Keyword.BLACK),
 	Css.Position.ABSOLUTE,
 	Css.Top.cm(50),
-	Css.Left.calc(Size.x(50), Size.px(-40))
+	Css.Left.calc(Length.X(50), Length.px(-40))
 );
 ```
 this code is equivalent to JS object:
 ```js
 let myStyle = {
-	display: 'block';
-	fontSize: '10em';
-	width: '80px';
-	height: 'auto';
-	margin: '20px 10px 10px';
-	border: '1px solid black';
-	position: 'absolute';
-	top: '50cm';
-	left: 'calc(50% + -40px)';
+	display: 'block',
+	fontSize: '10em',
+	width: '80px',
+	height: 'auto',
+	margin: '20px 10px 10px',
+	border: '1px solid black',
+	position: 'absolute',
+	top: '50cm',
+	left: 'calc(50% + -40px)'
 };
 ```
 
 ## Install
 
 Install with [Npm](https://www.npmjs.com/package/emotive)
-
-```
+```sh
 npm install --save emotive
 ```
 
 or [Yarn](https://yarnpkg.com/en/package/emotive)
-
-```
+```sh
 yarn add emotive
 ```
 
@@ -100,7 +97,7 @@ This does not mean you cannot use Emotive in any other Javascript context.
 Write styles with Emotive is easy. You know CSS, you know Emotive too.
 In most cases it's enough to import the generic `Css` object and use the `sheet()` method to compose your styles:
 ```js
-import Css from 'emotive';
+import {Css} from 'emotive';
 
 let fooStyle = Css.sheet(
 	Css.Display.BLOCK,        // display: flex;
@@ -120,7 +117,7 @@ let fooStyle = Css.sheet(
 | `border-top-width` | `Css.BorderTopWidth` |
 | `z-index` | `Css.ZIndex` |
 
-As a general rule, use `<property>.set()` to manually populate the corresponding property value. Remember: it doesn't matter how many parameters you use; Emotive will concat them putting a space in between. Strings and numbers are both accepted and completely interchangeable.
+As a general rule, use `<property>.set()` to manually populate the corresponding property value. **Remember: it doesn't matter how many parameters you use; Emotive will concat them putting a space in between. Strings and numbers are both accepted and completely interchangeable.**
 
 ```js
 // these sentences are equivalent
@@ -166,7 +163,7 @@ Also, all constants are always avaiable inside some JS container:
 
 You may need to use some CSS constant to populate complex properties, such as `border` shorthand property.
 ```js
-import Css, { Color, Keyword, Unit } from 'emotive';
+import {Css, Color, Keyword, Unit } from 'emotive';
 
 // these sentences are equivalent
 Css.Border.set('1px solid black')
@@ -179,36 +176,36 @@ But there's easier ways to achieve the same result. Just keep reading.
 
 | Emotive object | Methods |
 | --- | --- |
-| `Size` | `px()`, `rem()`,`cm()`, ...  |
+| `Length` | `px()`, `rem()`,`cm()`, ...  |
 | `Angle` | `deg()`, `rad()`, `grad()`, ... |
 | `Time` | `s()`, `ms()` |
 | `Frequency` | `Hz()`, `kHz()` |
 | `Resolution` | `dpi()`, `dpcm()`, `dppx()` |
 
-The only exception is the **percentage unit** that is avaiable too, but with the name of `x()`, under the `Size` object.
+The only exception is the **percentage unit** that is avaiable too, but with the name of `X()`, under the `Length` object.
 
 Values passed to these methods will be concatenated and the unit symbol is appended at the end of each.
 ```js
-import Css, { Size, Time } from 'emotive';
+import {Css, Length, Time} from 'emotive';
 
-Size.cm(10) // 10cm
+Length.cm(10) // 10cm
 Time.s(10) // 10s
-Size.x(50) // 50%
+Length.X(50) // 50%
 
-Size.px(20, 10, 15) // 20px 10px 15px
+Length.px(20, 10, 15) // 20px 10px 15px
 Time.ms(200, 400) // 200ms 400ms
-Size.x(50, 20) // 50% 20%
+Length.X(50, 20) // 50% 20%
 ```
 ### Unit shorthands
 Using these methods directly could make properties more difficult to write. For this reason, every emotive property object has a set of **specific sub-methods** (depending on the property data-type) that automatically applies the corresponding unit to all the passed arguments:
 ```js
 // these sentences are equivalent
-Css.Padding.set(Size.x(50, 20))
-Css.Padding.x(50,20)
+Css.Padding.set(Length.X(50, 20))
+Css.Padding.X(50,20)
 
 // other examples
 Css.Margin.cm(2,5,2,4) // margin: 2cm 5cm 2cm 4cm;
-Css.Top.x(50) // top: 50%
+Css.Top.X(50) // top: 50%
 Css.BorderSize.px(1) // border-size: 1px
 ```
 
@@ -226,7 +223,7 @@ Css.Transition.set(['width 2s ease', 'height 1s linear'])
 even with shorthands properties: 
 
 ```js
-Css.Font.set(Size.em(1.2), Keyword.SOLID, ['"Sans Extrabold"', 'sans-serif'])
+Css.Font.set(Length.em(1.2), Keyword.BOLDER, ['"Sans Extrabold"', 'sans-serif'])
 // font: 1.2em bolder "Sans Extrabold", sans-serif;
 ```
 
@@ -254,8 +251,8 @@ Again, you can use ***arrays*** to specify complex parameter (composed by many a
 
 ```js
 Method.linearGradient(Keyword.TO_TOP_LEFT,
-	[Color.BLUE, Size.x(50)],
-	[Color.WHITE, Size.x(30)]
+	[Color.BLUE, Length.X(50)],
+	[Color.WHITE, Length.X(30)]
 )
 // background: linear-gradient(to top left, blue 50%, white 30%);
 ```
@@ -268,56 +265,46 @@ As for all the other methods, CSS' `calc()` has its own corresponding in Emotive
 By default, passed parameters are summed together:
 
 ```js
-Method.calc(Size.x(50), Size.px(20)) // calc(50% + 20px)
+Method.calc(Length.X(50), Length.px(20)) // calc(50% + 20px)
 
 const customSize = 20;
-Method.calc(Size.x(50), Size.px(15), Size.em(customSize)) // calc(50% + 15px + 20em)
+Method.calc(Length.X(50), Length.px(15), Length.em(customSize)) // calc(50% + 15px + 20em)
 ```
 
 First-level multiplications with constants can be made Javascript-side:
 
 ```js
 const customSize = 20;
-Method.calc(Size.px(15), Size.em(2*customSize)) // calc(15px + 40em)
+Method.calc(Length.px(15), Length.em(2*customSize)) // calc(15px + 40em)
 ```
 
 Subtractions can be written by simply negate the value to subtract:
 
 ```js
-Method.calc(Size.x(50), Size.px(-20)) // calc(50% + -20px)
+Method.calc(Length.X(50), Length.px(-20)) // calc(50% + -20px)
 
 const size1 = 20;
-Method.calc(Size.x(50), Size.px(-size1)) // calc(50% + -20px)
+Method.calc(Length.X(50), Length.px(-size1)) // calc(50% + -20px)
 
 // WRONG!
-const size2 = Size.px(20);
-Method.calc(Size.x(50), -size2) // you cannot negate a string!
+const size2 = Length.px(20);
+Method.calc(Length.X(50), -size2) // you cannot negate a string!
 ```
 
-Any more complex formula can be written in two different ways:
-- Using additional `add(), sub(), mul()` and `div()` methods:
-	```js
-	const size = Size.px(20);
+Any more complex formula can be written using **arrays**; parameters passed inside an array are multiplied together:
+```js
+Method.calc([Length.px(50), 2]) // calc(50px * 2)
 
-	Method.calc(Method.div(size, 2)) // calc(20px / 2)
+Method.calc(Length.px(50), [Length.px(20), 2]) // calc(50% + (20px * 2))
 
-	Method.calc(Method.div(Method.add(Size.x(50), size), 2)) // calc((50% + 20px) / 2)
-	```
-- Using **arrays**. This approach is reccomended due to its easy writing.
-	Parameters passed inside an array are multiplied together:
-	```js
-	Method.calc([Size.px(50), 2]) // calc(50px * 2)
+Method.calc([Length.px(50), .5], [Length.px(-20), 2]) // calc((50% * .5) + (-20px * 2))
+```
+As usual, parameters passed into **nested arrays** restore default behavior, letting arguments to be summed toghether, and so on:
+```js
+Method.calc([[Length.X(50), Length.px(-20)], 2])) // calc((50px + -20px) * 2)
 
-	Method.calc(Size.px(50), [Size.px(20), 2]) // calc(50% + (20px * 2))
-
-	Method.calc([Size.px(50), .5], [Size.px(-20), 2]) // calc((50% * .5) + (-20px * 2))
-	```
-	As usual, parameters passed into **nested arrays** restore default behavior, letting arguments to be summed toghether, and so on:
-	```js
-	Method.calc([[Size.x(50), Size.px(-20)], 2])) // calc((50px + -20px) * 2)
-	
-	Method.calc([[Size.x(50), [2.5, Size.px(-20)]], 2])) // calc((50px + (2.5 * -20px)) * 2)
-	```
+Method.calc([[Length.X(50), [2.5, Length.px(-20)]], 2])) // calc((50px + (2.5 * -20px)) * 2)
+```
 
 **Dont' forget!** If you don't need to use Javascript variables inside it, it is always possible to use custom strings:
 ```js
@@ -353,46 +340,6 @@ Method.hexa(myColor, .25) // #abcdef3f;
 Method.hexa(Color.AQUA, .75) // #abcdefbf;
 ```
 
-
-### Exceptions
-***Some CSS methods use a completely custom notation*** to parse their parameters. It's the case of many of the method used to define *shapes* (`inset()`, `circle()`, `ellipse()`, ...)
-
-
-Let's consider the CSS sample below:
-```css
-// CSS
-clip-path: inset(22% 12% 15px round 5px)
-```
-CSS use the keyword *round* to understand which of the passed parameters defines the shape (`22% 12% 15px`) and which defines border radius (`5px`). Also, differently to the major part of CSS methods, parameters are not separated by commas.
-
-For these reasons, Emotive version of these methods act similar by concatenating arguments with spaces (instead of commas).
-
-```js
-// these sentences are equivalent
-Method.inset('22% 12% 15px round 5px')
-Method.inset(Size.x(22), Size.x(12), Size.px(15), 'round', Size.px(5))
-Method.inset(Size.x(22, 12), Size.px(15), Keyword.ROUND, Size.px(5))
-```
-
-## Work in progress
-
-### Method sub-methods (WIP)
-Emotive methods could sometimes have some sub-methods to automatically specify one of their passed parameters (*lowerCamelCase* notation).
-
-```js
-// these sentences are equivalent
-Method.linearGradient('to top left', 'blue', 'red', 'white')
-Method.linearGradient.toTopLeft('blue', 'red', 'white')
-```
-
-### Method shorthands (WIP)
-As for the constants, also methods could sometimes be called directly from the properties objects:
-```js
-Css.Color.rgb(120,80,10)
-Css.BackgroundColor.hexa(Color.RED, .5)
-Css.BackgroundColor.linearGradient(Keyword.TO_LEFT, Color.GREEN, Color.BLUE)
-Css.ClipPath.inset(Size.x(22, 12), Size.px(15), Keyword.ROUND, Size.px(5))
-```
 
 # Utility
 
