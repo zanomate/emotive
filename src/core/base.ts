@@ -1,14 +1,13 @@
 import * as ts from 'typescript';
 
-// Modifiers
-export const ConstModifier = ts.createModifier(ts.SyntaxKind.ConstKeyword);
-export const StaticModifier = ts.createModifier(ts.SyntaxKind.StaticKeyword);
-export const ExportModifier = ts.createModifier(ts.SyntaxKind.ExportKeyword);
+// Types
+export type Id = ts.Identifier;
+export type Expr = ts.Expression;
 
-// Tokens
-export const DotDotDotToken = ts.createToken(ts.SyntaxKind.DotDotDotToken);
-export const QuestionToken = ts.createToken(ts.SyntaxKind.QuestionToken);
-export const ColonToken = ts.createToken(ts.SyntaxKind.ColonToken);
+// Modifiers
+// export const ConstModifier = ts.createModifier(ts.SyntaxKind.ConstKeyword);
+// export const StaticModifier = ts.createModifier(ts.SyntaxKind.StaticKeyword);
+// export const ExportModifier = ts.createModifier(ts.SyntaxKind.ExportKeyword);
 
 // Base
 
@@ -43,13 +42,17 @@ export function call(expression: ts.Expression, ...args: ts.Expression[]): ts.Ca
     return ts.createCall(expression, [], args);
 }
 
-export function ifThen(condition: ts.Expression, thenStatement: ts.Statement, elseStatement?: ts.Statement) {
-    return ts.createIf(condition, thenStatement, elseStatement);
+export function spread(id: Id) {
+    return ts.createSpread(id);
 }
 
-export function ternary(condition: ts.Expression, whenTrue: ts.Expression, whenFalse: ts.Expression): ts.ConditionalExpression {
-    return ts.createConditional(condition, QuestionToken, whenTrue, ColonToken, whenFalse);
-}
+// export function ifThen(condition: ts.Expression, thenStatement: ts.Statement, elseStatement?: ts.Statement) {
+//     return ts.createIf(condition, thenStatement, elseStatement);
+// }
+//
+// export function ternary(condition: ts.Expression, whenTrue: ts.Expression, whenFalse: ts.Expression): ts.ConditionalExpression {
+//     return ts.createConditional(condition, QuestionToken, whenTrue, ColonToken, whenFalse);
+// }
 
 export function ret(expression: ts.Expression) {
     return ts.createReturn(expression);
@@ -59,32 +62,55 @@ export function arrow(params: ts.ParameterDeclaration[], returnType: ts.TypeNode
     return ts.createArrowFunction([], [], params, returnType, undefined, body);
 }
 
-export function add(head: ts.Expression, ...tail: ts.Expression[]): ts.Expression {
-    if (tail.length) {
-        ts.createBinary(head, ts.SyntaxKind.PlusToken, add(tail[0], ...tail.slice(1)));
-    }
-    return head;
+// export function add(head: ts.Expression, ...tail: ts.Expression[]): ts.Expression {
+//     if (tail.length) {
+//         ts.createBinary(head, ts.SyntaxKind.PlusToken, add(tail[0], ...tail.slice(1)));
+//     }
+//     return head;
+// }
+//
+// export function sub(head: ts.Expression, ...tail: ts.Expression[]): ts.Expression {
+//     if (tail.length) {
+//         ts.createBinary(head, ts.SyntaxKind.MinusToken, sub(tail[0], ...tail.slice(1)));
+//     }
+//     return head;
+// }
+//
+// export function mul(head: ts.Expression, ...tail: ts.Expression[]): ts.Expression {
+//     if (tail.length) {
+//         ts.createBinary(head, ts.SyntaxKind.AsteriskToken, mul(tail[0], ...tail.slice(1)));
+//     }
+//     return head;
+// }
+
+export function param(id: ts.Identifier, type: ts.TypeNode, dotDotDot: boolean = false) {
+    return ts.createParameter(
+        [],
+        [],
+        dotDotDot ? ts.createToken(ts.SyntaxKind.DotDotDotToken) : undefined,
+        id,
+        undefined,
+        type
+    );
 }
 
-export function sub(head: ts.Expression, ...tail: ts.Expression[]): ts.Expression {
-    if (tail.length) {
-        ts.createBinary(head, ts.SyntaxKind.MinusToken, sub(tail[0], ...tail.slice(1)));
-    }
-    return head;
+export function assign(name: string, expression: ts.Expression) {
+    return ts.createPropertyAssignment(name, expression);
 }
 
-export function mul(head: ts.Expression, ...tail: ts.Expression[]): ts.Expression {
-    if (tail.length) {
-        ts.createBinary(head, ts.SyntaxKind.AsteriskToken, mul(tail[0], ...tail.slice(1)));
-    }
-    return head;
+export function obj(assignments: ts.PropertyAssignment[]) {
+    return ts.createObjectLiteral(assignments)
 }
 
-export function div(head: ts.Expression, ...tail: ts.Expression[]): ts.Expression {
-    if (tail.length) {
-        ts.createBinary(head, ts.SyntaxKind.SlashToken, div(tail[0], ...tail.slice(1)));
-    }
-    return head;
+export function constant(id: Id, expression: Expr, didExport: boolean = false) {
+    const modifiers = didExport ? [ts.createModifier(ts.SyntaxKind.ExportKeyword)] : [];
+    return ts.createVariableStatement(
+        modifiers,
+        ts.createVariableDeclarationList(
+            [ts.createVariableDeclaration(id, undefined, expression)],
+            ts.NodeFlags.Const
+        )
+    );
 }
 
 // Basic Types
@@ -101,10 +127,5 @@ export const SheetType = ref(SheetId);
 // Factory
 
 export const buildDatatypeId = id('buildDatatype');
-export const buildDatatypeMethod = ref(buildDatatypeId);
-
 export const buildMethodId = id('buildMethod');
-export const buildMethodMethod = ref(buildMethodId);
-
 export const buildPropertyId = id('buildProperty');
-export const buildPropertyMethod = ref(buildPropertyId);

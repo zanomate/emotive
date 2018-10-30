@@ -1,8 +1,7 @@
-import { ExportModifier, id, value } from 'core/base';
-import { UPPER_CASE } from 'core/naming';
-import { appendNode } from 'core/print';
-import { Mdn } from 'data/mdn';
-import * as ts from 'typescript';
+import {assign, constant, id, obj, value} from 'core/base';
+import {UPPER_CASE} from 'core/naming';
+import {appendNode} from 'core/print';
+import {Mdn} from 'data/mdn';
 
 export function genUnit() {
 
@@ -15,24 +14,15 @@ export function genUnit() {
     Mdn.Types.Time.map(unit => units[unit] = unit);
 
     const unitId = id('Unit');
-    const unit = ts.createVariableStatement(
-        [ExportModifier],
-        ts.createVariableDeclarationList(
-            [
-                ts.createVariableDeclaration(
-                    unitId,
-                    undefined,
-                    ts.createObjectLiteral(
-                        Object.keys(units).sort().map(unitName => ts.createPropertyAssignment(
-                            UPPER_CASE(unitName),
-                            value(units[unitName])
-                        )),
-                        false
-                    )
-                )
-            ],
-            ts.NodeFlags.Const
-        )
+    const unit = constant(
+        unitId,
+        obj(
+            Object.keys(units).sort().map(unitName => assign(
+                UPPER_CASE(unitName),
+                value(units[unitName])
+            ))
+        ),
+        true
     );
 
     appendNode(unit);

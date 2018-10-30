@@ -1,10 +1,8 @@
 import {
-    array, arrow, block, buildDatatypeId, call, DotDotDotToken, ExportModifier, id, NumberType, ret, StringType, value
+    array, arrow, assign, block, buildDatatypeId, call, constant, id, NumberType, obj, param, ret, StringType, value
 } from 'core/base';
-import { appendNode } from 'core/print';
-import { Mdn } from 'data/mdn';
-import * as ts from 'typescript';
-
+import {appendNode} from 'core/print';
+import {Mdn} from 'data/mdn';
 
 function genDatatype(datatypeName: string, listOfUnits: string[]) {
 
@@ -20,35 +18,19 @@ function genDatatype(datatypeName: string, listOfUnits: string[]) {
     const paramsType = array(NumberType);
 
     const datatypeId = id(datatypeName);
-    const datatype = ts.createVariableStatement(
-        [ExportModifier],
-        ts.createVariableDeclarationList(
-            [
-                ts.createVariableDeclaration(
-                    datatypeId,
-                    undefined,
-                    ts.createObjectLiteral(
-                        Object.keys(units).sort().map(unitName => ts.createPropertyAssignment(
-                            unitName,
-                            arrow(
-                                [ts.createParameter(
-                                    [],
-                                    [],
-                                    DotDotDotToken,
-                                    paramsId,
-                                    undefined,
-                                    paramsType
-                                )],
-                                StringType,
-                                block(ret(call(buildDatatypeId, value(units[unitName]), paramsId)))
-                            )
-                        )),
-                        false
-                    )
+    const datatype = constant(
+        datatypeId,
+        obj(
+            Object.keys(units).sort().map(unitName => assign(
+                unitName,
+                arrow(
+                    [param(paramsId, paramsType, true)],
+                    StringType,
+                    block(ret(call(buildDatatypeId, value(units[unitName]), paramsId)))
                 )
-            ],
-            ts.NodeFlags.Const
-        )
+            ))
+        ),
+        true
     );
 
     appendNode(datatype);

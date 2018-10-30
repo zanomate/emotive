@@ -1,10 +1,9 @@
-import { ExportModifier, id, value } from 'core/base';
-import { UPPER_CASE } from 'core/naming';
-import { appendNode } from 'core/print';
-import resolveSyntax, { BracketsTerm, ComposedTerm, KeywordTerm, MethodTerm, Term } from 'css-syntax-parser';
-import { Mdn } from 'data/mdn';
-import { PropertiesData } from 'data/properties';
-import * as ts from 'typescript';
+import {assign, constant, id, obj, value} from 'core/base';
+import {UPPER_CASE} from 'core/naming';
+import {appendNode} from 'core/print';
+import resolveSyntax, {BracketsTerm, ComposedTerm, KeywordTerm, MethodTerm, Term} from 'css-syntax-parser';
+import {Mdn} from 'data/mdn';
+import {PropertiesData} from 'data/properties';
 
 export function genKeyword() {
 
@@ -40,42 +39,32 @@ export function genKeyword() {
     });
 
     const keywordId = id('Keyword');
-    const keyword = ts.createVariableStatement(
-        [ExportModifier],
-        ts.createVariableDeclarationList(
-            [
-                ts.createVariableDeclaration(
-                    keywordId,
-                    undefined,
-                    ts.createObjectLiteral(
-                        PropertiesData
-                            .filter(keywordName => {
-                                try {
-                                    UPPER_CASE(keywordName);
-                                }
-                                catch (e) {
-                                    console.warn('Unable to create keyword for', keywordName);
-                                    return false;
-                                }
-                                return true;
-                            })
-                            .sort()
-                            .map(keywordName => {
-                                let constantName = UPPER_CASE(keywordName);
-                                if (/^[A-Z]/.test(keywordName)) {
-                                    constantName = '_' + constantName;
-                                }
-                                return ts.createPropertyAssignment(
-                                    constantName,
-                                    value(keywordName)
-                                )
-                            }),
-                        false
+    const keyword = constant(keywordId,
+        obj(
+            PropertiesData
+                .filter(keywordName => {
+                    try {
+                        UPPER_CASE(keywordName);
+                    }
+                    catch (e) {
+                        console.warn('Unable to create keyword for', keywordName);
+                        return false;
+                    }
+                    return true;
+                })
+                .sort()
+                .map(keywordName => {
+                    let constantName = UPPER_CASE(keywordName);
+                    if (/^[A-Z]/.test(keywordName)) {
+                        constantName = '_' + constantName;
+                    }
+                    return assign(
+                        constantName,
+                        value(keywordName)
                     )
-                )
-            ],
-            ts.NodeFlags.Const
-        )
+                })
+        ),
+        true
     );
 
     appendNode(keyword);
