@@ -2,14 +2,15 @@ import {
     access, array, arrow, assign, buildPropertyId, call, constant, Expr, Id, id, NumberType, obj, param, ParamType,
     SheetType, spread, StringType, value
 } from 'core/base';
-import {lowerCamelCase, UPPER_CASE, UpperCamelCase} from 'core/naming';
-import {appendFile, appendNode} from 'core/print';
+import { lowerCamelCase, UPPER_CASE, UpperCamelCase } from 'core/naming';
+import { appendFile, appendNode } from 'core/print';
 import {
     BracketsTerm, ComposedTerm, DataTypeTerm, KeywordTerm, MethodTerm, resolveSyntaxByName, Term
 } from 'css-syntax-parser';
-import {ColorsData} from 'data/colors';
-import {Mdn} from 'data/mdn';
-import {PropertiesData} from 'data/properties';
+import { ColorsData } from 'data/colors';
+import { Mdn } from 'data/mdn';
+import { PropertiesData } from 'data/properties';
+import * as ts from 'typescript';
 
 const numsId = id('nums');
 const numsType = array(NumberType);
@@ -93,7 +94,7 @@ function genProperty(cssProperty: string): Id {
         propertyAttributes[hexa] = arrow(
             [
                 param(codeId, StringType),
-                param(alphaId, NumberType),
+                param(alphaId, NumberType)
             ],
             SheetType,
             obj([
@@ -215,10 +216,12 @@ export function genCss() {
     const css = constant(
         cssId,
         obj(
-            Object.keys(elements).sort().map(name => assign(name, elements[name])),
+            Object.keys(elements).sort().map(name => assign(name, elements[name]))
         ),
         true
     );
-
     appendNode(css);
+
+    const defaultExport = ts.createExportDefault(cssId);
+    appendNode(defaultExport);
 }
