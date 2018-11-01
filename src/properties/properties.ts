@@ -1,15 +1,15 @@
 import {
     access, array, arrow, assign, buildPropertyId, call, constant, Expr, Id, id, NumberType, obj, param, ParamType,
-    SheetType, spread, StringType, value
+    SheetType, spread, StringType, This, value
 } from 'core/base';
-import { lowerCamelCase, UPPER_CASE, UpperCamelCase } from 'core/naming';
-import { appendFile, appendNode } from 'core/print';
+import {lowerCamelCase, UPPER_CASE, UpperCamelCase} from 'core/naming';
+import {appendFile, appendNode} from 'core/print';
 import {
     BracketsTerm, ComposedTerm, DataTypeTerm, KeywordTerm, MethodTerm, resolveSyntaxByName, Term
 } from 'css-syntax-parser';
-import { ColorsData } from 'data/colors';
-import { Mdn } from 'data/mdn';
-import { PropertiesData } from 'data/properties';
+import {ColorsData} from 'data/colors';
+import {Mdn} from 'data/mdn';
+import {PropertiesData} from 'data/properties';
 import * as ts from 'typescript';
 
 const numsId = id('nums');
@@ -30,7 +30,7 @@ function genProperty(cssProperty: string): Id {
 
     const propertyAttributes: { [id: string]: Expr } = {};
 
-    const genSet = () => {
+    const genSetMethod = () => {
         propertyAttributes['set'] = arrow(
             [
                 param(paramsId, paramsType, true)
@@ -42,13 +42,11 @@ function genProperty(cssProperty: string): Id {
         );
     };
 
-    const genKeyword = (cssValue: string) => {
+    const genConstant = (cssValue: string) => {
         try {
             const emotiveValue = UPPER_CASE(cssValue);
             if (!propertyAttributes.hasOwnProperty(emotiveValue)) {
-                propertyAttributes[emotiveValue] = obj([
-                    assign(jsName, value(cssValue))
-                ]);
+                propertyAttributes[emotiveValue] = call(access(This, 'set'), value(cssValue));
             }
         }
         catch (e) {
@@ -65,9 +63,7 @@ function genProperty(cssProperty: string): Id {
                         param(paramsId, paramsType, true)
                     ],
                     SheetType,
-                    obj([
-                        assign(jsName, call(access(id('Method'), emotiveValue), spread(paramsId)))
-                    ])
+                    call(access(This, 'set'), call(access(id('Method'), emotiveValue), spread(paramsId)))
                 );
             }
         }
@@ -97,9 +93,7 @@ function genProperty(cssProperty: string): Id {
                 param(alphaId, NumberType)
             ],
             SheetType,
-            obj([
-                assign(jsName, call(access(id('Method'), hexa), codeId, alphaId))
-            ])
+            call(access(This, 'set'), call(access(id('Method'), hexa), codeId, alphaId))
         );
     };
 
@@ -111,9 +105,7 @@ function genProperty(cssProperty: string): Id {
                         param(numsId, numsType, true)
                     ],
                     SheetType,
-                    obj([
-                        assign(jsName, call(access(id(datatype), unit), spread(numsId)))
-                    ])
+                    call(access(This, 'set'), call(access(id(datatype), unit), spread(numsId)))
                 );
             }
         }
@@ -137,7 +129,7 @@ function genProperty(cssProperty: string): Id {
             }
         }
         else if (term instanceof KeywordTerm) {
-            genKeyword((<KeywordTerm>term)._value);
+            genConstant((<KeywordTerm>term)._value);
         }
         else if (term instanceof DataTypeTerm) {
             const name = (<DataTypeTerm>term).name;
@@ -160,10 +152,10 @@ function genProperty(cssProperty: string): Id {
                 Mdn.Types.Time.map(unit => genUnit('Time', unit));
             }
             else if (name === 'named-color') {
-                ColorsData.Basic.map(baseColor => genKeyword(baseColor));
+                ColorsData.Basic.map(baseColor => genConstant(baseColor));
             }
             else if (name === 'single-transition-property') {
-                PropertiesData.map(property => genKeyword(property));
+                PropertiesData.map(property => genConstant(property));
             }
             else if ((<DataTypeTerm>term).recursive) {
                 extractFromTerm((<DataTypeTerm>term).recursive, extracted);
@@ -173,7 +165,7 @@ function genProperty(cssProperty: string): Id {
 
     const term = resolveSyntaxByName(cssProperty, true);
 
-    genSet();
+    genSetMethod();
     extractFromTerm(term, propertyAttributes);
 
     const propertyId = id(innerPropertyName);

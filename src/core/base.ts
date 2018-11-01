@@ -8,6 +8,7 @@ export type Expr = ts.Expression;
 // export const ConstModifier = ts.createModifier(ts.SyntaxKind.ConstKeyword);
 // export const StaticModifier = ts.createModifier(ts.SyntaxKind.StaticKeyword);
 // export const ExportModifier = ts.createModifier(ts.SyntaxKind.ExportKeyword);
+export const This = ts.createThis();
 
 // Base
 
