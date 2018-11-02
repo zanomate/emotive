@@ -1,8 +1,4 @@
-#intellij
 .idea
-
-#node
+.rpt2_cache
 node_modules
-
-#build
 dist

@@ -1,6 +1,6 @@
 import {
     access, array, arrow, assign, buildPropertyId, call, constant, Expr, Id, id, NumberType, obj, param, ParamType,
-    SheetType, spread, StringType, This, value
+    SheetType, spread, StringType, value
 } from 'core/base';
 import {lowerCamelCase, UPPER_CASE, UpperCamelCase} from 'core/naming';
 import {appendFile, appendNode} from 'core/print';
@@ -46,7 +46,9 @@ function genProperty(cssProperty: string): Id {
         try {
             const emotiveValue = UPPER_CASE(cssValue);
             if (!propertyAttributes.hasOwnProperty(emotiveValue)) {
-                propertyAttributes[emotiveValue] = call(access(This, 'set'), value(cssValue));
+                propertyAttributes[emotiveValue] = obj([
+                    assign(jsName, value(cssValue))
+                ])
             }
         }
         catch (e) {
@@ -63,7 +65,9 @@ function genProperty(cssProperty: string): Id {
                         param(paramsId, paramsType, true)
                     ],
                     SheetType,
-                    call(access(This, 'set'), call(access(id('Method'), emotiveValue), spread(paramsId)))
+                    obj([
+                        assign(jsName, call(access(id('Method'), emotiveValue), spread(paramsId)))
+                    ])
                 );
             }
         }
@@ -93,7 +97,9 @@ function genProperty(cssProperty: string): Id {
                 param(alphaId, NumberType)
             ],
             SheetType,
-            call(access(This, 'set'), call(access(id('Method'), hexa), codeId, alphaId))
+            obj([
+                assign(jsName, call(access(id('Method'), hexa), codeId, alphaId))
+            ])
         );
     };
 
@@ -105,7 +111,9 @@ function genProperty(cssProperty: string): Id {
                         param(numsId, numsType, true)
                     ],
                     SheetType,
-                    call(access(This, 'set'), call(access(id(datatype), unit), spread(numsId)))
+                    obj([
+                        assign(jsName, call(access(id(datatype), unit), spread(numsId)))
+                    ])
                 );
             }
         }
