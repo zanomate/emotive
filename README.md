@@ -3,7 +3,7 @@ Dynamic ***"css in js"*** without interpolation or language injection.
 
 [![npm version](https://badge.fury.io/js/emotive.svg)](https://badge.fury.io/js/emotive)
 
-[![npm version](http://img.badgesize.io/https://unpkg.com/emotive/emotive.umd.js?label=umd%20size)](http://img.badgesize.io/https://unpkg.com/emotion/dist/emotion.umd.min.js?label=core%20size)
+[![npm version](http://img.badgesize.io/https://unpkg.com/emotive/emotive.js?label=umd%20size)](http://img.badgesize.io/https://unpkg.com/emotive/emotive.js?label=umd%20size)
 
 ```js
 let myStyle = Css.sheet(
@@ -73,19 +73,19 @@ That it means: "No more quotes! No more backticks!".
 
 ## Do I need this?
 Emotive is meant to take full advantage of javascript inline styling; that's the reason why **React** is the best fit framework in which to use this library.
-```jsx
+```js
 import Css from 'emotive';
 
-const fooFontSize = 12;
-const fooColor = '#ffeeee';
+const fontsize = 12;
+const color = '#ffeeee';
 
 let fooStyle = Css.sheet(
-	Css.FontSize.px(fooFontSize),
+	Css.FontSize.px(fontsize),
 	Css.FontWeight.BOLDER,
-	Css.Color.set(fooColor)
+	Css.Color.set(color)
 );
 
-export const fooComponent = (props) => (
+export const FooComponent = (props) => (
 	<span style={fooStyle}>
 		Emotive is COOL!
 	</span>
@@ -93,11 +93,32 @@ export const fooComponent = (props) => (
 ```
 This does not mean you cannot use Emotive in any other Javascript context.
 
+## react-emotive
+The npm [react-emotive](https://www.npmjs.com/package/react-emotive) package provide a wrapper for the React environment to easily create "styled components" with Emotive.
+
+```js
+import Styled from 'react-emotive';
+import Css, {Color} from 'emotive';
+
+const MyComp = Styled.div(
+    Css.Height.px(200),
+    Css.Color.BLUE,
+    Css.FontSize.px(50),
+    props => Css.BackgroundColor.set(props.bgColor)
+);
+
+const OtherComp = (props) => (
+    <MyComp bgColor={Color.RED}>
+        Emotive is cool with React
+    </MyComp>
+);
+```
+
 # Usage
 Write styles with Emotive is easy. You know CSS, you know Emotive too.
 In most cases it's enough to import the generic `Css` object and use the `sheet()` method to compose your styles:
 ```js
-import {Css} from 'emotive';
+import Css from 'emotive';
 
 let fooStyle = Css.sheet(
 	Css.Display.BLOCK,        // display: flex;
@@ -132,7 +153,7 @@ The result of such a calls are JS style objects containing the single populated 
 In fact, they are completely valid styles and can be used as stand-alone single-property sheets.
 ```js
 export const fooComponent = (props) => (
-	<span style={Css.Color.RED}>
+	<span style={Color.RED}>
 		Emotive is COOL!
 	</span>
 );
@@ -167,7 +188,7 @@ import {Css, Color, Keyword, Unit } from 'emotive';
 
 // these sentences are equivalent
 Css.Border.set('1px solid black')
-Css.Border.set(1+Unit.PX, Keyword.SOLID, Color.BLACK)
+Css.Border.set(1 + Unit.PX, Keyword.SOLID, Color.BLACK)
 ```
 But there's easier ways to achieve the same result. Just keep reading.
 
