@@ -371,7 +371,7 @@ Below the complete list of all the importable objects and their content.
 | --- | --- |
 | `Css` | Default export. Property objects. `sheet()` method |
 | `Method` | Methods |
-| `Size` | Length and percentage units methods |
+| `Length` | Length and percentage units methods |
 | `Angle` | Angle units methods |
 | `Time` | Time units methods |
 | `Frequency` | Frequency units methods |
