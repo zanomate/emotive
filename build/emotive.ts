@@ -69,6 +69,9 @@ const buildProperty = (values: Param[]): string => {
         })
     );
 };
+function parenthesis(content: string) {
+    return "(" + content + ")";
+}
 export const Keyword = {
     _ABOVE: "above",
     _ABSOLUTE: "absolute",
@@ -11905,3 +11908,29 @@ export const Css = {
     sheet: _sheet
 };
 export default Css;
+const Width = {
+    set: (value: string): string => parenthesis("width: " + value),
+    AUTO: parenthesis("width: auto"),
+    cap: (num: number): string => parenthesis("width: " + Length.cap(num)),
+    ch: (num: number): string => parenthesis("width: " + Length.ch(num)),
+    em: (num: number): string => parenthesis("width: " + Length.em(num)),
+    ex: (num: number): string => parenthesis("width: " + Length.ex(num)),
+    ic: (num: number): string => parenthesis("width: " + Length.ic(num)),
+    lh: (num: number): string => parenthesis("width: " + Length.lh(num)),
+    rem: (num: number): string => parenthesis("width: " + Length.rem(num)),
+    rlh: (num: number): string => parenthesis("width: " + Length.rlh(num)),
+    vh: (num: number): string => parenthesis("width: " + Length.vh(num)),
+    vw: (num: number): string => parenthesis("width: " + Length.vw(num)),
+    vi: (num: number): string => parenthesis("width: " + Length.vi(num)),
+    vb: (num: number): string => parenthesis("width: " + Length.vb(num)),
+    vmin: (num: number): string => parenthesis("width: " + Length.vmin(num)),
+    vmax: (num: number): string => parenthesis("width: " + Length.vmax(num)),
+    px: (num: number): string => parenthesis("width: " + Length.px(num)),
+    cm: (num: number): string => parenthesis("width: " + Length.cm(num)),
+    mm: (num: number): string => parenthesis("width: " + Length.mm(num)),
+    Q: (num: number): string => parenthesis("width: " + Length.Q(num)),
+    in: (num: number): string => parenthesis("width: " + Length.in(num)),
+    pc: (num: number): string => parenthesis("width: " + Length.pc(num)),
+    pt: (num: number): string => parenthesis("width: " + Length.pt(num)),
+    fr: (num: number): string => parenthesis("width: " + Length.fr(num))
+};

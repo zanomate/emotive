@@ -2,14 +2,14 @@ import {
     access, array, arrow, assign, buildPropertyId, call, constant, Expr, Id, id, NumberType, obj, param, ParamType,
     SheetType, spread, StringType, value
 } from 'core/base';
-import {lowerCamelCase, UPPER_CASE, UpperCamelCase} from 'core/naming';
-import {appendFile, appendNode} from 'core/print';
+import { lowerCamelCase, UPPER_CASE, UpperCamelCase } from 'core/naming';
+import { appendFile, appendNode } from 'core/print';
 import {
     BracketsTerm, ComposedTerm, DataTypeTerm, KeywordTerm, MethodTerm, resolveSyntaxByName, Term
 } from 'css-syntax-parser';
-import {ColorsData} from 'data/colors';
-import {Mdn} from 'data/mdn';
-import {PropertiesData} from 'data/properties';
+import { ColorsData } from 'data/colors';
+import { Mdn } from 'data/mdn';
+import { PropertiesData } from 'data/properties';
 import * as ts from 'typescript';
 
 const numsId = id('nums');
@@ -103,6 +103,10 @@ function genProperty(cssProperty: string): Id {
         );
     };
 
+    const genUnits = (datatype: string) => {
+        Mdn.Types[datatype].map(unit => genUnit(datatype, unit));
+    };
+
     const genUnit = (datatype: string, unit: string) => {
         try {
             if (!propertyAttributes.hasOwnProperty(unit)) {
@@ -142,22 +146,22 @@ function genProperty(cssProperty: string): Id {
         else if (term instanceof DataTypeTerm) {
             const name = (<DataTypeTerm>term).name;
             if (name === 'angle') {
-                Mdn.Types.Angle.map(unit => genUnit('Angle', unit));
+                genUnits('Angle');
             }
             if (name === 'frequency') {
-                Mdn.Types.Frequency.map(unit => genUnit('Frequency', unit));
+                genUnits('Frequency');
             }
             if (name === 'length') {
-                Mdn.Types.Length.map(unit => genUnit('Length', unit));
+                genUnits('Length');
             }
             if (name === 'percentage') {
                 genUnit('Length', 'X');
             }
             if (name === 'resolution') {
-                Mdn.Types.Resolution.map(unit => genUnit('Resolution', unit));
+                genUnits('Resolution');
             }
             else if (name === 'time') {
-                Mdn.Types.Time.map(unit => genUnit('Time', unit));
+                genUnits('Time');
             }
             else if (name === 'named-color') {
                 ColorsData.Basic.map(baseColor => genConstant(baseColor));

@@ -4,10 +4,10 @@ import {
 import {appendNode} from 'core/print';
 import {Mdn} from 'data/mdn';
 
-function genDatatype(datatypeName: string, listOfUnits: string[]) {
+function genDatatype(datatypeName: string) {
 
     let units: { [name: string]: string } = {};
-    listOfUnits.map(unit => {
+    Mdn.Types[datatypeName].map(unit => {
         units[unit] = unit;
     });
     if (datatypeName === 'Length') {
@@ -37,9 +37,9 @@ function genDatatype(datatypeName: string, listOfUnits: string[]) {
 }
 
 export function genDataTypes() {
-    genDatatype('Angle', Mdn.Types.Angle);
-    genDatatype('Frequency', Mdn.Types.Frequency);
-    genDatatype('Length', Mdn.Types.Length);
-    genDatatype('Resolution', Mdn.Types.Resolution);
-    genDatatype('Time', Mdn.Types.Time);
+    genDatatype('Angle');
+    genDatatype('Frequency');
+    genDatatype('Length');
+    genDatatype('Resolution');
+    genDatatype('Time');
 }

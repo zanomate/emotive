@@ -1,7 +1,6 @@
 import babel from 'rollup-plugin-babel';
 import minify from 'rollup-plugin-babel-minify';
 import commonjs from 'rollup-plugin-commonjs';
-import filesize from 'rollup-plugin-filesize';
 import localResolve from 'rollup-plugin-local-resolve';
 import resolve from 'rollup-plugin-node-resolve';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
@@ -32,7 +31,6 @@ export default {
         localResolve(),
         resolve(),
         commonjs(),
-        filesize(),
         minify()
     ],
 };

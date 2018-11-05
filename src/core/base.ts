@@ -63,13 +63,10 @@ export function arrow(params: ts.ParameterDeclaration[], returnType: ts.TypeNode
     return ts.createArrowFunction([], [], params, returnType, undefined, body);
 }
 
-// export function add(head: ts.Expression, ...tail: ts.Expression[]): ts.Expression {
-//     if (tail.length) {
-//         ts.createBinary(head, ts.SyntaxKind.PlusToken, add(tail[0], ...tail.slice(1)));
-//     }
-//     return head;
-// }
-//
+export function add(left: ts.Expression, right: ts.Expression): ts.Expression {
+    return ts.createBinary(left, ts.SyntaxKind.PlusToken, right);
+}
+
 // export function sub(head: ts.Expression, ...tail: ts.Expression[]): ts.Expression {
 //     if (tail.length) {
 //         ts.createBinary(head, ts.SyntaxKind.MinusToken, sub(tail[0], ...tail.slice(1)));
