@@ -8,7 +8,7 @@
       "core/*": ["./core/*"],
       "data/*": ["./data/*"],
       "datatypes/*": ["./datatypes/*"],
-      "mediaquery/*": ["./mediaquery/*"],
+      "query/*": ["./query/*"],
       "methods/*": ["./methods/*"],
       "properties/*": ["./properties/*"]
     },

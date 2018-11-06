@@ -60,9 +60,10 @@ yarn add emotive
 		- [Calculations](#calculations-calc)
 		- [Colors](#colors-hex)
 		- [Exceptions](#exceptions)
-	- [Work in progress](#work-in-progress)
-		- [Method sub-methods](#method-sub-methods-wip)
-		- [Method shorthands](#method-shorthands-wip)
+- [Media Query](#media-query)
+	- [Media Types](#media-types)
+	- [Media Features](#media-features)
+	- [Query Combinators](#query-combinators)
 - [Utility](#utility)
 	- [Import table](#import-table)
 
@@ -361,6 +362,69 @@ Method.hexa(myColor, .25) // #abcdef3f;
 Method.hexa(Color.AQUA, .75) // #abcdefbf;
 ```
 
+# Media Query
+
+Emotive provides a complete set of methods to compose media queries, accessible using the `Query` object.
+
+## Media Types
+
+Every media type is directly accessible as a constant (*UPPER_CASE* notation)
+
+| Emotive constant | Css value |
+| --- | --- |
+| `Query.ALL` | `all` |
+| `Query.SCREEN` | `screen` |
+| `Query.PRINT` | `print` |
+| ... | ... |
+
+## Media Features
+
+Every media feature is directly accessible as an object (*UpperCamelCase* notation)
+The `set()` method is used to assign a value or simply print the feature.
+
+| Emotive method | Css value |
+| --- | --- |
+| `Query.Hover.set()` | `(hover)` |
+| `Query.Width.set('15px')` | `(width: 15px)` |
+| `Query.MinColor.set(10)` | `(min-color: 10)` |
+| ... | ... |
+
+As for any Emotive properties object, Media Features objects provide a set of methods and constants to directly populate them with the corresponding value:
+
+| Emotive method/constants | Css value |
+| --- | --- |
+| `Query.Hover.HOVER` | `(hover: hover)` |
+| `Query.Width.px(15)` | `(width: 15px)` |
+| `Query.Pointer.NONE` | `(pointer: none)` |
+| ... | ... |
+
+Finally, some objects provide a `range()` method, to easily set corresponding `min-` and `max-` features:
+
+```js
+
+Query.MinWidth.set('15px'); // (min-width: 15px)
+Query.MaxWidth.set('500px'); // (min-width: 500px)
+Query.Width.range('15px', '500px'); // ((min-width: 15px) and (min-width: 500px))
+
+// or using unit methods
+Query.Width.range(
+    Length.px(15),
+    Length.px(500)
+)
+```
+
+## Query Combinators
+
+To create more complex query use the combinators methods (*lowerCamelCase* notation):
+
+| Emotive method | Css value |
+| --- | --- |
+| `Query.and(Query.SCREEN, Query.Width.px(15))` | `(screen and (width: 15px))` |
+| `Query.or(Query.SCREEN, Query.PRINTER)` | `(screen, printer)` |
+| `Query.not(Query.Hover)` | `(not (hover))` |
+| `Query.only(Query.PRINTER)` | `(only printer)` |
+| ... | ... |
+
 
 # Utility
 
@@ -369,7 +433,7 @@ Below the complete list of all the importable objects and their content.
 
 | Emotive object | Content |
 | --- | --- |
-| `Css` | Default export. Property objects. `sheet()` method |
+| `Css` | Property objects. `sheet()` method |
 | `Method` | Methods |
 | `Length` | Length and percentage units methods |
 | `Angle` | Angle units methods |
@@ -380,3 +444,4 @@ Below the complete list of all the importable objects and their content.
 | `Color` | Colors constants |
 | `Unit` | Units constants |
 | `Property` | Properties name constants |
+| `Query` | Media Queries |

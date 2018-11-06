@@ -3,12 +3,11 @@ import * as ts from 'typescript';
 // Types
 export type Id = ts.Identifier;
 export type Expr = ts.Expression;
+export type Assign = ts.PropertyAssignment;
 
-// Modifiers
-// export const ConstModifier = ts.createModifier(ts.SyntaxKind.ConstKeyword);
-// export const StaticModifier = ts.createModifier(ts.SyntaxKind.StaticKeyword);
-// export const ExportModifier = ts.createModifier(ts.SyntaxKind.ExportKeyword);
-export const This = ts.createThis();
+export function union(...types: ts.TypeNode[]): ts.UnionTypeNode {
+    return ts.createUnionTypeNode(types);
+}
 
 // Base
 
@@ -47,14 +46,6 @@ export function spread(id: Id) {
     return ts.createSpread(id);
 }
 
-// export function ifThen(condition: ts.Expression, thenStatement: ts.Statement, elseStatement?: ts.Statement) {
-//     return ts.createIf(condition, thenStatement, elseStatement);
-// }
-//
-// export function ternary(condition: ts.Expression, whenTrue: ts.Expression, whenFalse: ts.Expression): ts.ConditionalExpression {
-//     return ts.createConditional(condition, QuestionToken, whenTrue, ColonToken, whenFalse);
-// }
-
 export function ret(expression: ts.Expression) {
     return ts.createReturn(expression);
 }
@@ -62,24 +53,6 @@ export function ret(expression: ts.Expression) {
 export function arrow(params: ts.ParameterDeclaration[], returnType: ts.TypeNode, body: ts.ConciseBody) {
     return ts.createArrowFunction([], [], params, returnType, undefined, body);
 }
-
-export function add(left: ts.Expression, right: ts.Expression): ts.Expression {
-    return ts.createBinary(left, ts.SyntaxKind.PlusToken, right);
-}
-
-// export function sub(head: ts.Expression, ...tail: ts.Expression[]): ts.Expression {
-//     if (tail.length) {
-//         ts.createBinary(head, ts.SyntaxKind.MinusToken, sub(tail[0], ...tail.slice(1)));
-//     }
-//     return head;
-// }
-//
-// export function mul(head: ts.Expression, ...tail: ts.Expression[]): ts.Expression {
-//     if (tail.length) {
-//         ts.createBinary(head, ts.SyntaxKind.AsteriskToken, mul(tail[0], ...tail.slice(1)));
-//     }
-//     return head;
-// }
 
 export function param(id: ts.Identifier, type: ts.TypeNode, dotDotDot: boolean = false) {
     return ts.createParameter(

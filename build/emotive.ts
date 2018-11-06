@@ -69,8 +69,40 @@ const buildProperty = (values: Param[]): string => {
         })
     );
 };
-function parenthesis(content: string) {
-    return "(" + content + ")";
+function mqSet(name: string, value?: string | number) {
+    if (value) {
+        return "(" + name + ": " + value + ")";
+    }
+    return "(" + name + ")";
+}
+
+function mqAnd(...values: (string | number)[]) {
+    return "(" + values.join(" and ") + ")";
+}
+
+function mqOr(...values: (string | number)[]) {
+    return "(" + values.join(", ") + ")";
+}
+
+function mqNot(value: string | number) {
+    return "(not " + value + ")";
+}
+
+function mqOnly(value: string | number) {
+    return "(only " + value + ")";
+}
+
+function mqRange(name: string, min: string | number, max: string | number) {
+    const minProp = min ? mqSet("min-" + name, min) : undefined;
+    const maxProp = max ? mqSet("max-" + name, max) : undefined;
+
+    if (minProp && maxProp) {
+        return mqAnd(minProp, maxProp);
+    } else if (minProp) {
+        return minProp;
+    } else if (maxProp) {
+        return maxProp;
+    } else return mqSet(name);
 }
 export const Keyword = {
     _ABOVE: "above",
@@ -11907,30 +11939,357 @@ export const Css = {
     Zoom: _Zoom,
     sheet: _sheet
 };
-export default Css;
-const Width = {
-    set: (value: string): string => parenthesis("width: " + value),
-    AUTO: parenthesis("width: auto"),
-    cap: (num: number): string => parenthesis("width: " + Length.cap(num)),
-    ch: (num: number): string => parenthesis("width: " + Length.ch(num)),
-    em: (num: number): string => parenthesis("width: " + Length.em(num)),
-    ex: (num: number): string => parenthesis("width: " + Length.ex(num)),
-    ic: (num: number): string => parenthesis("width: " + Length.ic(num)),
-    lh: (num: number): string => parenthesis("width: " + Length.lh(num)),
-    rem: (num: number): string => parenthesis("width: " + Length.rem(num)),
-    rlh: (num: number): string => parenthesis("width: " + Length.rlh(num)),
-    vh: (num: number): string => parenthesis("width: " + Length.vh(num)),
-    vw: (num: number): string => parenthesis("width: " + Length.vw(num)),
-    vi: (num: number): string => parenthesis("width: " + Length.vi(num)),
-    vb: (num: number): string => parenthesis("width: " + Length.vb(num)),
-    vmin: (num: number): string => parenthesis("width: " + Length.vmin(num)),
-    vmax: (num: number): string => parenthesis("width: " + Length.vmax(num)),
-    px: (num: number): string => parenthesis("width: " + Length.px(num)),
-    cm: (num: number): string => parenthesis("width: " + Length.cm(num)),
-    mm: (num: number): string => parenthesis("width: " + Length.mm(num)),
-    Q: (num: number): string => parenthesis("width: " + Length.Q(num)),
-    in: (num: number): string => parenthesis("width: " + Length.in(num)),
-    pc: (num: number): string => parenthesis("width: " + Length.pc(num)),
-    pt: (num: number): string => parenthesis("width: " + Length.pt(num)),
-    fr: (num: number): string => parenthesis("width: " + Length.fr(num))
+const _mq_Width = {
+    set: (value: string | number): string => mqSet("width", value),
+    range: (min: string | number, max: string | number): string => mqRange("width", min, max),
+    cap: (num: number): string => mqSet("width", Length.cap(num)),
+    ch: (num: number): string => mqSet("width", Length.ch(num)),
+    em: (num: number): string => mqSet("width", Length.em(num)),
+    ex: (num: number): string => mqSet("width", Length.ex(num)),
+    ic: (num: number): string => mqSet("width", Length.ic(num)),
+    lh: (num: number): string => mqSet("width", Length.lh(num)),
+    rem: (num: number): string => mqSet("width", Length.rem(num)),
+    rlh: (num: number): string => mqSet("width", Length.rlh(num)),
+    vh: (num: number): string => mqSet("width", Length.vh(num)),
+    vw: (num: number): string => mqSet("width", Length.vw(num)),
+    vi: (num: number): string => mqSet("width", Length.vi(num)),
+    vb: (num: number): string => mqSet("width", Length.vb(num)),
+    vmin: (num: number): string => mqSet("width", Length.vmin(num)),
+    vmax: (num: number): string => mqSet("width", Length.vmax(num)),
+    px: (num: number): string => mqSet("width", Length.px(num)),
+    cm: (num: number): string => mqSet("width", Length.cm(num)),
+    mm: (num: number): string => mqSet("width", Length.mm(num)),
+    Q: (num: number): string => mqSet("width", Length.Q(num)),
+    in: (num: number): string => mqSet("width", Length.in(num)),
+    pc: (num: number): string => mqSet("width", Length.pc(num)),
+    pt: (num: number): string => mqSet("width", Length.pt(num)),
+    fr: (num: number): string => mqSet("width", Length.fr(num))
+};
+const _mq_MinWidth = {
+    set: (value: string | number): string => mqSet("min-width", value),
+    cap: (num: number): string => mqSet("min-width", Length.cap(num)),
+    ch: (num: number): string => mqSet("min-width", Length.ch(num)),
+    em: (num: number): string => mqSet("min-width", Length.em(num)),
+    ex: (num: number): string => mqSet("min-width", Length.ex(num)),
+    ic: (num: number): string => mqSet("min-width", Length.ic(num)),
+    lh: (num: number): string => mqSet("min-width", Length.lh(num)),
+    rem: (num: number): string => mqSet("min-width", Length.rem(num)),
+    rlh: (num: number): string => mqSet("min-width", Length.rlh(num)),
+    vh: (num: number): string => mqSet("min-width", Length.vh(num)),
+    vw: (num: number): string => mqSet("min-width", Length.vw(num)),
+    vi: (num: number): string => mqSet("min-width", Length.vi(num)),
+    vb: (num: number): string => mqSet("min-width", Length.vb(num)),
+    vmin: (num: number): string => mqSet("min-width", Length.vmin(num)),
+    vmax: (num: number): string => mqSet("min-width", Length.vmax(num)),
+    px: (num: number): string => mqSet("min-width", Length.px(num)),
+    cm: (num: number): string => mqSet("min-width", Length.cm(num)),
+    mm: (num: number): string => mqSet("min-width", Length.mm(num)),
+    Q: (num: number): string => mqSet("min-width", Length.Q(num)),
+    in: (num: number): string => mqSet("min-width", Length.in(num)),
+    pc: (num: number): string => mqSet("min-width", Length.pc(num)),
+    pt: (num: number): string => mqSet("min-width", Length.pt(num)),
+    fr: (num: number): string => mqSet("min-width", Length.fr(num))
+};
+const _mq_MaxWidth = {
+    set: (value: string | number): string => mqSet("max-width", value),
+    cap: (num: number): string => mqSet("max-width", Length.cap(num)),
+    ch: (num: number): string => mqSet("max-width", Length.ch(num)),
+    em: (num: number): string => mqSet("max-width", Length.em(num)),
+    ex: (num: number): string => mqSet("max-width", Length.ex(num)),
+    ic: (num: number): string => mqSet("max-width", Length.ic(num)),
+    lh: (num: number): string => mqSet("max-width", Length.lh(num)),
+    rem: (num: number): string => mqSet("max-width", Length.rem(num)),
+    rlh: (num: number): string => mqSet("max-width", Length.rlh(num)),
+    vh: (num: number): string => mqSet("max-width", Length.vh(num)),
+    vw: (num: number): string => mqSet("max-width", Length.vw(num)),
+    vi: (num: number): string => mqSet("max-width", Length.vi(num)),
+    vb: (num: number): string => mqSet("max-width", Length.vb(num)),
+    vmin: (num: number): string => mqSet("max-width", Length.vmin(num)),
+    vmax: (num: number): string => mqSet("max-width", Length.vmax(num)),
+    px: (num: number): string => mqSet("max-width", Length.px(num)),
+    cm: (num: number): string => mqSet("max-width", Length.cm(num)),
+    mm: (num: number): string => mqSet("max-width", Length.mm(num)),
+    Q: (num: number): string => mqSet("max-width", Length.Q(num)),
+    in: (num: number): string => mqSet("max-width", Length.in(num)),
+    pc: (num: number): string => mqSet("max-width", Length.pc(num)),
+    pt: (num: number): string => mqSet("max-width", Length.pt(num)),
+    fr: (num: number): string => mqSet("max-width", Length.fr(num))
+};
+const _mq_Height = {
+    set: (value: string | number): string => mqSet("height", value),
+    range: (min: string | number, max: string | number): string => mqRange("height", min, max),
+    cap: (num: number): string => mqSet("height", Length.cap(num)),
+    ch: (num: number): string => mqSet("height", Length.ch(num)),
+    em: (num: number): string => mqSet("height", Length.em(num)),
+    ex: (num: number): string => mqSet("height", Length.ex(num)),
+    ic: (num: number): string => mqSet("height", Length.ic(num)),
+    lh: (num: number): string => mqSet("height", Length.lh(num)),
+    rem: (num: number): string => mqSet("height", Length.rem(num)),
+    rlh: (num: number): string => mqSet("height", Length.rlh(num)),
+    vh: (num: number): string => mqSet("height", Length.vh(num)),
+    vw: (num: number): string => mqSet("height", Length.vw(num)),
+    vi: (num: number): string => mqSet("height", Length.vi(num)),
+    vb: (num: number): string => mqSet("height", Length.vb(num)),
+    vmin: (num: number): string => mqSet("height", Length.vmin(num)),
+    vmax: (num: number): string => mqSet("height", Length.vmax(num)),
+    px: (num: number): string => mqSet("height", Length.px(num)),
+    cm: (num: number): string => mqSet("height", Length.cm(num)),
+    mm: (num: number): string => mqSet("height", Length.mm(num)),
+    Q: (num: number): string => mqSet("height", Length.Q(num)),
+    in: (num: number): string => mqSet("height", Length.in(num)),
+    pc: (num: number): string => mqSet("height", Length.pc(num)),
+    pt: (num: number): string => mqSet("height", Length.pt(num)),
+    fr: (num: number): string => mqSet("height", Length.fr(num))
+};
+const _mq_MinHeight = {
+    set: (value: string | number): string => mqSet("min-height", value),
+    cap: (num: number): string => mqSet("min-height", Length.cap(num)),
+    ch: (num: number): string => mqSet("min-height", Length.ch(num)),
+    em: (num: number): string => mqSet("min-height", Length.em(num)),
+    ex: (num: number): string => mqSet("min-height", Length.ex(num)),
+    ic: (num: number): string => mqSet("min-height", Length.ic(num)),
+    lh: (num: number): string => mqSet("min-height", Length.lh(num)),
+    rem: (num: number): string => mqSet("min-height", Length.rem(num)),
+    rlh: (num: number): string => mqSet("min-height", Length.rlh(num)),
+    vh: (num: number): string => mqSet("min-height", Length.vh(num)),
+    vw: (num: number): string => mqSet("min-height", Length.vw(num)),
+    vi: (num: number): string => mqSet("min-height", Length.vi(num)),
+    vb: (num: number): string => mqSet("min-height", Length.vb(num)),
+    vmin: (num: number): string => mqSet("min-height", Length.vmin(num)),
+    vmax: (num: number): string => mqSet("min-height", Length.vmax(num)),
+    px: (num: number): string => mqSet("min-height", Length.px(num)),
+    cm: (num: number): string => mqSet("min-height", Length.cm(num)),
+    mm: (num: number): string => mqSet("min-height", Length.mm(num)),
+    Q: (num: number): string => mqSet("min-height", Length.Q(num)),
+    in: (num: number): string => mqSet("min-height", Length.in(num)),
+    pc: (num: number): string => mqSet("min-height", Length.pc(num)),
+    pt: (num: number): string => mqSet("min-height", Length.pt(num)),
+    fr: (num: number): string => mqSet("min-height", Length.fr(num))
+};
+const _mq_MaxHeight = {
+    set: (value: string | number): string => mqSet("max-height", value),
+    cap: (num: number): string => mqSet("max-height", Length.cap(num)),
+    ch: (num: number): string => mqSet("max-height", Length.ch(num)),
+    em: (num: number): string => mqSet("max-height", Length.em(num)),
+    ex: (num: number): string => mqSet("max-height", Length.ex(num)),
+    ic: (num: number): string => mqSet("max-height", Length.ic(num)),
+    lh: (num: number): string => mqSet("max-height", Length.lh(num)),
+    rem: (num: number): string => mqSet("max-height", Length.rem(num)),
+    rlh: (num: number): string => mqSet("max-height", Length.rlh(num)),
+    vh: (num: number): string => mqSet("max-height", Length.vh(num)),
+    vw: (num: number): string => mqSet("max-height", Length.vw(num)),
+    vi: (num: number): string => mqSet("max-height", Length.vi(num)),
+    vb: (num: number): string => mqSet("max-height", Length.vb(num)),
+    vmin: (num: number): string => mqSet("max-height", Length.vmin(num)),
+    vmax: (num: number): string => mqSet("max-height", Length.vmax(num)),
+    px: (num: number): string => mqSet("max-height", Length.px(num)),
+    cm: (num: number): string => mqSet("max-height", Length.cm(num)),
+    mm: (num: number): string => mqSet("max-height", Length.mm(num)),
+    Q: (num: number): string => mqSet("max-height", Length.Q(num)),
+    in: (num: number): string => mqSet("max-height", Length.in(num)),
+    pc: (num: number): string => mqSet("max-height", Length.pc(num)),
+    pt: (num: number): string => mqSet("max-height", Length.pt(num)),
+    fr: (num: number): string => mqSet("max-height", Length.fr(num))
+};
+const _mq_AspectRatio = {
+    set: (value: string | number): string => mqSet("aspect-ratio", value),
+    range: (min: string | number, max: string | number): string => mqRange("aspect-ratio", min, max)
+};
+const _mq_MinAspectRatio = { set: (value: string | number): string => mqSet("min-aspect-ratio", value) };
+const _mq_MaxAspectRatio = { set: (value: string | number): string => mqSet("max-aspect-ratio", value) };
+const _mq_Orientation = {
+    set: (value: string | number): string => mqSet("orientation", value),
+    PORTRAIT: mqSet("orientation", "portrait"),
+    LANDSCAPE: mqSet("orientation", "landscape")
+};
+const _mq_Resolution = {
+    set: (value: string | number): string => mqSet("resolution", value),
+    range: (min: string | number, max: string | number): string => mqRange("resolution", min, max),
+    dpi: (num: number): string => mqSet("resolution", Resolution.dpi(num)),
+    dpcm: (num: number): string => mqSet("resolution", Resolution.dpcm(num)),
+    dppx: (num: number): string => mqSet("resolution", Resolution.dppx(num)),
+    x: (num: number): string => mqSet("resolution", Resolution.x(num))
+};
+const _mq_MinResolution = {
+    set: (value: string | number): string => mqSet("min-resolution", value),
+    dpi: (num: number): string => mqSet("min-resolution", Resolution.dpi(num)),
+    dpcm: (num: number): string => mqSet("min-resolution", Resolution.dpcm(num)),
+    dppx: (num: number): string => mqSet("min-resolution", Resolution.dppx(num)),
+    x: (num: number): string => mqSet("min-resolution", Resolution.x(num))
+};
+const _mq_MaxResolution = {
+    set: (value: string | number): string => mqSet("max-resolution", value),
+    dpi: (num: number): string => mqSet("max-resolution", Resolution.dpi(num)),
+    dpcm: (num: number): string => mqSet("max-resolution", Resolution.dpcm(num)),
+    dppx: (num: number): string => mqSet("max-resolution", Resolution.dppx(num)),
+    x: (num: number): string => mqSet("max-resolution", Resolution.x(num))
+};
+const _mq_Scan = {
+    set: (value: string | number): string => mqSet("scan", value),
+    INTERLACE: mqSet("scan", "interlace"),
+    PROGRESSIVE: mqSet("scan", "progressive")
+};
+const _mq_Grid = {
+    set: (value: string | number): string => mqSet("grid", value),
+    _0: mqSet("grid", "0"),
+    _1: mqSet("grid", "1")
+};
+const _mq_Update = {
+    set: (value: string | number): string => mqSet("update", value),
+    NONE: mqSet("update", "none"),
+    SLOW: mqSet("update", "slow"),
+    FAST: mqSet("update", "fast")
+};
+const _mq_OverflowBlock = {
+    set: (value: string | number): string => mqSet("overflow-block", value),
+    NONE: mqSet("overflow-block", "none"),
+    SCROLL: mqSet("overflow-block", "scroll"),
+    OPTIONAL_PAGED: mqSet("overflow-block", "optional-paged"),
+    PAGED: mqSet("overflow-block", "paged")
+};
+const _mq_OverflowInline = {
+    set: (value: string | number): string => mqSet("overflow-inline", value),
+    NONE: mqSet("overflow-inline", "none"),
+    SCROLL: mqSet("overflow-inline", "scroll")
+};
+const _mq_Color = { set: (value: string | number): string => mqSet("color", value) };
+const _mq_ColorGamut = {
+    set: (value: string | number): string => mqSet("color-gamut", value),
+    SRGB: mqSet("color-gamut", "srgb"),
+    P3: mqSet("color-gamut", "p3"),
+    REC2020: mqSet("color-gamut", "rec2020")
+};
+const _mq_ColorIndex = {
+    set: (value: string | number): string => mqSet("color-index", value),
+    range: (min: string | number, max: string | number): string => mqRange("color-index", min, max)
+};
+const _mq_MinColorIndex = { set: (value: string | number): string => mqSet("min-color-index", value) };
+const _mq_MaxColorIndex = { set: (value: string | number): string => mqSet("max-color-index", value) };
+const _mq_DisplayMode = {
+    set: (value: string | number): string => mqSet("display-mode", value),
+    FULLSCREEN: mqSet("display-mode", "fullscreen"),
+    STANDALONE: mqSet("display-mode", "standalone"),
+    MINIMAL_UI: mqSet("display-mode", "minimal-ui"),
+    BROWSER: mqSet("display-mode", "browser")
+};
+const _mq_Monochrome = {
+    set: (value: string | number): string => mqSet("monochrome", value),
+    range: (min: string | number, max: string | number): string => mqRange("monochrome", min, max)
+};
+const _mq_MinMonochrome = { set: (value: string | number): string => mqSet("min-monochrome", value) };
+const _mq_MaxMonochrome = { set: (value: string | number): string => mqSet("max-monochrome", value) };
+const _mq_InvertedColors = {
+    set: (value: string | number): string => mqSet("inverted-colors", value),
+    NONE: mqSet("inverted-colors", "none"),
+    INVERTED: mqSet("inverted-colors", "inverted")
+};
+const _mq_Pointer = {
+    set: (value: string | number): string => mqSet("pointer", value),
+    NONE: mqSet("pointer", "none"),
+    COARSE: mqSet("pointer", "coarse"),
+    FINE: mqSet("pointer", "fine")
+};
+const _mq_Hover = {
+    set: (value: string | number): string => mqSet("hover", value),
+    NONE: mqSet("hover", "none"),
+    HOVER: mqSet("hover", "hover")
+};
+const _mq_AnyPointer = {
+    set: (value: string | number): string => mqSet("any-pointer", value),
+    NONE: mqSet("any-pointer", "none"),
+    COARSE: mqSet("any-pointer", "coarse"),
+    FINE: mqSet("any-pointer", "fine")
+};
+const _mq_AnyHover = {
+    set: (value: string | number): string => mqSet("any-hover", value),
+    NONE: mqSet("any-hover", "none"),
+    HOVER: mqSet("any-hover", "hover")
+};
+const _mq_LightLevel = {
+    set: (value: string | number): string => mqSet("light-level", value),
+    DIM: mqSet("light-level", "dim"),
+    NORMAL: mqSet("light-level", "normal"),
+    WASHED: mqSet("light-level", "washed")
+};
+const _mq_PrefersReducedMotion = {
+    set: (value: string | number): string => mqSet("prefers-reduced-motion", value),
+    NO_PREFERENCE: mqSet("prefers-reduced-motion", "no-preference"),
+    REDUCE: mqSet("prefers-reduced-motion", "reduce")
+};
+const _mq_PrefersReducedTransparency = {
+    set: (value: string | number): string => mqSet("prefers-reduced-transparency", value),
+    NO_PREFERENCE: mqSet("prefers-reduced-transparency", "no-preference"),
+    REDUCE: mqSet("prefers-reduced-transparency", "reduce")
+};
+const _mq_PrefersContrast = {
+    set: (value: string | number): string => mqSet("prefers-contrast", value),
+    NO_PREFERENCE: mqSet("prefers-contrast", "no-preference"),
+    HIGH: mqSet("prefers-contrast", "high"),
+    LOW: mqSet("prefers-contrast", "low")
+};
+const _mq_PrefersColorScheme = {
+    set: (value: string | number): string => mqSet("prefers-color-scheme", value),
+    NO_PREFERENCE: mqSet("prefers-color-scheme", "no-preference"),
+    LIGHT: mqSet("prefers-color-scheme", "light"),
+    DARK: mqSet("prefers-color-scheme", "dark")
+};
+const _mq_Scripting = {
+    set: (value: string | number): string => mqSet("scripting", value),
+    NONE: mqSet("scripting", "none"),
+    INITIAL_ONLY: mqSet("scripting", "initial-only"),
+    ENABLED: mqSet("scripting", "enabled")
+};
+export const Query = {
+    AND: mqAnd,
+    OR: mqOr,
+    NOT: mqNot,
+    ONLY: mqOnly,
+    ALL: "all",
+    BRAILLE: "braille",
+    EMBOSSED: "embossed",
+    HANDHELD: "handheld",
+    PRINT: "print",
+    PROJECTION: "projection",
+    SCREEN: "screen",
+    SPEECH: "speech",
+    TTY: "tty",
+    TV: "tv",
+    Width: _mq_Width,
+    MinWidth: _mq_MinWidth,
+    MaxWidth: _mq_MaxWidth,
+    Height: _mq_Height,
+    MinHeight: _mq_MinHeight,
+    MaxHeight: _mq_MaxHeight,
+    AspectRatio: _mq_AspectRatio,
+    MinAspectRatio: _mq_MinAspectRatio,
+    MaxAspectRatio: _mq_MaxAspectRatio,
+    Orientation: _mq_Orientation,
+    Resolution: _mq_Resolution,
+    MinResolution: _mq_MinResolution,
+    MaxResolution: _mq_MaxResolution,
+    Scan: _mq_Scan,
+    Grid: _mq_Grid,
+    Update: _mq_Update,
+    OverflowBlock: _mq_OverflowBlock,
+    OverflowInline: _mq_OverflowInline,
+    Color: _mq_Color,
+    ColorGamut: _mq_ColorGamut,
+    ColorIndex: _mq_ColorIndex,
+    MinColorIndex: _mq_MinColorIndex,
+    MaxColorIndex: _mq_MaxColorIndex,
+    DisplayMode: _mq_DisplayMode,
+    Monochrome: _mq_Monochrome,
+    MinMonochrome: _mq_MinMonochrome,
+    MaxMonochrome: _mq_MaxMonochrome,
+    InvertedColors: _mq_InvertedColors,
+    Pointer: _mq_Pointer,
+    Hover: _mq_Hover,
+    AnyPointer: _mq_AnyPointer,
+    AnyHover: _mq_AnyHover,
+    LightLevel: _mq_LightLevel,
+    PrefersReducedMotion: _mq_PrefersReducedMotion,
+    PrefersReducedTransparency: _mq_PrefersReducedTransparency,
+    PrefersContrast: _mq_PrefersContrast,
+    PrefersColorScheme: _mq_PrefersColorScheme,
+    Scripting: _mq_Scripting
 };

@@ -6,11 +6,11 @@ import { appendFile, writefile } from 'core/print';
 import { genDataTypes } from 'datatypes/datatypes';
 import { genMethods } from 'methods/methods';
 import { genCss } from 'properties/properties';
-import { genQuery } from 'mediaquery/mediaquery';
+import { genQuery } from 'query/Query';
 
 // CORE
 appendFile('./src/core/core.ts');
-appendFile('./src/mediaquery/utils.ts');
+appendFile('./src/query/core.ts');
 
 // CONSTANTS
 genKeyword();

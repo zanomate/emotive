@@ -226,6 +226,7 @@ export function genCss() {
     );
     appendNode(css);
 
-    const defaultExport = ts.createExportDefault(cssId);
-    appendNode(defaultExport);
+    // default export
+    // const defaultExport = ts.createExportDefault(cssId);
+    // appendNode(defaultExport);
 }
