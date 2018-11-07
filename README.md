@@ -3,7 +3,7 @@ Dynamic ***"css in js"*** without interpolation or language injection.
 
 [![npm version](https://badge.fury.io/js/emotive.svg)](https://badge.fury.io/js/emotive)
 
-[![npm version](http://img.badgesize.io/https://unpkg.com/emotive/emotive.js?label=umd%20size)](http://img.badgesize.io/https://unpkg.com/emotive/emotive.js?label=umd%20size)
+[![size](http://img.badgesize.io/https://unpkg.com/emotive/emotive.js?label=umd%20size)](http://img.badgesize.io/https://unpkg.com/emotive/emotive.js?label=umd%20size)
 
 ```js
 let myStyle = Css.sheet(
