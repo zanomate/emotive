@@ -128,10 +128,10 @@ class MediaFeatures {
 }
 
 const QueryCombinators: {[name: string]: string} = {
-    'AND': 'mqAnd',
-    'OR': 'mqOr',
-    'NOT': 'mqNot',
-    'ONLY': 'mqOnly'
+    'and': 'mqAnd',
+    'or': 'mqOr',
+    'not': 'mqNot',
+    'only': 'mqOnly'
 };
 
 export class MediaQueryData {

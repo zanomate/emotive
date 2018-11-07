@@ -12240,10 +12240,10 @@ const _mq_Scripting = {
     ENABLED: mqSet("scripting", "enabled")
 };
 export const Query = {
-    AND: mqAnd,
-    OR: mqOr,
-    NOT: mqNot,
-    ONLY: mqOnly,
+    and: mqAnd,
+    or: mqOr,
+    not: mqNot,
+    only: mqOnly,
     ALL: "all",
     BRAILLE: "braille",
     EMBOSSED: "embossed",
