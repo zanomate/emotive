@@ -8,10 +8,12 @@ export function genColor() {
     appendFile('./src/methods/hex.ts');
 
     let assignments: Assign[] = [];
-    ColorsData.All.sort().map(colorName => assign(
-        UPPER_CASE(colorName),
-        value(colorName)
-    ));
+    ColorsData.All.sort().map(colorName => {
+        assignments.push(assign(
+            UPPER_CASE(colorName),
+            value(colorName)
+        ))
+    });
 
     assignments.push(assign('hex', id('_hex')));
     assignments.push(assign('hexa', id('_hexa')));

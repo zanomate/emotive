@@ -60,7 +60,7 @@ function genMediaFeature(data: MediaFeature) {
                 attributes[constantName] = genConstant(data.name, constant);
             }
             catch (e) {
-                console.log('Unable to create constant', constant, 'for property', data.name);
+                console.error('Unable to create constant', constant, 'for property', data.name);
             }
         });
     }
@@ -72,7 +72,7 @@ function genMediaFeature(data: MediaFeature) {
                     attributes[unit] = genUnit(data.name, datatype, unit);
                 }
                 catch (e) {
-                    console.log('Unable to create constant', constant, 'for property', data.name);
+                    console.error('Unable to create constant', constant, 'for property', data.name);
                 }
             });
         });

@@ -52,7 +52,7 @@ function genProperty(cssProperty: string): Id {
             }
         }
         catch (e) {
-            console.log('Unable to create keyword', cssValue, 'for property', cssProperty);
+            console.error('Unable to create keyword', cssValue, 'for property', cssProperty);
         }
     };
 
@@ -72,7 +72,7 @@ function genProperty(cssProperty: string): Id {
             }
         }
         catch (e) {
-            console.log('Unable to create method', cssName, 'for property', cssProperty);
+            console.error('Unable to create method', cssName, 'for property', cssProperty);
         }
     };
 
@@ -122,7 +122,7 @@ function genProperty(cssProperty: string): Id {
             }
         }
         catch (e) {
-            console.log('Unable to create unit', unit, 'for property', cssProperty);
+            console.error('Unable to create unit', unit, 'for property', cssProperty);
         }
     };
 

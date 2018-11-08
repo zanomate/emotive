@@ -60,6 +60,9 @@ yarn add emotive
 		- [Calculations](#calculations-calc)
 		- [Colors](#colors-hex)
 		- [Exceptions](#exceptions)
+- [Selectors](#selectors)
+	- [Pseudo-classes](#pseudo-classes)
+	- [Pseudo-elements](#pseudo-elements)
 - [Media Query](#media-query)
 	- [Media Types](#media-types)
 	- [Media Features](#media-features)
@@ -181,7 +184,8 @@ Also, all constants are always avaiable inside some JS container:
 | `Keyword` | `SOLID`, `TOP`, `NONE`, ... | `solid`, `top`, `none`, ... |
 | `Color` | `RED`, `BLUE`, `AQUA`, ... | `red`, `blue`, `aqua`, ... |
 | `Unit` | `PX`, `DEG`, `CM`, ... | `px`, `deg`, `cm`, ... |
-| `Property` | `DISPLAY`, `MARGIN_LEFT`, ... | `display`, `margin-left`, ... | 
+| `Property` | `DISPLAY`, `MARGIN_LEFT`, ... | `display`, `margin-left`, ... |
+| `Element` | `TABLE`, `DIV`, `A`, ... | `table`, `div`, `a`, ... |
 
 You may need to use some CSS constant to populate complex properties, such as `border` shorthand property.
 ```js
@@ -335,32 +339,58 @@ Method.calc('(50px + -20px) * 2')  // calc((50px + -20px) * 2)
 
 ### Colors (hex)
 
-Other than classic css' `rgb(), rgba(), hsl()` and `hsla()` methods, Emotive also implement two exclusive methods related to **hex color** format.
+Other than classic css' `rgb(), rgba(), hsl()` and `hsla()` methods, Emotive also implement two exclusive methods related to **hex color** format, accessible from the `Color` object.
 
 `hex()` method just append a "sharp" `#` before the passed code, if not present:
 ```js
 // These sencences are equivalent
-Method.hex('aabbcc')
-Method.hex('#aabbcc')
+Color.hex('aabbcc')
+Color.hex('#aabbcc')
 // #abcdef;
 
 // 3/4/8-digit versions
-Method.hex('abc') // #ddd;
-Method.hex('abcd') // #ddda;
-Method.hex('aabbccdd') // #dadadacc;
+Color.hex('abc') // #ddd;
+Color.hex('abcd') // #ddda;
+Color.hex('aabbccdd') // #dadadacc;
 ```
 
 `hexa()` method behave the same, but accept an additional decimal parameter representing the **alpha** value:
 
 ```js
-Method.hexa('aabbcc', 0) // #dadada00;
-Method.hexa('aabbcc', .5) // #dadada7f;
-Method.hexa('aabbcc', 1) // #dadadaff;
+Color.hexa('aabbcc', 0) // #dadada00;
+Color.hexa('aabbcc', .5) // #dadada7f;
+Color.hexa('aabbcc', 1) // #dadadaff;
 
-const myColor= hex('abcdef');
-Method.hexa(myColor, .25) // #abcdef3f;
-Method.hexa(Color.AQUA, .75) // #abcdefbf;
+const myColor= Color.hex('abcdef');
+Color.hexa(myColor, .25) // #abcdef3f;
+Color.hexa(Color.AQUA, .75) // #abcdefbf;
 ```
+
+# Selectors
+
+Emotive provide a set of constants and methods to create your custom selectors. With the `Element` object you can write every standard "HTML element" (see [Constants](#constants))
+
+## Pseudo-classes
+
+Pseudo-classes constants (*UPPER_CASE* notation) and methods (*lowerCamelCase* notation) are available in an object called `Pseudo.Class`.
+
+| Emotive constant/method | Css value |
+| --- | --- |
+| `Pseudo.Class.HOVER` | `:hover` |
+| `Pseudo.Class.FOCUS` | `:focus` |
+| `Pseudo.Class.lang('en')` | `:lang(en)` |
+| ... | ... |
+
+## Pseudo-elements
+
+Pseudo-elements constants (*UPPER_CASE* notation) and methods (*lowerCamelCase* notation) are available too in an object called `Pseudo.Element`.
+
+| Emotive constant/method | Css value |
+| --- | --- |
+| `Pseudo.Element.AFTER` | `::after` |
+| `Pseudo.Element.BEFORE` | `::before` |
+| `Pseudo.Element.slotted('span')` | `::slotted(span)` |
+| ... | ... |
 
 # Media Query
 
