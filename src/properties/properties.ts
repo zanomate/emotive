@@ -88,7 +88,7 @@ function genProperty(cssProperty: string): Id {
             ],
             SheetType,
             obj([
-                assign(jsName, call(access(id('Method'), hex), codeId))
+                assign(jsName, call(access(id('Color'), hex), codeId))
             ])
         );
         propertyAttributes[hexa] = arrow(
@@ -98,7 +98,7 @@ function genProperty(cssProperty: string): Id {
             ],
             SheetType,
             obj([
-                assign(jsName, call(access(id('Method'), hexa), codeId, alphaId))
+                assign(jsName, call(access(id('Color'), hexa), codeId, alphaId))
             ])
         );
     };

@@ -84,11 +84,6 @@ export function genMethods() {
     appendFile('./src/methods/calc.ts');
     methods['calc'] = id('_calc');
 
-    // Colors
-    appendFile('./src/methods/colors.ts');
-    methods['hex'] = id('_hex');
-    methods['hexa'] = id('_hexa');
-
     const methodContainerId = id('Method');
     const methodContainer = constant(
         methodContainerId,
