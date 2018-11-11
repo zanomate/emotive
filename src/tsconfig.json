@@ -8,9 +8,9 @@
       "core/*": ["./core/*"],
       "data/*": ["./data/*"],
       "datatypes/*": ["./datatypes/*"],
-      "query/*": ["./query/*"],
       "methods/*": ["./methods/*"],
-      "properties/*": ["./properties/*"]
+      "properties/*": ["./properties/*"],
+      "selectors/*": ["./selectors/*"]
     },
     "experimentalDecorators": true,
     "removeComments": true,

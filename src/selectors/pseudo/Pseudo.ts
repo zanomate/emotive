@@ -86,7 +86,7 @@ function genPseudoElement() {
 export function genPseudo() {
 
     const pseudo = constant(
-        id('Pseudo'),
+        id('_Pseudo'),
         obj([
             assign('Class', genPseudoClass()),
             assign('Element', genPseudoElement())

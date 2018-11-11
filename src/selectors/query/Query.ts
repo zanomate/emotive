@@ -4,7 +4,7 @@ import {
 import {UPPER_CASE, UpperCamelCase} from 'core/naming';
 import {appendNode} from 'core/print';
 import {Mdn} from 'data/mdn';
-import {MediaFeature, MediaQueryData} from 'query/data';
+import {MediaFeature, MediaQueryData} from 'selectors/query/data';
 
 const ParamType = union(StringType, NumberType);
 
@@ -145,7 +145,7 @@ export function genQuery() {
     });
 
     const query = constant(
-        id('Query'),
+        id('_Query'),
         obj(queryAssignments),
         true
     );

@@ -19,7 +19,7 @@ export function genElements() {
         }
     });
 
-    const elementId = id('Element');
+    const elementId = id('_Element');
     const element = constant(elementId,
         obj(
             Object.keys(elements)

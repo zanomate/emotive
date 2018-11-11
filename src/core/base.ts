@@ -46,6 +46,10 @@ export function spread(id: Id) {
     return ts.createSpread(id);
 }
 
+export function add(left: Expr, right: Expr) {
+    return ts.createAdd(left, right);
+}
+
 export function ret(expression: ts.Expression) {
     return ts.createReturn(expression);
 }
