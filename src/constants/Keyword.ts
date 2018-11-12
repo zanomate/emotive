@@ -6,7 +6,7 @@ import {Mdn} from 'data/mdn';
 
 export function genKeywordName(keyword: string) {
     let name = UPPER_CASE(keyword);
-    if (/^[^a-z]/.test(name)) {
+    if (/^[^a-z]/.test(keyword)) {
         name = '_' + name;
     }
     return name;
