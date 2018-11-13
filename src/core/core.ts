@@ -27,7 +27,7 @@ const buildDatatype = (unit: string, nums: number[]): string =>
     nums.map((num) => num + (num ? unit : '')).join(' ');
 
 const buildMethod = (name: string, params: Param[]): string => {
-    return '(' + concatWithCommas(params
+    return name + '(' + concatWithCommas(params
         .map(param => {
             if (Array.isArray(param)) {
                 return concatWithSpaces(param.filter(subParam => {

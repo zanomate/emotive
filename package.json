@@ -1,6 +1,6 @@
 {
   "name": "emotive",
-  "version": "1.2.2",
+  "version": "1.2.4",
   "description": "Dynamic \"css in js\" without interpolation or language injection",
   "author": "zanomate",
   "license": "ISC",

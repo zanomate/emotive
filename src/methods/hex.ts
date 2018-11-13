@@ -3,5 +3,14 @@ const _hex = (code: string): string => {
 };
 
 const _hexa = (code: string, alpha: number): string => {
-    return _hex(code) + ((alpha - 1) * 255).toString(16);
+    const hex = _hex(code);
+    let transparency =(alpha * 255).toString(16);
+    let idx;
+    if((idx = transparency.indexOf('.')) > 0) {
+        transparency = transparency.substring(0, idx);
+    }
+    if(transparency.length == 1) {
+        transparency = '0' + transparency;
+    }
+    return hex + transparency;
 };
